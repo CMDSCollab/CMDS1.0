@@ -26,10 +26,6 @@ public class GameMaster : MonoBehaviour
 
     public void PrepareFight()
     {
-        Debug.Log("dasdada");
-        Debug.Log("dasdada");
-        Debug.Log("sdasda");
-        Debug.Log("sdasda");
         if (GameObject.Find("GlobalManager") != null)
         {
             characterM.mainCharacterType = GameObject.Find("GlobalManager").GetComponent<GlobalMaster>().characterType;
