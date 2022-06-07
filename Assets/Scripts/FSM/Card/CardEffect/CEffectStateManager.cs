@@ -15,7 +15,6 @@ public class CEffectStateManager : MonoBehaviour
     public CES_ChangeIntention changeIntentionState = new CES_ChangeIntention();
     public CES_ChallengeC challengeCState = new CES_ChallengeC();
     public CES_SkillC skillCState = new CES_SkillC();
-    public CES_DrawCardR DrawCRState = new CES_DrawCardR();
     public CES_AddSlot addSlotState = new CES_AddSlot();
     public CES_MagicCircle magicCircleState = new CES_MagicCircle();
 
