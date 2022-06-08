@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour
 
     public Button drawPileButton;
     public Button discardPileButton;
+    public Button deckCardButton;
     public GameObject startScene;
     public GameObject chooseCharacterPanel;
   
@@ -27,8 +28,13 @@ public class ButtonManager : MonoBehaviour
         
     }
 
+    public void OnDeckClicked()
+    {
+        cardRepoM.PresentDeck();
+    }
     public void OnDrawPileClicked()
     {
+        cardRepoM.gameObject.transform.SetAsLastSibling();
         cardRepoM.PresentDrawPile();
     }
 
@@ -53,6 +59,11 @@ public class ButtonManager : MonoBehaviour
         else if (whichPileNumber == "Discard")
         {
             discardPileButton.transform.Find("DiscardPileNumber").GetComponent<Text>().text = cardRepoM.discardPile.Count.ToString();
+        }
+        else if(whichPileNumber == "Deck")
+        {
+            Debug.Log("Show" + cardRepoM.deckPile.Count.ToString());
+            deckCardButton.transform.Find("DeckCardNumber").GetComponent<Text>().text = cardRepoM.deckPile.Count.ToString();
         }
        
     }
@@ -96,7 +107,7 @@ public class ButtonManager : MonoBehaviour
         gM.uiCanvas.transform.Find("RewardPanel").gameObject.SetActive(false);
         gM.FightEndReset();
         gM.mapM.gameObject.SetActive(true);
-        gM.uiCanvas.gameObject.SetActive(false);
+        //gM.uiCanvas.gameObject.SetActive(false);
     }
 
     public void OnClickBackToMainMenu()

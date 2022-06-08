@@ -26,6 +26,7 @@ public class DeckManager : MonoBehaviour
     {
         gM = FindObjectOfType<GameMaster>();
         MakeArtistExpandCardDic();
+        InitializeDicCardInDeck();
     }
 
     public void MakeArtistExpandCardDic()
@@ -40,8 +41,9 @@ public class DeckManager : MonoBehaviour
 
     public void PrepareDeckAndHand()
     {
-        InitializeDicCardInDeck();
+        //InitializeDicCardInDeck();
         GetNewCopyDeck();
+        SwitchActiveStatusForDeckAndDiscardPile(true);
         DrawCardFromDeckRandomly(initialCardAmount);
     }
 
@@ -72,6 +74,15 @@ public class DeckManager : MonoBehaviour
                 cardInDeck[i] = artistBaseCard[i];
             }
         }
+
+        gM.cardRepoM.deckPile = new Dictionary<int, CardInfo>(cardInDeck);
+        gM.buttonM.SynchronizeCardsCountInPileButton("Deck");
+    }
+
+    public void SwitchActiveStatusForDeckAndDiscardPile(bool status)
+    {
+        gM.buttonM.discardPileButton.gameObject.SetActive(status);
+        gM.buttonM.drawPileButton.gameObject.SetActive(status);
     }
     
     public void GetNewCopyDeck()

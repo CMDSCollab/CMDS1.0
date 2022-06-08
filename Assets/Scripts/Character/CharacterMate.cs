@@ -16,7 +16,6 @@ public class CharacterMate : BasicCharacter
     public int maxHp;
     public int healthPoint;
     public int shieldPoint;
-    public int gold;
     public bool isDefeated;
     public Slider hpBar;
     public Text hpRatio;
@@ -46,7 +45,6 @@ public class CharacterMate : BasicCharacter
         hpBar.value = healthPoint;
         hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
         CommonStatusBar statusBar = FindObjectOfType<CommonStatusBar>();
-        statusBar.goldIntText.text = gold.ToString();
     }
 
     private void InitializeCharacter()
@@ -64,6 +62,7 @@ public class CharacterMate : BasicCharacter
         //Debug.Log("tdDmg:" + dmg);
         //Debug.Log("tdDmgddadsas£º" + gM.buffM.CharacterTakeDamage(dmg));
         healthPoint -= gM.buffM.CharacterTakeDamage(dmg);
+        gM.comStatusBar.HealthUIUpdate();
     }
 
     public virtual void HealSelf(int healAmount)
@@ -75,5 +74,6 @@ public class CharacterMate : BasicCharacter
         {
             healthPoint = maxHp;
         }
+        gM.comStatusBar.HealthUIUpdate();
     }
 }

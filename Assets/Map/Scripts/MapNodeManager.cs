@@ -44,8 +44,10 @@ public class MapNodeManager : MonoBehaviour
             case NodeType.Chest:
                 break;
             case NodeType.Rest:
+                EnterCamp();
                 break;
             case NodeType.Merchant:
+                EnterMerchant();
                 break;
             case NodeType.Uncertainty:
                 break;
@@ -68,5 +70,15 @@ public class MapNodeManager : MonoBehaviour
         mapM.gM.uiCanvas.gameObject.SetActive(true);
         mapM.gM.PrepareFight();
         mapM.gameObject.SetActive(false);
+    }
+
+    public void EnterMerchant()
+    {
+        mapM.gM.merM.OnClickMapNode_Merchant();    
+    }
+
+    public void EnterCamp()
+    {
+        mapM.gM.campM.OnClickMapnode_Camp();
     }
 }

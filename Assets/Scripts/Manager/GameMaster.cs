@@ -15,12 +15,18 @@ public class GameMaster : MonoBehaviour
     public BuffManager buffM;
     public FightManager fightM;
     public MapManager mapM;
+    public MerchantManager merM;
+    public CampManager campM;
+
     public CombatStateManager combatSM;
     public ActionStateManager actionSM;
     public BuffStateManager buffSM;
     public CardStateManager cardSM;
     public CEffectStateManager cEffectSM;
+    public MerchantStateManager merchantSM;
     public AnimCollection animC;
+    public CommonStatusBar comStatusBar;
+    
 
     public Canvas uiCanvas;
 
@@ -44,11 +50,13 @@ public class GameMaster : MonoBehaviour
         handM.handCardList.Clear();
         cardRepoM.discardPile.Clear();
         cardRepoM.drawPile.Clear();
+        deckM.SwitchActiveStatusForDeckAndDiscardPile(false);
         switch (characterM.mainCharacterType)
         {
             case CharacterType.Designer:
                 Destroy(aiM.proAI.gameObject);
                 Destroy(aiM.artAI.gameObject);
+                Destroy(aiM.des.flowChart);
                 Destroy(aiM.des.gameObject);
                 break;
             case CharacterType.Programmmer:

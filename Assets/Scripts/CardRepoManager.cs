@@ -11,6 +11,7 @@ public class CardRepoManager : MonoBehaviour
 
     public Dictionary<int, CardInfo> drawPile = new Dictionary<int, CardInfo>();
     public Dictionary<int, CardInfo> discardPile = new Dictionary<int, CardInfo>();
+    public Dictionary<int, CardInfo> deckPile = new Dictionary<int, CardInfo>();
     public Dictionary<int, CardInfo> cardsOnPresent = new Dictionary<int, CardInfo>();
 
     public DeckManager deckM;
@@ -44,6 +45,13 @@ public class CardRepoManager : MonoBehaviour
         gameObject.SetActive(true);
         drawPile = new Dictionary<int, CardInfo>(deckM.cardInDeckCopy);
         InstantiateCard(drawPile);
+    }
+    
+    public void PresentDeck()
+    {
+        gameObject.SetActive(true);
+        deckPile = new Dictionary<int, CardInfo>(deckM.cardInDeck);
+        InstantiateCard(deckPile);  
     }
 
     public void PresentDiscardPile()

@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e61e1691c47110143b506c5abd13c55d, type: 3}
-  m_Name: AddChallenge
+  m_Name: "\u5546\u5E97\u6D4B\u8BD5\u5361"
   m_EditorClassIdentifier: 
-  cardName: "\u589E\u52A0\u6311\u6218"
-  description: "\u589E\u52A03\u70B9\u6311\u6218"
+  cardName: "\u5546\u5E97\u6D4B\u8BD5\u5361"
+  description: 
   merchantBaseValue: 100
   realValue: 0
   baseFunctions: []
   specialFunctions: 
-  desSpecialFunctions:
-  - desFunctionType: 1
-    value: 3
+  desSpecialFunctions: []

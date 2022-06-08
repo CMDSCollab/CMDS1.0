@@ -22,6 +22,7 @@ public class CardManager : MonoBehaviour
     public int handIndex;
     public int deckIndexRecord;
     public bool ifTouched = false;
+    public bool isOnSell; //是否在商店中出售；
     public CardMovement cardMovement = CardMovement.Null;
 
     private void Start()
@@ -32,6 +33,18 @@ public class CardManager : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        Debug.Log("AAAA" + gM.cardSM.currentState.ToString());
+
+        if (isOnSell)
+        {
+            if(gM.merchantSM.currentState == gM.merchantSM.defaultState || gM.merchantSM.currentState == gM.merchantSM.deselectState)
+            {
+                gM.merchantSM.isUpdate = false;
+                gM.merchantSM.currentItemRectTrans = this.gameObject.GetComponent<RectTransform>();
+                gM.merchantSM.originPos = new Vector3(0, 0, 0);
+                gM.merchantSM.EnterMerchantState(gM.merchantSM.selectState);
+            }
+        }
         if (gM.cardSM.currentState == gM.cardSM.defaultState || gM.cardSM.currentState == gM.cardSM.endSelectState)
         {
             gM.cardSM.isUpdate = false;
@@ -46,6 +59,14 @@ public class CardManager : MonoBehaviour
 
     public void OnMouseExit()
     {
+        if (isOnSell)
+        {
+            if (gM.merchantSM.currentState == gM.merchantSM.selectState)
+            {
+                gM.merchantSM.isUpdate = false;
+                gM.merchantSM.EnterMerchantState(gM.merchantSM.deselectState);
+            }
+        }
         if (gM.cardSM.currentState == gM.cardSM.selectState)
         {
             gM.cardSM.isUpdate = false;
@@ -59,6 +80,28 @@ public class CardManager : MonoBehaviour
 
     public void OnMouseClick()
     {
+
+        if (isOnSell)
+        {
+            if (gM.merchantSM.currentState == gM.merchantSM.selectState)
+            {
+                if (cardInfo.realValue <= gM.comStatusBar.gold)
+                {
+                    gM.cardFunctionM.GetCardFromMerchant(this.gameObject);
+                    gM.merchantSM.EnterMerchantState(gM.merchantSM.soldState);
+                    gM.comStatusBar.GoldChange(- cardInfo.realValue);
+                }
+                else
+                {
+                    Debug.Log("No Gold");
+                }
+
+            }
+
+            return;
+
+        }
+
         if (gM.cardSM.currentState == gM.cardSM.selectState)
         {
             if (gameObject.transform.parent.name != "CardLayout") //确认不是弃抽牌堆的卡再使用
@@ -239,7 +282,7 @@ public class CardManager : MonoBehaviour
                         gM.aiM.art.StyleEffect();
                         break;
                     case SpecialArtFunctionType.GetIncome:
-                        gM.aiM.art.gold += cardArt.artSpecialFunctions[i].value;
+                        gM.comStatusBar.GoldChange(cardArt.artSpecialFunctions[i].value);
                         break;
                 }
             }

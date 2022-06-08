@@ -30,11 +30,13 @@ public class AS_TakeDmg : ActionBaseState
         gM.actionSM.changedValue = value;
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
-            gM.characterM.mainCharacter.healthPoint -= gM.actionSM.changedValue;
+            //gM.characterM.mainCharacter.healthPoint -= gM.actionSM.changedValue;
+            gM.characterM.mainCharacter.TakeDamage(gM.actionSM.changedValue);
         }
         else
         {
-            gM.enM.enemyTarget.healthPoint -= gM.actionSM.changedValue;
+            //gM.enM.enemyTarget.healthPoint -= gM.actionSM.changedValue;
+            gM.enM.enemyTarget.TakeDamage(gM.actionSM.changedValue);
         }
         gM.actionSM.isUpdate = true;
     }

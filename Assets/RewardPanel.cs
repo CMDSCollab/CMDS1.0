@@ -34,7 +34,7 @@ public class RewardPanel : MonoBehaviour
 
     public void OnClickGoldButton()
     {
-        gM.characterM.mainCharacter.gold += currentGold;
+        gM.comStatusBar.GoldChange(currentGold);
         goldButton.SetActive(false);
     }
 
