@@ -12,7 +12,7 @@ public class BS_Charge : BuffBaseState
                 gM.buffSM.valueToCalculate += gM.buffSM.valueToCalculate;
                 break;
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.Charge, BuffTimeType.Temporary, 2, BuffValueType.NoValue, 1, BuffSource.Enemy);
+                gM.buffSM.AddNewBuff(EnemyBuff.Charge, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
                 gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Charge);
                 gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 gM.buffSM.isUpdate = true;

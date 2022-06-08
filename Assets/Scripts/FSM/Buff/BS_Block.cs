@@ -12,7 +12,7 @@ public class BS_Block : BuffBaseState
                 gM.buffSM.valueToCalculate = 0;
                 break;
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.Block, BuffTimeType.Temporary, 2, BuffValueType.NoValue, 1, BuffSource.Enemy);
+                gM.buffSM.AddNewBuff(EnemyBuff.Block, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
                 gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Block);
                 gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 gM.buffSM.isUpdate = true;

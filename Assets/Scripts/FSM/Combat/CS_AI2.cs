@@ -48,6 +48,5 @@ public class CS_AI2 : CombatBaseState
                 break;
         }
         gM.combatSM.SwitchCombatState(gM.combatSM.enemyState);
-        gM.buffM.LastTimeDecrease("Character", "Enemy");
     }
 }
