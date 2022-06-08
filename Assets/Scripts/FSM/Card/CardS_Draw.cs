@@ -108,54 +108,54 @@ public class CardS_Draw : CardBaseState
     {
         if (gM.buffM.FindBuff(CharacterBuff.IsTeamWork) != null)
         {
-            //gM.buffSM.drawCardAmount = drawAmount;
-            //gM.buffSM.buffUsage = BuffUsage.EffectApply;
-            //gM.buffSM.EnterBuffState(gM.buffSM.teamworkState);
-         
             AIMate targetAI = gM.aiM.artAI;
-            int random = Random.Range(0, 1);
-            Debug.Log(random);
-            Debug.Log(drawAmount);
-            switch (gM.characterM.mainCharacterType)
+            for (int i = 0; i < drawAmount; i++)
             {
-                case CharacterType.Designer:
-                    if (random == 0)
-                    {
-                        targetAI = gM.aiM.artAI;
-                    }
-                    else
-                    {
-                        targetAI = gM.aiM.proAI;
-                    }
-                    break;
-                case CharacterType.Programmmer:
-                    if (random == 0)
-                    {
-                        targetAI = gM.aiM.desAI;
-                    }
-                    else
-                    {
-                        targetAI = gM.aiM.artAI;
-                    }
-                    break;
-                case CharacterType.Artist:
-                    if (random == 0)
-                    {
-                        targetAI = gM.aiM.desAI;
-                    }
-                    else
-                    {
-                        targetAI = gM.aiM.proAI;
-                    }
-                    break;
+                int random = Random.Range(0, 1);
+                //Debug.Log(random);
+                //Debug.Log(drawAmount);
+                switch (gM.characterM.mainCharacterType)
+                {
+                    case CharacterType.Designer:
+                        if (random == 0)
+                        {
+                            targetAI = gM.aiM.artAI;
+                        }
+                        else
+                        {
+                            targetAI = gM.aiM.proAI;
+                        }
+                        break;
+                    case CharacterType.Programmmer:
+                        if (random == 0)
+                        {
+                            targetAI = gM.aiM.desAI;
+                        }
+                        else
+                        {
+                            targetAI = gM.aiM.artAI;
+                        }
+                        break;
+                    case CharacterType.Artist:
+                        if (random == 0)
+                        {
+                            targetAI = gM.aiM.desAI;
+                        }
+                        else
+                        {
+                            targetAI = gM.aiM.proAI;
+                        }
+                        break;
+                }
+                targetAI.energyPoint += 1;
+                if (targetAI.energyPoint > targetAI.energySlotAmount)
+                {
+                    targetAI.energyPoint = targetAI.energySlotAmount;
+                }
+                targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
+                targetAI.IntentionValueChangeAndUISync();
             }
-            targetAI.energyPoint += drawAmount;
-            if (targetAI.energyPoint > targetAI.energySlotAmount)
-            {
-                targetAI.energyPoint = targetAI.energySlotAmount;
-            }
-            targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
-            targetAI.IntentionValueChangeAndUISync();
+
         }
         //Debug.Log(gM.cEffectSM.isCardEffectRunning);
         if (gM.cEffectSM.isCardEffectRunning == true)

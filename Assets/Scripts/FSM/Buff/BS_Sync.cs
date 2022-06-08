@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BS_Sync : BuffBaseState
 {
@@ -85,7 +86,7 @@ public class BS_Sync : BuffBaseState
 
                 break;
             case BuffUsage.EffectApply:
-                gM.buffSM.BuffEffectsApply();
+
                 break;
         }
     }

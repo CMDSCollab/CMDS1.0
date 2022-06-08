@@ -49,14 +49,11 @@ public class BasicEnemy : MonoBehaviour
 
     public void Update()
     {
-        //UpdateUI();
         if (healthPoint<=0 && !isDefeated)
         {
             isDefeated = true;
             EnemyDefeated();
         }
-        //不建议让MC每帧做一次检测
-        //MainChaMCChange();
     }
 
     public virtual void InitializeEnemyUI()
@@ -74,19 +71,10 @@ public class BasicEnemy : MonoBehaviour
         hpBar.value = healthPoint;
         hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
 
-        ////skillLv = enemyInfo.defaultSkill;
-        //FindObjectOfType<FlowPoint>().TargetPosSet();
         gM.cEffectSM.EnterCardState(gM.cEffectSM.skillCState, enemyInfo.defaultSkill);
 
         GenerateEnemyIntention();
-        //MainChaMCChange();
     }
-
-    //public void UpdateUI()
-    //{
-    //    hpBar.value = healthPoint;
-    //    hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
-    //}
 
     public virtual void EnemyDefeated()
     {
@@ -104,7 +92,6 @@ public class BasicEnemy : MonoBehaviour
         healthPoint -= gM.buffM.EnemyTakeDamage(dmgValue);
     }
 
-
     //承受真实伤害：无视所有减益buff
     public void TakeTrueDamage(int dmg)
     {
@@ -119,23 +106,37 @@ public class BasicEnemy : MonoBehaviour
         {
             tendencyValues.Add(ratio.tendency);
         }
-        EnemyIntention lastIntention = currentIntention;
-        do
+        int random = Random.Range(0, 100);
+        for (int i = 0; i < tendencyValues.Count; i++)
         {
-            int random = Random.Range(0, 100);
-            for (int i = 0; i < tendencyValues.Count; i++)
+            if (random < tendencyValues[i])
             {
-                if (random < tendencyValues[i])
-                {
-                    currentIntention = enemyInfo.basicIntentions[i].intention;
-                    break;
-                }
-                else
-                {
-                    random -= tendencyValues[i];
-                }
+                currentIntention = enemyInfo.basicIntentions[i].intention;
+                break;
             }
-        } while (lastIntention == currentIntention);
+            else
+            {
+                random -= tendencyValues[i];
+            }
+        }
+        //EnemyIntention lastIntention = currentIntention;
+        //Debug.Log(currentIntention);
+        //do
+        //{
+        //    int random = Random.Range(0, 100);
+        //    for (int i = 0; i < tendencyValues.Count; i++)
+        //    {
+        //        if (random < tendencyValues[i])
+        //        {
+        //            currentIntention = enemyInfo.basicIntentions[i].intention;
+        //            break;
+        //        }
+        //        else
+        //        {
+        //            random -= tendencyValues[i];
+        //        }
+        //    }
+        //} while (lastIntention == currentIntention);
         SetIntentionUI();
     }
 

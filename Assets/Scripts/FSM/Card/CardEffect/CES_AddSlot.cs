@@ -58,6 +58,16 @@ public class CES_AddSlot : CEffectBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
+        if (gM.buffM.FindBuff(CharacterBuff.IsSycn) != null)
+        {
+            targetAI.energyPoint += 1;
+            if (targetAI.energyPoint > targetAI.energySlotAmount)
+            {
+                targetAI.energyPoint = targetAI.energySlotAmount;
+            }
+            targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
+            targetAI.IntentionValueChangeAndUISync();
+        }
         if (gM.cEffectSM.isCardEffectRunning == true)
         {
             gM.cEffectSM.CardEffectsApply(gM.cEffectSM.cardInUse);

@@ -225,91 +225,34 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    public void LastTimeDecrease(string whichBuffPool, string fromWho)
+    public void TempBuffTimeDecrease(List<EnemyBuff> enemyBuffs)
     {
-
-        if (whichBuffPool == "Enemy")
+        for (int i = 0; i < enemyBuffs.Count; i++)
         {
-            //Debug.Log(activeEBuffs.Count);
-            for (int i = 0; i < activeEBuffs.Count; i++)
+            if (FindBuff(enemyBuffs[i])!=null)
             {
-                if (fromWho == "Enemy")
+                FindBuff(enemyBuffs[i]).lastTime--;
+                FindBuff(enemyBuffs[i]).uiObj.transform.Find("Time").GetComponent<Text>().text = FindBuff(enemyBuffs[i]).lastTime.ToString();
+                if (FindBuff(enemyBuffs[i]).lastTime <= 0)
                 {
-                    //Debug.Log("entered");
-                    if (activeEBuffs[i].timeType == BuffTimeType.Temporary && activeEBuffs[i].source == BuffSource.Enemy)
-                    {
-                        activeEBuffs[i].lastTime--;
-                        activeEBuffs[i].uiObj.transform.Find("Time").GetComponent<Text>().text = activeEBuffs[i].lastTime.ToString();
-                        if (activeEBuffs[i].lastTime <= 0)
-                        {
-                            activeEBuffs[i].isReadyToRemove = true;
-                        }
-                        //CheckBuffAndRemove(activeEBuffs[i].enemyBuffType);
-                    }
+                    RemoveBuff(enemyBuffs[i]);
                 }
-                if (fromWho == "Character")
-                {
-                    //Debug.Log("cEntered");
-                    if (activeEBuffs[i].timeType == BuffTimeType.Temporary)
-                    {
-                        if (activeEBuffs[i].source == BuffSource.Character || activeEBuffs[i].source == BuffSource.AI)
-                        {
-                            activeEBuffs[i].lastTime--;
-                            activeEBuffs[i].uiObj.transform.Find("Time").GetComponent<Text>().text = activeEBuffs[i].lastTime.ToString();
-                            if (activeEBuffs[i].lastTime <= 0)
-                            {
-                                activeEBuffs[i].isReadyToRemove = true;
-                            }
-                            //CheckBuffAndRemove(activeEBuffs[i].enemyBuffType);
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i < activeEBuffs.Count; i++)
-            {
-                CheckBuffAndRemove(activeEBuffs[i].enemyBuffType);
             }
         }
+    }
 
-        if (whichBuffPool == "Character")
+    public void TempBuffTimeDecrease(List<CharacterBuff> characterBuffs)
+    {
+        for (int i = 0; i < characterBuffs.Count; i++)
         {
-            for (int i = 0; i < activeCBuffs.Count; i++)
+            if (FindBuff(characterBuffs[i]) != null)
             {
-                if (fromWho == "Enemy")
+                FindBuff(characterBuffs[i]).lastTime--;
+                FindBuff(characterBuffs[i]).uiObj.transform.Find("Time").GetComponent<Text>().text = FindBuff(characterBuffs[i]).lastTime.ToString();
+                if (FindBuff(characterBuffs[i]).lastTime <= 0)
                 {
-
-                    if (activeCBuffs[i].timeType == BuffTimeType.Temporary && activeCBuffs[i].source == BuffSource.Enemy)
-                    {
-                        activeCBuffs[i].lastTime--;
-                        activeCBuffs[i].uiObj.transform.Find("Time").GetComponent<Text>().text = activeCBuffs[i].lastTime.ToString();
-                        if (activeCBuffs[i].lastTime <= 0)
-                        {
-                            activeCBuffs[i].isReadyToRemove = true;
-                        }
-                        //CheckBuffAndRemove(activeCBuffs[i].characterBuffType);
-                    }
+                    RemoveBuff(characterBuffs[i]);
                 }
-                if (fromWho == "Character")
-                {
-                    if (activeCBuffs[i].timeType == BuffTimeType.Temporary)
-                    {
-                        if (activeCBuffs[i].source == BuffSource.Character || activeCBuffs[i].source == BuffSource.AI)
-                        {
-                            activeCBuffs[i].lastTime--;
-                            activeCBuffs[i].uiObj.transform.Find("Time").GetComponent<Text>().text = activeCBuffs[i].lastTime.ToString();
-                            if (activeCBuffs[i].lastTime <= 0)
-                            {
-                                activeCBuffs[i].isReadyToRemove = true;
-                            }
-                            //CheckBuffAndRemove(activeCBuffs[i].characterBuffType);
-                        }
-                    }
-                }
-              
-                }
-            for (int i = 0; i < activeCBuffs.Count; i++)
-            {
-                CheckBuffAndRemove(activeCBuffs[i].characterBuffType);
             }
         }
     }
@@ -334,14 +277,14 @@ public class BuffManager : MonoBehaviour
                 buff.uiObj.transform.Find("Time").GetComponent<Text>().text = "¡Þ";
                 break;
             case BuffTimeType.Temporary:
-                if (buff.source == BuffSource.Enemy)
-                {
-                    buff.uiObj.transform.Find("Time").GetComponent<Text>().text = (buff.lastTime - 1).ToString();
-                }
-                else
-                {
+                //if (buff.source == BuffSource.Enemy)
+                //{
+                //    buff.uiObj.transform.Find("Time").GetComponent<Text>().text = (buff.lastTime - 1).ToString();
+                //}
+                //else
+                //{
                     buff.uiObj.transform.Find("Time").GetComponent<Text>().text = buff.lastTime.ToString();
-                }
+                //}
                 //buff.uiObj.transform.Find("Time").GetComponent<Text>().text = buff.lastTime.ToString();
                 break;
         }
