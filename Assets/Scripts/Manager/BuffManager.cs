@@ -316,83 +316,83 @@ public class BuffManager : MonoBehaviour
 
     #region Buff Effect Apply
 
-    public int CharacterAttack(int valueToCalculate)
-    {
-        //Debug.Log("CA before:" + valueToCalculate);
-        if (FindBuff(CharacterBuff.Weak) != null)
-        {
-            valueToCalculate -= 3;
-        }
-        if (FindBuff(CharacterBuff.PowerUp) != null)
-        {
-            valueToCalculate += 3;
-        }
-        //Debug.Log("CA after:" + valueToCalculate);
+    //public int CharacterAttack(int valueToCalculate)
+    //{
+    //    //Debug.Log("CA before:" + valueToCalculate);
+    //    if (FindBuff(CharacterBuff.Weak) != null)
+    //    {
+    //        valueToCalculate -= 3;
+    //    }
+    //    if (FindBuff(CharacterBuff.PowerUp) != null)
+    //    {
+    //        valueToCalculate += 3;
+    //    }
+    //    //Debug.Log("CA after:" + valueToCalculate);
 
-        return valueToCalculate;
-    }
+    //    return valueToCalculate;
+    //}
 
-    public int CharacterTakeDamage(int valueToCalculate)
-    {
-        //Debug.Log("CTDEntered");
-        if (FindBuff(CharacterBuff.Defence) != null)
-        {
-            int defenceValueRecord = FindBuff(CharacterBuff.Defence).value;
-            if (FindBuff(CharacterBuff.Defence).value > valueToCalculate)
-            {
-                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate,BuffSource.Character);
-                valueToCalculate = 0;
-            }
-            else
-            {
-                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Character);
-                valueToCalculate -= defenceValueRecord;
-            }
-        }
+    //public int CharacterTakeDamage(int valueToCalculate)
+    //{
+    //    //Debug.Log("CTDEntered");
+    //    if (FindBuff(CharacterBuff.Defence) != null)
+    //    {
+    //        int defenceValueRecord = FindBuff(CharacterBuff.Defence).value;
+    //        if (FindBuff(CharacterBuff.Defence).value > valueToCalculate)
+    //        {
+    //            gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate,BuffSource.Character);
+    //            valueToCalculate = 0;
+    //        }
+    //        else
+    //        {
+    //            gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Character);
+    //            valueToCalculate -= defenceValueRecord;
+    //        }
+    //    }
 
-        return valueToCalculate;
-    }
+    //    return valueToCalculate;
+    //}
 
-    public int EnemyTakeDamage(int valueToCalculate)
-    {
-        //Debug.Log("ETD before:" + valueToCalculate);
-        if (FindBuff(EnemyBuff.Vulnerable)!=null)
-        {
-            valueToCalculate += 3;
-        }
-        if (FindBuff(EnemyBuff.Defence) != null)
-        {
-            int defenceValueRecord = FindBuff(EnemyBuff.Defence).value;
-            if (FindBuff(EnemyBuff.Defence).value > valueToCalculate)
-            {
-                gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Enemy);
-                valueToCalculate = 0;
-            }
-            else
-            {
-                gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Enemy);
-                valueToCalculate -= defenceValueRecord;
-            }
-        }
-        //Debug.Log("ETD after:" + valueToCalculate);
-        return valueToCalculate;
-    }
+    //public int EnemyTakeDamage(int valueToCalculate)
+    //{
+    //    //Debug.Log("ETD before:" + valueToCalculate);
+    //    if (FindBuff(EnemyBuff.Vulnerable)!=null)
+    //    {
+    //        valueToCalculate += 3;
+    //    }
+    //    if (FindBuff(EnemyBuff.Defence) != null)
+    //    {
+    //        int defenceValueRecord = FindBuff(EnemyBuff.Defence).value;
+    //        if (FindBuff(EnemyBuff.Defence).value > valueToCalculate)
+    //        {
+    //            gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Enemy);
+    //            valueToCalculate = 0;
+    //        }
+    //        else
+    //        {
+    //            gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -valueToCalculate, BuffSource.Enemy);
+    //            valueToCalculate -= defenceValueRecord;
+    //        }
+    //    }
+    //    //Debug.Log("ETD after:" + valueToCalculate);
+    //    return valueToCalculate;
+    //}
 
-    public int EnemyAttack(int valueToCalculate)
-    {
-        if (FindBuff(EnemyBuff.Weak)!=null)
-        {
-            valueToCalculate -= 3;
-        }
-        if (FindBuff(CharacterBuff.Vengeance) != null)
-        {
-            gM.enM.enemyTarget.TakeDamage(4);
-        }
-        if (valueToCalculate <= 0)
-        {
-            valueToCalculate = 0;
-        }
-        return valueToCalculate;
-    }
+    //public int EnemyAttack(int valueToCalculate)
+    //{
+    //    if (FindBuff(EnemyBuff.Weak)!=null)
+    //    {
+    //        valueToCalculate -= 3;
+    //    }
+    //    if (FindBuff(CharacterBuff.Vengeance) != null)
+    //    {
+    //        gM.enM.enemyTarget.TakeDamage(4);
+    //    }
+    //    if (valueToCalculate <= 0)
+    //    {
+    //        valueToCalculate = 0;
+    //    }
+    //    return valueToCalculate;
+    //}
     #endregion
 }

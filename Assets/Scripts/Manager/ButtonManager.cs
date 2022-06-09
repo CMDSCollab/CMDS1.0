@@ -53,7 +53,6 @@ public class ButtonManager : MonoBehaviour
     {
         if (whichPileNumber == "Draw")
         {
-
             drawPileButton.transform.Find("DrawPileNumber").GetComponent<Text>().text = gM.deckM.cardInDeckCopy.Count.ToString();
         }
         else if (whichPileNumber == "Discard")
@@ -62,7 +61,7 @@ public class ButtonManager : MonoBehaviour
         }
         else if(whichPileNumber == "Deck")
         {
-            Debug.Log("Show" + cardRepoM.deckPile.Count.ToString());
+            //Debug.Log("Show" + cardRepoM.deckPile.Count.ToString());
             deckCardButton.transform.Find("DeckCardNumber").GetComponent<Text>().text = cardRepoM.deckPile.Count.ToString();
         }
        

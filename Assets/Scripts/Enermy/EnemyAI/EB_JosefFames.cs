@@ -28,15 +28,15 @@ public class EB_JosefFames : BasicEnemy
             case EnemyIntention.FireShoot:
                 if (gM.buffM.FindBuff(CharacterBuff.Inflammable) != null)
                 {
-                    gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage1P*2));
+                    //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage1P*2));
                 }
                 else
                 {
-                    gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage1P));
+                    //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage1P));
                 }
                 break;
             case EnemyIntention.HoneyShoot:
-                gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage2P));
+                //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(damage2P));
                 gM.buffM.SetBuff(CharacterBuff.Inflammable, BuffTimeType.Temporary, 3, BuffValueType.NoValue, 1, BuffSource.Enemy);
                 break;
         }

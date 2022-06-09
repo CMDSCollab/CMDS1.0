@@ -61,7 +61,7 @@ public class CharacterMate : BasicCharacter
     {
         //Debug.Log("tdDmg:" + dmg);
         //Debug.Log("tdDmgddadsas£º" + gM.buffM.CharacterTakeDamage(dmg));
-        healthPoint -= gM.buffM.CharacterTakeDamage(dmg);
+        healthPoint -= dmg;
         gM.comStatusBar.HealthUIUpdate();
     }
 

@@ -12,12 +12,23 @@ public class CombatStateManager : MonoBehaviour
     public CS_Enemy enemyState = new CS_Enemy();
     public CS_End endState = new CS_End();
 
+    public List<CombatBaseState> defaultSequence = new List<CombatBaseState>();
+    public List<CombatBaseState> runningSequence = new List<CombatBaseState>();
+    public int stateIndex = 0;
+
     public bool isUpdate = false;
 
     void Start()
     {
         gM = FindObjectOfType<GameMaster>();
         currentState = startState;
+
+        defaultSequence.Add(startState);
+        defaultSequence.Add(ai1State);
+        defaultSequence.Add(ai2State);
+        defaultSequence.Add(enemyState);
+        defaultSequence.Add(endState);
+        runningSequence = defaultSequence;
     }
 
     void Update()
@@ -28,9 +39,16 @@ public class CombatStateManager : MonoBehaviour
         }
     }
 
-    public void SwitchCombatState(CombatBaseState state)
+    public void SwitchCombatState()
     {
-        currentState = state;
+        if (stateIndex >= runningSequence.Count - 1)
+        {
+            //Debug.Log("entered");
+            stateIndex = 0;
+        }
+        stateIndex++;
+        //Debug.Log(stateIndex);
+        currentState = runningSequence[stateIndex];
         currentState.EnterState(gM);
     }
 

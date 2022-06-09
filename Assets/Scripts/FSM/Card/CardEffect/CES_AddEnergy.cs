@@ -75,7 +75,7 @@ public class CES_AddEnergy : CEffectBaseState
         //}
         if (gM.cEffectSM.isCardEffectRunning == true)
         {
-            Debug.Log("3entered");
+            //    Debug.Log("3entered");
             gM.cEffectSM.CardEffectsApply(gM.cEffectSM.cardInUse);
         }
     }

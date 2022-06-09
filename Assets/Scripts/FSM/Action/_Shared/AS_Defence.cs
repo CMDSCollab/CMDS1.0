@@ -66,7 +66,6 @@ public class AS_Defence : ActionBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
-       
         gM.actionSM.EnterActionState(gM.actionSM.changeIState, value);
     }
 }

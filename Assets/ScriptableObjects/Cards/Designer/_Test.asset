@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: _Test
   m_EditorClassIdentifier: 
   cardName: Test
-  description: +4 Art E  >  +3 Card  >  +2 Pro E  >  Art IC  >  +5 SkillC
+  description: +3 Card  >  +2 Pro E  >  Art IC  >  +5 SkillC
+  merchantBaseValue: 0
+  realValue: 0
   baseFunctions:
   - functionType: 9
     value: 3

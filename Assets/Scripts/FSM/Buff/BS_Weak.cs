@@ -71,7 +71,7 @@ public class BS_Weak : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                //gM.actionSM.currentState.EndState(gM, gM.buffSM.valueToCalculate);
+                gM.actionSM.currentState.EndState(gM, gM.buffSM.valueToCalculate);
                 break;
             case BuffUsage.EffectApply:
                 gM.buffSM.BuffEffectsApply();

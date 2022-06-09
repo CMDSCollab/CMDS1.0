@@ -41,6 +41,6 @@ public class CS_Start : CombatBaseState
 
     public override void EndState(GameMaster gM)
     {
-        gM.combatSM.SwitchCombatState(gM.combatSM.ai1State);
+        gM.combatSM.SwitchCombatState();
     }
 }

@@ -48,8 +48,8 @@ public class EE_Streamer : BasicEnemy
             else
             // ∑Ò‘Ú£¨…À∫¶Œ™0
             {
-                base.TakeDamage(0);
-                gM.buffM.EnemyTakeDamage(0); 
+                //base.TakeDamage(0);
+                //gM.buffM.EnemyTakeDamage(0); 
 
             }
         }
@@ -72,7 +72,7 @@ public class EE_Streamer : BasicEnemy
         switch (currentIntention)
         {
             case EnemyIntention.Attack:
-                gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack( defaultDmg));
+                //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack( defaultDmg));
                 break;
             case EnemyIntention.ToComment:
 

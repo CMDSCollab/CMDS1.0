@@ -4010,6 +4010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ee64ff2070e5741ab2ef8b6f6d5668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateIndex: 0
   isUpdate: 0
 --- !u!114 &1744857374
 MonoBehaviour:
@@ -4743,7 +4744,7 @@ PrefabInstance:
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b8958ab463ae23c4d9c037c8d3e832cc, type: 2}
+      objectReference: {fileID: 11400000, guid: 67a9b72e4910976468036e4f51cf02f5, type: 2}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[1]
       value: 
