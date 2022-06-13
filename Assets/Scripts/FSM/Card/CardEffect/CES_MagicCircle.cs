@@ -24,7 +24,7 @@ public class CES_MagicCircle : CEffectBaseState
 
     public override void UpdateState(GameMaster gM, int value)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void EndState(GameMaster gM, int value)

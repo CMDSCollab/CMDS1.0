@@ -49,11 +49,11 @@ public class BasicEnemy : MonoBehaviour
 
     public void Update()
     {
-        if (healthPoint<=0 && !isDefeated)
-        {
-            isDefeated = true;
-            EnemyDefeated();
-        }
+        //if (hpBar.value <= 0 && !isDefeated)
+        //{
+        //    isDefeated = true;
+        //    EnemyDefeated();
+        //}
     }
 
     public virtual void InitializeEnemyUI()
@@ -70,8 +70,6 @@ public class BasicEnemy : MonoBehaviour
         hpBar.maxValue = maxHp;
         hpBar.value = healthPoint;
         hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
-
-        gM.cEffectSM.EnterCardState(gM.cEffectSM.skillCState, enemyInfo.defaultSkill);
 
         GenerateEnemyIntention();
     }
@@ -90,6 +88,10 @@ public class BasicEnemy : MonoBehaviour
     public virtual void TakeDamage(int dmgValue)
     {
         healthPoint -= dmgValue;
+        if (healthPoint <= 0)
+        {
+            healthPoint = 0;
+        }
     }
 
     //承受真实伤害：无视所有减益buff
@@ -200,6 +202,11 @@ public class BasicEnemy : MonoBehaviour
             case EnemyIntention.Sleep:
                 transform.Find("Intention").Find("Value").gameObject.SetActive(false);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Sleep";
+                transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
+                break;
+            case EnemyIntention.Skip:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
+                transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Skip";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
         }

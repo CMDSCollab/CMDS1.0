@@ -59,13 +59,8 @@ public class CardS_Use : CardBaseState
 
     public override void EndState(GameMaster gM)
     {
-        //Debug.Log("UseStateEnd" + gM.cardSM.isUpdate);
         gM.cEffectSM.cardInUse = gM.cardSM.cardInUse.cardInfo;
         gM.cEffectSM.isCardEffectRunning = true;
         gM.cEffectSM.CardEffectsApply(gM.cEffectSM.cardInUse);
-
-        //cardInUse.CardFuntion();
-        //cardInUse.cardMovement = CardMovement.Discard;
-        //gM.cardSM.EnterCardState(gM.cardSM.discardState);
     }
 }

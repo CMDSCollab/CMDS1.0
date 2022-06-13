@@ -6,7 +6,7 @@ public enum EnemyType { Minion, Elite,  Boss}
 
 public enum MinionType { TechNerd, ESPlayerMature, Hatchling, TheHoarder, Mc}
 
-public enum EliteType { Streamer, Ea, Eb, Ec}
+public enum EliteType { Streamer,SpeedRunner, Ea, Eb, Ec}
 
 public enum BossType { JosefFames, Ba, Bb, Bc}
 

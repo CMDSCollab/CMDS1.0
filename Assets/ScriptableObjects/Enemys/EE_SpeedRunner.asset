@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d0455e84d5f16449d3ec21eeaae345, type: 3}
-  m_Name: EM_Hatchling
+  m_Name: EE_SpeedRunner
   m_EditorClassIdentifier: 
-  enemyType: 0
-  minionType: 2
+  enemyType: 1
+  minionType: 0
   bossType: 0
-  eliteType: 0
-  enemyName: Hatchling
+  eliteType: 1
+  enemyName: Speed Runner
   images:
-  - {fileID: 21300000, guid: 4fab8dbf56562db48b50124b94d0a6e0, type: 3}
-  maxHealth: 40
-  defaultSkill: 3
+  - {fileID: 21300000, guid: c66712f21f79dd84e845d4810af87de8, type: 3}
+  maxHealth: 30
+  defaultSkill: 4
   basicIntentions:
   - intention: 0
-    tendency: 100
-    skillUp: 0
-  - intention: 1
-    tendency: 0
+    tendency: 50
     skillUp: 1
-  - intention: 3
-    tendency: 0
-    skillUp: 2
+  - intention: 14
+    tendency: 50
+    skillUp: 0
   specialFunctions: 
