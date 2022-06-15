@@ -10,29 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d0455e84d5f16449d3ec21eeaae345, type: 3}
-  m_Name: EB_JosefFames
+  m_Name: EE_SpeedRunner
   m_EditorClassIdentifier: 
-  enemyType: 2
+  enemyType: 1
   minionType: 0
   bossType: 0
-  eliteType: 0
-  enemyName: Josef Fames
+  eliteType: 1
+  enemyName: Speed Runner
   images:
-  - {fileID: 21300000, guid: 44c418d49632d704592f442a5f856b93, type: 3}
-  - {fileID: 21300000, guid: 6291563ab24ca4845a35af872248b266, type: 3}
-  maxHealth: 90
-  defaultSkill: 3
+  - {fileID: 21300000, guid: c66712f21f79dd84e845d4810af87de8, type: 3}
+  maxHealth: 30
+  defaultSkill: 4
   basicIntentions:
   - intention: 0
-    tendency: 80
+    tendency: 50
+    skillUp: 1
+  - intention: 14
+    tendency: 50
     skillUp: 0
-  - intention: 1
-    tendency: 20
-    skillUp: 1
-  - intention: 11
-    tendency: 0
-    skillUp: 2
-  - intention: 12
-    tendency: 0
-    skillUp: 1
-  specialFunctions: 01000000
+  specialFunctions: 

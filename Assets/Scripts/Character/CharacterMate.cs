@@ -33,11 +33,11 @@ public class CharacterMate : BasicCharacter
 
     public void Update()
     {
-        if (healthPoint <= 0 && !isDefeated)
-        {
-            isDefeated = true;
-            CharacterDefeated();
-    }
+    //    if (healthPoint <= 0 && !isDefeated)
+    //    {
+    //        isDefeated = true;
+    //        CharacterDefeated();
+    //}
     }
 
     public virtual void SyncCharacterUI()

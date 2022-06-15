@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CS_Enemy : CombatBaseState
 {
-    bool isBeforeAction = false;
-    EnemyBuff[] enterEListRecord = { EnemyBuff.Block, EnemyBuff.Defence, EnemyBuff.Charge };
+    EnemyBuff[] enterEListRecord = { EnemyBuff.Block, EnemyBuff.Defence, EnemyBuff.Charge ,EnemyBuff.Revive};
     EnemyBuff[] endEListRecord = { };
     CharacterBuff[] enterCListRecord = { CharacterBuff.Weak};
-    CharacterBuff[] endCListRecord = { CharacterBuff.IsTeamWork, CharacterBuff.IsSycn, CharacterBuff.Defence };
+    CharacterBuff[] endCListRecord = { CharacterBuff.IsTeamWork, CharacterBuff.IsSycn, CharacterBuff.Defence ,CharacterBuff.Inflammable};
     List<EnemyBuff> enterEList = new List<EnemyBuff>();
     List<CharacterBuff> enterCList = new List<CharacterBuff>();
     List<EnemyBuff> endEList = new List<EnemyBuff>();

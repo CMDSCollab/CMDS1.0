@@ -589,6 +589,8 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 851c20ef271f4e7418ebfdbf7d526cc1, type: 3}
   - enemyIntention: 13
     image: {fileID: 21300000, guid: e32f1559c03218742b84b6f7e6948642, type: 3}
+  - enemyIntention: 14
+    image: {fileID: 21300000, guid: 6d5a0f65e02df2d4da5ebd3c8550e9a3, type: 3}
   testEnemy: {fileID: 11400000, guid: b26c6f40cf701b644a42d29dc3b15a9c, type: 2}
 --- !u!1 &380860513
 GameObject:
@@ -4748,7 +4750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[0]
@@ -4757,7 +4759,7 @@ PrefabInstance:
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: d2a2583e55ed90b49b3ab8f5d22aeed9, type: 2}
+      objectReference: {fileID: 11400000, guid: 103cd09435d19f84a8a46bcca9aca0e2, type: 2}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[2]
       value: 
@@ -4765,7 +4767,15 @@ PrefabInstance:
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: a591e909ece9b4b49b8c5f6170a43c51, type: 2}
+      objectReference: {fileID: 11400000, guid: b8958ab463ae23c4d9c037c8d3e832cc, type: 2}
+    - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
+      propertyPath: levelEnemyPool.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b26c6f40cf701b644a42d29dc3b15a9c, type: 2}
+    - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
+      propertyPath: levelEnemyPool.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d1f483d8e444c34ead05ef9536f06d0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
 --- !u!1 &2074200691

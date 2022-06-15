@@ -6,15 +6,12 @@ public class CES_SkillC : CEffectBaseState
 {
     public override void EnterState(GameMaster gM, int value)
     {
-        //Debug.Log("SkillE");
         gM.enM.enemyTarget.skillLv += value;
         if (gM.enM.enemyTarget.skillLv < 0)
         {
             gM.enM.enemyTarget.skillLv = 0;
         }
         Object.FindObjectOfType<FlowPoint>().TargetPosSet();
-        //Debug.Log("current" + gM.aiM.des.flowChart.transform.Find("Point").GetComponent<RectTransform>().anchoredPosition);
-        //Debug.Log(Object.FindObjectOfType<FlowPoint>().targetPos);
         gM.cEffectSM.isUpdate = true;
     }
 
@@ -40,21 +37,19 @@ public class CES_SkillC : CEffectBaseState
         //Debug.Log(skillSubtractCha);
         if (skillSubtractCha > 10)
         {
-            //Debug.Log("a");
+            Debug.Log("entered");
             gM.buffM.RemoveBuff(EnemyBuff.Anxiety);
             gM.buffM.RemoveBuff(EnemyBuff.InFlow);
             gM.buffSM.AddOrAdjustBuff(EnemyBuff.Bored);
         }
         if (chaSubtractSkill <= 10 && skillSubtractCha <= 10)
         {
-            //Debug.Log("b");
             gM.buffM.RemoveBuff(EnemyBuff.Anxiety);
             gM.buffM.RemoveBuff(EnemyBuff.Bored);
             gM.buffSM.AddOrAdjustBuff(EnemyBuff.InFlow);
         }
         if (chaSubtractSkill > 10)
         {
-            //Debug.Log("c");
             gM.buffM.RemoveBuff(EnemyBuff.Bored);
             gM.buffM.RemoveBuff(EnemyBuff.InFlow);
             gM.buffSM.AddOrAdjustBuff(EnemyBuff.Anxiety);
