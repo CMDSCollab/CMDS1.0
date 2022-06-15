@@ -40,16 +40,30 @@ public class MapManager : MonoBehaviour
             //调整该层Nodes在Y轴的坐标
             for (int j = 0; j < singleLayerNodes.Count; j++)
             {
-                singleLayerNodes[j].transform.position = new Vector3(singleLayerNodes[j].transform.position.x, nodePosYStartValue + i * nodeVerMinApartDistance+ Random.Range(0f,0.5f), -2);
+                singleLayerNodes[j].transform.position = new Vector3(singleLayerNodes[j].transform.position.x, nodePosYStartValue + i * nodeVerMinApartDistance + Random.Range(0f, 0.5f), -2);
                 if (i == mapConfig.mapLayers.Count - 1)
                 {
                     singleLayerNodes[j].transform.position = new Vector3(0, nodePosYStartValue + i * nodeVerMinApartDistance + Random.Range(0f, 0.5f), -2);
                 }
+
+                singleLayerNodes[j].GetComponent<MapNodeManager>().step = i; //为每一个node记录层数
             }
             //用allLayerNodes(Dic)记录该层nodes信息，因为引用类型所以得重新包装，然后清除singleLayerNodes用于包装下层nodes信息
             Dictionary<int, GameObject> newDic = new Dictionary<int, GameObject>(singleLayerNodes);
             allLayerNodes.Add(i, newDic);
             singleLayerNodes.Clear();
+
+        }
+
+        ActiveFirstLevelNode();
+    }
+
+    public void ActiveFirstLevelNode()
+    {
+        Debug.Log("Test" + allLayerNodes[0].Count);
+        for(int i = 0; i < allLayerNodes[0].Count; i++)
+        {
+            allLayerNodes[0][i].GetComponent<MapNodeManager>().ifApproachable = true;
         }
     }
 

@@ -112,8 +112,8 @@ public class CharacterManager : MonoBehaviour
     public void MainChaGenerateAndInitialize(CharacterType characterType)
     {
         GameObject chaObj = Instantiate(templateCha, gM.uiCanvas.transform, false);
-        chaObj.transform.SetAsFirstSibling();
-        chaObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-625, 300, 0);
+        chaObj.transform.SetAsLastSibling();
+        chaObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-710, 225, 0);
         
         switch (characterType)
         {

@@ -100,6 +100,10 @@ MonoBehaviour:
   mapNode: {fileID: 0}
   linkTargetCount: 0
   linkTargetIndexList: 
+  step: 0
+  ifApproachable: 0
+  scaleChangeSpeed: 3
+  time: 0
 --- !u!50 &-6632652787229077820
 Rigidbody2D:
   serializedVersion: 4
