@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BS_Vulnerable : BuffBaseState
 {
-    public int changeAmount = 3;
+    public int changeAmount = 1;
 
     public override void EnterState(GameMaster gM)
     {
