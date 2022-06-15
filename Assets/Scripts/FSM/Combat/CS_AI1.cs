@@ -25,6 +25,7 @@ public class CS_AI1 : CombatBaseState
                 //gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.desAI.energyPoint);
                 break;
         }
+
     }
 
     public override void UpdateState(GameMaster gM)
@@ -54,6 +55,6 @@ public class CS_AI1 : CombatBaseState
                 gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.desAI.energyPoint);
                 break;
         }
-        gM.combatSM.SwitchCombatState(gM.combatSM.ai2State);
+        gM.combatSM.SwitchCombatState();
     }
 }

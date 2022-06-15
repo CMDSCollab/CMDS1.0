@@ -49,11 +49,11 @@ public class BasicEnemy : MonoBehaviour
 
     public void Update()
     {
-        if (healthPoint<=0 && !isDefeated)
-        {
-            isDefeated = true;
-            EnemyDefeated();
-        }
+        //if (hpBar.value <= 0 && !isDefeated)
+        //{
+        //    isDefeated = true;
+        //    EnemyDefeated();
+        //}
     }
 
     public virtual void InitializeEnemyUI()
@@ -71,8 +71,6 @@ public class BasicEnemy : MonoBehaviour
         hpBar.value = healthPoint;
         hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
 
-        gM.cEffectSM.EnterCardState(gM.cEffectSM.skillCState, enemyInfo.defaultSkill);
-
         GenerateEnemyIntention();
     }
 
@@ -89,7 +87,11 @@ public class BasicEnemy : MonoBehaviour
 
     public virtual void TakeDamage(int dmgValue)
     {
-        healthPoint -= gM.buffM.EnemyTakeDamage(dmgValue);
+        healthPoint -= dmgValue;
+        if (healthPoint <= 0)
+        {
+            healthPoint = 0;
+        }
     }
 
     //承受真实伤害：无视所有减益buff
@@ -153,10 +155,12 @@ public class BasicEnemy : MonoBehaviour
         switch (currentIntention)
         {
             case EnemyIntention.Attack:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(true);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Attack";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
             case EnemyIntention.Defence:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(true);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Defence";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
@@ -165,22 +169,17 @@ public class BasicEnemy : MonoBehaviour
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
             case EnemyIntention.Taunt:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Taunt";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
-            case EnemyIntention.Skill:
-                transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Skill";
-                transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
-                break;
-            case EnemyIntention.MultiAttack:
-                transform.Find("Intention").Find("Name").GetComponent<Text>().text = "MultiAttack";
-                transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
-                break;
             case EnemyIntention.Charge:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Charge";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
             case EnemyIntention.Block:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Block";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
@@ -198,6 +197,16 @@ public class BasicEnemy : MonoBehaviour
                 break;
             case EnemyIntention.ToComment:
                 transform.Find("Intention").Find("Name").GetComponent<Text>().text = "ToComment";
+                transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
+                break;
+            case EnemyIntention.Sleep:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
+                transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Sleep";
+                transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
+                break;
+            case EnemyIntention.Skip:
+                transform.Find("Intention").Find("Value").gameObject.SetActive(false);
+                transform.Find("Intention").Find("Name").GetComponent<Text>().text = "Skip";
                 transform.Find("Intention").Find("Image").GetComponent<Image>().sprite = imageToSet;
                 break;
         }

@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EM_Hoarder : BasicEnemy
 {
-    private int defaultDmg = 12;
+    private int defaultDmg = 8;
 
     private int goldBonus = 50;
-    private int sheildOnSleep = 30;
+    private int sheildOnSleep = 15;
     private bool hasBeenAwaken = false;
+
+    void Start()
+    {
+      
+    }
 
     public override void TakeDamage(int dmgValue)
     {
@@ -35,18 +41,34 @@ public class EM_Hoarder : BasicEnemy
     {
         hasBeenAwaken = true;
         GenerateEnemyIntention();
-        Debug.Log("Ï²+1µ³ ÒÑËÕÐÑ£¡");
+        //Debug.Log("Ï²+1µ³ ÒÑËÕÐÑ£¡");
     }
 
     public override void GenerateEnemyIntention()
     {
         if (!hasBeenAwaken)
         {
+            List<CombatBaseState> enemyFirstSequence = new List<CombatBaseState>();
+            enemyFirstSequence.Add(gM.combatSM.startState);
+            enemyFirstSequence.Add(gM.combatSM.enemyState);
+            enemyFirstSequence.Add(gM.combatSM.ai1State);
+            enemyFirstSequence.Add(gM.combatSM.ai2State);
+            enemyFirstSequence.Add(gM.combatSM.endState);
+            gM.combatSM.runningSequence = enemyFirstSequence;
             currentIntention = EnemyIntention.Sleep;
+            transform.Find("Intention").Find("Value").gameObject.SetActive(false);
+            SetIntentionUI();
         }
         else
         {
+            gM.combatSM.runningSequence = gM.combatSM.defaultSequence;
             base.GenerateEnemyIntention();
+            switch (currentIntention)
+            {
+                case EnemyIntention.Attack:
+                    transform.Find("Intention").Find("Value").GetComponent<Text>().text = defaultDmg.ToString();
+                    break;
+            }
         }
     }
 
@@ -55,15 +77,15 @@ public class EM_Hoarder : BasicEnemy
         switch (currentIntention)
         {
             case EnemyIntention.Sleep:
-                gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, sheildOnSleep, BuffSource.Enemy);
+                gM.actionSM.EnterActionState(gM.actionSM.defenceState, sheildOnSleep);
                 sheildOnSleep -= 2;
                 goldBonus -= 5;
                 break;
             case EnemyIntention.Attack:
-                gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(defaultDmg));
+                gM.actionSM.EnterActionState(gM.actionSM.attackState, defaultDmg);
                 break;
             case EnemyIntention.Taunt:
-                gM.buffM.SetBuff(CharacterBuff.Vulnerable, BuffTimeType.Temporary, 2, BuffValueType.NoValue, 1, BuffSource.Enemy);
+                gM.actionSM.EnterActionState(gM.actionSM.tauntState, 1);
                 break;
         }
     }

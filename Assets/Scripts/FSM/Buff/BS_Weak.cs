@@ -12,6 +12,10 @@ public class BS_Weak : BuffBaseState
         {
             case BuffUsage.EffectApply:
                 gM.buffSM.valueToCalculate += changeAmount;
+                if (gM.buffSM.valueToCalculate<=0)
+                {
+                    gM.buffSM.valueToCalculate = 0;
+                }
                 break;
             case BuffUsage.AddNew:
                 if (gM.actionSM.currentState == gM.actionSM.tauntState)
@@ -71,7 +75,7 @@ public class BS_Weak : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                //gM.actionSM.currentState.EndState(gM, gM.buffSM.valueToCalculate);
+                gM.actionSM.currentState.EndState(gM, gM.buffSM.valueToCalculate);
                 break;
             case BuffUsage.EffectApply:
                 gM.buffSM.BuffEffectsApply();

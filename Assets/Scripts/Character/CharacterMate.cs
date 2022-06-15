@@ -33,11 +33,11 @@ public class CharacterMate : BasicCharacter
 
     public void Update()
     {
-        if (healthPoint <= 0 && !isDefeated)
-        {
-            isDefeated = true;
-            CharacterDefeated();
-    }
+    //    if (healthPoint <= 0 && !isDefeated)
+    //    {
+    //        isDefeated = true;
+    //        CharacterDefeated();
+    //}
     }
 
     public virtual void SyncCharacterUI()
@@ -61,7 +61,7 @@ public class CharacterMate : BasicCharacter
     {
         //Debug.Log("tdDmg:" + dmg);
         //Debug.Log("tdDmgddadsas£º" + gM.buffM.CharacterTakeDamage(dmg));
-        healthPoint -= gM.buffM.CharacterTakeDamage(dmg);
+        healthPoint -= dmg;
         gM.comStatusBar.HealthUIUpdate();
     }
 

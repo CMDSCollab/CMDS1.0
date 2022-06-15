@@ -15,10 +15,11 @@ public class Designer : CharacterMate
 
     public Text challengeIntText;
 
-    public GameObject flowChartPrefab;
     private Canvas UICanvas;
     [HideInInspector]
     public GameObject flowChart;
+
+    public GameObject flow;
 
     //private void Awake()
     //{
@@ -37,9 +38,11 @@ public class Designer : CharacterMate
 
     public void PrepareFlowChart()
     {
-        UICanvas = gM.uiCanvas;
-        flowChart = Instantiate(gM.characterM.flowChartPrefab, UICanvas.transform, false);
-        flowChart.transform.SetAsFirstSibling();
+        //UICanvas = gM.uiCanvas;
+        //flowChart = Instantiate(gM.characterM.flowChartPrefab, UICanvas.transform, false);
+        //flowChart.transform.SetAsFirstSibling();
+        flow = Instantiate(gM.characterM.flowPre);
+        flow.GetComponent<FlowManager>().InitializeFlow();
     }
 
     public void ChallengeDMG()

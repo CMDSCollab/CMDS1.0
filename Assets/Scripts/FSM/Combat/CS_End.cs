@@ -16,6 +16,7 @@ public class CS_End : CombatBaseState
 
         gM.buttonM.SynchronizeCardsCountInPileButton("Discard"); //同步弃牌堆卡牌数量展示Text
         gM.buttonM.SynchronizeCardsCountInPileButton("Draw");
+        EndState(gM);
     }
 
     public override void UpdateState(GameMaster gM)
@@ -25,6 +26,16 @@ public class CS_End : CombatBaseState
 
     public override void EndState(GameMaster gM)
     {
-
+        switch (gM.characterM.mainCharacterType)
+        {
+            case CharacterType.Designer:
+                gM.aiM.des.flow.GetComponent<FlowManager>().AddDot();
+                break;
+            case CharacterType.Programmmer:
+                break;
+            case CharacterType.Artist:
+                break;
+        }
+        gM.combatSM.currentState = gM.combatSM.startState;
     }
 }

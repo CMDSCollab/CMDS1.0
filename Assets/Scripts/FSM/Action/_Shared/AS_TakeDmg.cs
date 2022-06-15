@@ -5,7 +5,7 @@ using UnityEngine;
 public class AS_TakeDmg : ActionBaseState
 {
     private EnemyBuff[] eBuffs = { EnemyBuff.Vulnerable, EnemyBuff.Block, EnemyBuff.Defence};
-    private CharacterBuff[] cBuffs = { CharacterBuff.Defence, CharacterBuff.Vengeance };
+    private CharacterBuff[] cBuffs = { CharacterBuff.Defence, CharacterBuff.Vengeance, CharacterBuff.Inflammable };
 
     public override void EnterState(GameMaster gM, int value)
     {
@@ -13,15 +13,11 @@ public class AS_TakeDmg : ActionBaseState
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
             gM.buffSM.SetBuffList(cBuffs);
-            //Debug.Log("CTakeDmgEntered");
         }
         else
         {
             gM.buffSM.SetBuffList(eBuffs);
-            //Debug.Log("ETakeDmgEntered");
         }
-        //Debug.Log("cCount:"+gM.buffSM.characterBuffs.Count);
-        //Debug.Log("eCount:" + gM.buffSM.enemyBuffs.Count);
         gM.buffSM.BuffEffectsApply();
     }
 
@@ -30,12 +26,10 @@ public class AS_TakeDmg : ActionBaseState
         gM.actionSM.changedValue = value;
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
-            //gM.characterM.mainCharacter.healthPoint -= gM.actionSM.changedValue;
             gM.characterM.mainCharacter.TakeDamage(gM.actionSM.changedValue);
         }
         else
         {
-            //gM.enM.enemyTarget.healthPoint -= gM.actionSM.changedValue;
             gM.enM.enemyTarget.TakeDamage(gM.actionSM.changedValue);
         }
         gM.actionSM.isUpdate = true;
@@ -45,21 +39,6 @@ public class AS_TakeDmg : ActionBaseState
     {
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
-            //float hpValue = Mathf.Lerp(gM.characterM.mainCharacter.hpBar.value, gM.characterM.mainCharacter.healthPoint, 0.005f);
-            //if ((hpValue - gM.characterM.mainCharacter.healthPoint) <= 0.5)
-            //{
-            //    hpValue = gM.characterM.mainCharacter.healthPoint;
-            //}
-            //gM.characterM.mainCharacter.hpBar.value = hpValue;
-            //gM.characterM.mainCharacter.hpRatio.text = gM.characterM.mainCharacter.healthPoint.ToString() + "/" + gM.characterM.mainCharacter.maxHp.ToString();
-
-
-            //if (gM.characterM.mainCharacter.hpBar.value == gM.characterM.mainCharacter.healthPoint)
-            //{
-            //    gM.actionSM.isUpdate = false;
-            //    EndState(gM, value);
-            //}
-
             if (gM.animC.isAnimEntered == false)
             {
                 gM.animC.SetHpSliderMoveValue(gM.characterM.mainCharacter.hpBar, gM.characterM.mainCharacter.healthPoint);
@@ -76,22 +55,6 @@ public class AS_TakeDmg : ActionBaseState
         }
         else
         {
-            //float hpValue = Mathf.Lerp(gM.enM.enemyTarget.hpBar.value, gM.enM.enemyTarget.healthPoint, 0.005f);
-            //if ((hpValue - gM.enM.enemyTarget.healthPoint) <= 0.5)
-            //{
-            //    hpValue = gM.enM.enemyTarget.healthPoint;
-            //}
-            //gM.enM.enemyTarget.hpBar.value = hpValue;
-            //gM.enM.enemyTarget.hpRatio.text = gM.enM.enemyTarget.healthPoint.ToString() + "/" + gM.enM.enemyTarget.maxHp.ToString();
-
-
-            //if (gM.enM.enemyTarget.hpBar.value == gM.enM.enemyTarget.healthPoint)
-            //{
-            //    gM.actionSM.isUpdate = false;
-            //    EndState(gM, value);
-            //}
-
-
             if (gM.animC.isAnimEntered == false)
             {
                 gM.animC.SetHpSliderMoveValue(gM.enM.enemyTarget.hpBar, gM.enM.enemyTarget.healthPoint);
@@ -115,7 +78,17 @@ public class AS_TakeDmg : ActionBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
-        gM.actionSM.EnterActionState(gM.actionSM.changeIState, value);
+        if (gM.enM.enemyTarget.healthPoint <= 0)
+        {
+            gM.enM.enemyTarget.EnemyDefeated();
+        }
+        else if (gM.characterM.mainCharacter.healthPoint <= 0)
+        {
+            gM.characterM.mainCharacter.CharacterDefeated();
+        }
+        else
+        {
+            gM.actionSM.EnterActionState(gM.actionSM.changeIState, value);
+        }
     }
-
 }

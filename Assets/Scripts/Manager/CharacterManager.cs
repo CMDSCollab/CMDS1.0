@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     #region 设计变量
     [Header("设计")]
     public GameObject flowChartPrefab;
-
+    public GameObject flowPre;
     #endregion
 
     #region 程序变量

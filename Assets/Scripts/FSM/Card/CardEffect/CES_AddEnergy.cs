@@ -63,19 +63,8 @@ public class CES_AddEnergy : CEffectBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
-        //if (gM.combatSM.currentState == gM.combatSM.ai1State)
-        //{
-        //    Debug.Log("1entered");
-        //    gM.combatSM.SwitchCombatState(gM.combatSM.ai2State);
-        //}
-        //if (gM.combatSM.currentState == gM.combatSM.ai2State)
-        //{
-        //    Debug.Log("2entered");
-        //    gM.combatSM.SwitchCombatState(gM.combatSM.enemyState);
-        //}
         if (gM.cEffectSM.isCardEffectRunning == true)
         {
-            Debug.Log("3entered");
             gM.cEffectSM.CardEffectsApply(gM.cEffectSM.cardInUse);
         }
     }

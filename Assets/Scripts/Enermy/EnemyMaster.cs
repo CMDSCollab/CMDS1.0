@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EnemyIntention { Attack, Defence, Heal, Taunt, Skill, MultiAttack, Charge, Block, ToComment, Comment, Revive, FireShoot, HoneyShoot, Sleep}
+public enum EnemyIntention { Attack, Defence, Heal, Taunt, Skill, MultiAttack, Charge, Block, ToComment, Comment, Revive, FireShoot, HoneyShoot, Sleep, Skip}
 [System.Serializable]
 public struct EnemyIntentionImages
 {
@@ -42,6 +42,7 @@ public class EnemyMaster : MonoBehaviour
 
         enemyTarget = enemyObj.GetComponent<BasicEnemy>();
         enemyTarget.enemyInfo = enemyInfo;
+        gM.cEffectSM.EnterCardState(gM.cEffectSM.skillCState, enemyInfo.defaultSkill);
         enemyTarget.enemyLv = (int)enemyInfo.enemyType;
         enemyTarget.InitializeEnemyUI();
     }
@@ -75,7 +76,8 @@ public class EnemyMaster : MonoBehaviour
                     case EliteType.Streamer:
                         objToAdd.AddComponent<EE_Streamer>();
                         break;
-                    case EliteType.Ea:
+                    case EliteType.SpeedRunner:
+                        objToAdd.AddComponent<EE_SpeedRunner>();
                         break;
                     case EliteType.Eb:
                         break;

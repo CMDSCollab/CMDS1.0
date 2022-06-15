@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EM_Hatchling : BasicEnemy
 {
@@ -8,20 +9,31 @@ public class EM_Hatchling : BasicEnemy
     private int sheildOnLowHP = 10;
 
     private bool hasTaunted = false;
+    private bool hasDefenced = false;
+  
 
     public override void GenerateEnemyIntention()
     {
         if (!hasTaunted)
         {
             currentIntention = EnemyIntention.Taunt;
+            SetIntentionUI();
         }
-        else if (healthPoint < 0.5*maxHp)
+        else 
         {
-            currentIntention = EnemyIntention.Defence;
+            if (healthPoint < 0.5 * maxHp && !hasDefenced)
+            {
+                currentIntention = EnemyIntention.Defence;
+                SetIntentionUI();
+            }
+            else
+                base.GenerateEnemyIntention();
         }
-        else
+        switch (currentIntention)
         {
-            base.GenerateEnemyIntention();
+            case EnemyIntention.Attack:
+                transform.Find("Intention").Find("Value").GetComponent<Text>().text = defaultDmg.ToString();
+                break;
         }
     }
 
@@ -30,13 +42,14 @@ public class EM_Hatchling : BasicEnemy
         switch (currentIntention)
         {
             case EnemyIntention.Attack:
-                gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack(defaultDmg));
+                gM.actionSM.EnterActionState(gM.actionSM.attackState, defaultDmg);
                 break;
             case EnemyIntention.Defence:
-                gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.SetValue, sheildOnLowHP, BuffSource.Enemy);
+                gM.actionSM.EnterActionState(gM.actionSM.defenceState, sheildOnLowHP);
+                hasDefenced = true;
                 break;
             case EnemyIntention.Taunt:
-                gM.buffM.SetBuff(CharacterBuff.Vulnerable, BuffTimeType.Temporary, 2, BuffValueType.NoValue, 1, BuffSource.Enemy);
+                gM.actionSM.EnterActionState(gM.actionSM.tauntState, 1);
                 hasTaunted = true;
                 break;
         }

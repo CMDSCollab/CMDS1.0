@@ -33,7 +33,7 @@ public class CardManager : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        Debug.Log("AAAA" + gM.cardSM.currentState.ToString());
+        //Debug.Log("AAAA" + gM.cardSM.currentState.ToString());
 
         if (isOnSell)
         {
@@ -175,250 +175,250 @@ public class CardManager : MonoBehaviour
     }
     }
 
-    public void CardFuntion()
-    {
-        // 卡牌通用功能
-        for (int i = 0; i < cardInfo.baseFunctions.Count; i++)
-        {
-            switch (cardInfo.baseFunctions[i].functionType)
-            {
-                case BaseFunctionType.Damage:
-                    //gM.cardSM.EnterCardState(gM.cardSM.attackState, cardInfo.baseFunctions[i].value);
-                    gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(cardInfo.baseFunctions[i].value));
-                    break;
-                case BaseFunctionType.Shield:
-                    //gM.aiM.pro.shieldPoint += cardInfo.baseFunctions[i].value;
-                    //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
-                    gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, cardInfo.baseFunctions[i].value, BuffSource.Character);
-                    break;
-                case BaseFunctionType.Heal:
-                    break;
-                case BaseFunctionType.ArtEnergy:
-                    gM.aiM.artAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
-                    break;
-                case BaseFunctionType.DsgnEnergy:
-                    gM.aiM.desAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
-                    break;
-                case BaseFunctionType.ProEnergy:
-                    gM.aiM.proAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
-                    break;
-                case BaseFunctionType.ArtSlot:
-                    gM.aiM.artAI.energySlotAmount++;
-                    gM.aiM.artAI.AddTheEnergySlot();
-                    //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isSycn)
-                    //{
-                    //    gM.aiM.artAI.EnergyValueChange(1);
-                    //}
-                    break;
-                case BaseFunctionType.DsgnSlot:
-                    gM.aiM.desAI.energySlotAmount++;
-                    gM.aiM.desAI.AddTheEnergySlot();
-                    break;
-                case BaseFunctionType.ProSlot:
-                    gM.aiM.proAI.energySlotAmount++;
-                    gM.aiM.proAI.AddTheEnergySlot();
-                    //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isSycn)
-                    //{
-                    //    gM.aiM.proAI.EnergyValueChange(1);
-                    //}
-                    break;
-                case BaseFunctionType.DrawCard:
-                    gM.deckM.DrawCardFromDeckRandomly(cardInfo.baseFunctions[i].value);
-                    //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isTeamWork) { gM.aiM.des.GoTeamWork(cardInfo.baseFunctions[i].value); }
-                    break;
-                default:
-                    break;
-            }
-        }
-        // 卡牌特殊功能
-        for (int i = 0; i < cardInfo.specialFunctions.Count; i++)
-        {
-            switch (cardInfo.specialFunctions[i])
-            {
-                case SpecialFunctionType.ArtIntentionChange:
-                    gM.aiM.artAI.ChangeIntention();
-                    break;
-                case SpecialFunctionType.DsgnIntentionChange:
-                    gM.aiM.desAI.ChangeIntention();
-                    break;
-                case SpecialFunctionType.ProIntentionChange:
-                    gM.aiM.proAI.ChangeIntention();
-                    break;
-                case SpecialFunctionType.DrawSpecificCard:
-                    gM.cardFunctionM.FindCardInDrawPile();
-                    break;
-                case SpecialFunctionType.Exhausted:
-                    gM.deckM.cardInDeck.Remove(handIndex);
-                    gM.handM.handCardList.RemoveAt(handIndex - 1);
-                    Destroy(this.gameObject);
-                    break;
-                default:
-                    break;
-            }
-        }
+    //public void CardFuntion()
+    //{
+    //    // 卡牌通用功能
+    //    for (int i = 0; i < cardInfo.baseFunctions.Count; i++)
+    //    {
+    //        switch (cardInfo.baseFunctions[i].functionType)
+    //        {
+    //            case BaseFunctionType.Damage:
+    //                //gM.cardSM.EnterCardState(gM.cardSM.attackState, cardInfo.baseFunctions[i].value);
+    //                //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(cardInfo.baseFunctions[i].value));
+    //                break;
+    //            case BaseFunctionType.Shield:
+    //                //gM.aiM.pro.shieldPoint += cardInfo.baseFunctions[i].value;
+    //                //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
+    //                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, cardInfo.baseFunctions[i].value, BuffSource.Character);
+    //                break;
+    //            case BaseFunctionType.Heal:
+    //                break;
+    //            case BaseFunctionType.ArtEnergy:
+    //                gM.aiM.artAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
+    //                break;
+    //            case BaseFunctionType.DsgnEnergy:
+    //                gM.aiM.desAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
+    //                break;
+    //            case BaseFunctionType.ProEnergy:
+    //                gM.aiM.proAI.EnergyValueChange(cardInfo.baseFunctions[i].value);
+    //                break;
+    //            case BaseFunctionType.ArtSlot:
+    //                gM.aiM.artAI.energySlotAmount++;
+    //                gM.aiM.artAI.AddTheEnergySlot();
+    //                //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isSycn)
+    //                //{
+    //                //    gM.aiM.artAI.EnergyValueChange(1);
+    //                //}
+    //                break;
+    //            case BaseFunctionType.DsgnSlot:
+    //                gM.aiM.desAI.energySlotAmount++;
+    //                gM.aiM.desAI.AddTheEnergySlot();
+    //                break;
+    //            case BaseFunctionType.ProSlot:
+    //                gM.aiM.proAI.energySlotAmount++;
+    //                gM.aiM.proAI.AddTheEnergySlot();
+    //                //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isSycn)
+    //                //{
+    //                //    gM.aiM.proAI.EnergyValueChange(1);
+    //                //}
+    //                break;
+    //            case BaseFunctionType.DrawCard:
+    //                gM.deckM.DrawCardFromDeckRandomly(cardInfo.baseFunctions[i].value);
+    //                //if (gM.characterM.mainCharacterType == CharacterType.Designer && gM.aiM.des.isTeamWork) { gM.aiM.des.GoTeamWork(cardInfo.baseFunctions[i].value); }
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //    // 卡牌特殊功能
+    //    for (int i = 0; i < cardInfo.specialFunctions.Count; i++)
+    //    {
+    //        switch (cardInfo.specialFunctions[i])
+    //        {
+    //            case SpecialFunctionType.ArtIntentionChange:
+    //                gM.aiM.artAI.ChangeIntention();
+    //                break;
+    //            case SpecialFunctionType.DsgnIntentionChange:
+    //                gM.aiM.desAI.ChangeIntention();
+    //                break;
+    //            case SpecialFunctionType.ProIntentionChange:
+    //                gM.aiM.proAI.ChangeIntention();
+    //                break;
+    //            case SpecialFunctionType.DrawSpecificCard:
+    //                gM.cardFunctionM.FindCardInDrawPile();
+    //                break;
+    //            case SpecialFunctionType.Exhausted:
+    //                gM.deckM.cardInDeck.Remove(handIndex);
+    //                gM.handM.handCardList.RemoveAt(handIndex - 1);
+    //                Destroy(this.gameObject);
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
   
-        //异术家 卡牌相关功能
-        if(cardInfo is CardInfoArt)
-        {
-            if (gM.characterM.mainCharacterType != CharacterType.Artist)
-            {
-                return;
-            }
+    //    //异术家 卡牌相关功能
+    //    if(cardInfo is CardInfoArt)
+    //    {
+    //        if (gM.characterM.mainCharacterType != CharacterType.Artist)
+    //        {
+    //            return;
+    //        }
 
-            CardInfoArt cardArt = (CardInfoArt)cardInfo;
+    //        CardInfoArt cardArt = (CardInfoArt)cardInfo;
 
-            gM.aiM.art.StyleCheck(cardArt);
+    //        gM.aiM.art.StyleCheck(cardArt);
 
-            for(int i = 0; i < cardArt.artSpecialFunctions.Count; i++)
-            {
-                switch (cardArt.artSpecialFunctions[i].artFunctionType)
-                {
-                    case SpecialArtFunctionType.None:
-                        break;
-                    case SpecialArtFunctionType.TrueDamage:
-                        gM.enM.enemyTarget.TakeTrueDamage(cardArt.artSpecialFunctions[i].value);
-                        break;
-                    case SpecialArtFunctionType.StyleEffect:
-                        gM.aiM.art.StyleEffect();
-                        break;
-                    case SpecialArtFunctionType.GetIncome:
-                        gM.comStatusBar.GoldChange(cardArt.artSpecialFunctions[i].value);
-                        break;
-                }
-            }
+    //        for(int i = 0; i < cardArt.artSpecialFunctions.Count; i++)
+    //        {
+    //            switch (cardArt.artSpecialFunctions[i].artFunctionType)
+    //            {
+    //                case SpecialArtFunctionType.None:
+    //                    break;
+    //                case SpecialArtFunctionType.TrueDamage:
+    //                    gM.enM.enemyTarget.TakeTrueDamage(cardArt.artSpecialFunctions[i].value);
+    //                    break;
+    //                case SpecialArtFunctionType.StyleEffect:
+    //                    gM.aiM.art.StyleEffect();
+    //                    break;
+    //                case SpecialArtFunctionType.GetIncome:
+    //                    gM.comStatusBar.GoldChange(cardArt.artSpecialFunctions[i].value);
+    //                    break;
+    //            }
+    //        }
 
-            for(int i = 0; i < cardArt.artDrawExpandCard.Count; i++)
-            {
-                for(int x = 0; x < cardArt.artDrawExpandCard[i].times; x++) 
-                {
-                    gM.deckM.DrawSpecificSingleArtistExpandCard(cardArt.artDrawExpandCard[i].expandCardName.ToString());
+    //        for(int i = 0; i < cardArt.artDrawExpandCard.Count; i++)
+    //        {
+    //            for(int x = 0; x < cardArt.artDrawExpandCard[i].times; x++) 
+    //            {
+    //                gM.deckM.DrawSpecificSingleArtistExpandCard(cardArt.artDrawExpandCard[i].expandCardName.ToString());
 
-                }
-            }
-        }
+    //            }
+    //        }
+    //    }
   
 
-        // 射击师 卡牌相关功能
-        if (cardInfo is CardInfoDsgn)
-        {
-            if (gM.characterM.mainCharacterType != CharacterType.Designer)
-            {
-                return;
-            }
+    //    // 射击师 卡牌相关功能
+    //    if (cardInfo is CardInfoDsgn)
+    //    {
+    //        if (gM.characterM.mainCharacterType != CharacterType.Designer)
+    //        {
+    //            return;
+    //        }
 
-            CardInfoDsgn cardDsgn = (CardInfoDsgn)cardInfo;
+    //        CardInfoDsgn cardDsgn = (CardInfoDsgn)cardInfo;
 
 
-            for (int i = 0; i < cardDsgn.desSpecialFunctions.Count; i++)
-            {
-                switch (cardDsgn.desSpecialFunctions[i].desFunctionType)
-                {
-                    case SpecialDesFunctionType.None:
-                        break;
-                    case SpecialDesFunctionType.ChangeChallenge:
-                        gM.aiM.des.challengeLv += cardDsgn.desSpecialFunctions[i].value;
-                        if (gM.aiM.des.challengeLv<0)
-                        {
-                            gM.aiM.des.challengeLv = 0;
-                        }
-                        gM.enM.enemyTarget.MainChaMCChange();
-                        break;
-                    case SpecialDesFunctionType.ChangeSkill:
-                        gM.enM.enemyTarget.skillLv += cardDsgn.desSpecialFunctions[i].value;
-                        if (gM.enM.enemyTarget.skillLv < 0)
-                        {
-                            gM.enM.enemyTarget.skillLv = 0;
-                        }
-                        gM.enM.enemyTarget.MainChaMCChange();
-                        break;
-                }
-            }
+    //        for (int i = 0; i < cardDsgn.desSpecialFunctions.Count; i++)
+    //        {
+    //            switch (cardDsgn.desSpecialFunctions[i].desFunctionType)
+    //            {
+    //                case SpecialDesFunctionType.None:
+    //                    break;
+    //                case SpecialDesFunctionType.ChangeChallenge:
+    //                    gM.aiM.des.challengeLv += cardDsgn.desSpecialFunctions[i].value;
+    //                    if (gM.aiM.des.challengeLv<0)
+    //                    {
+    //                        gM.aiM.des.challengeLv = 0;
+    //                    }
+    //                    gM.enM.enemyTarget.MainChaMCChange();
+    //                    break;
+    //                case SpecialDesFunctionType.ChangeSkill:
+    //                    gM.enM.enemyTarget.skillLv += cardDsgn.desSpecialFunctions[i].value;
+    //                    if (gM.enM.enemyTarget.skillLv < 0)
+    //                    {
+    //                        gM.enM.enemyTarget.skillLv = 0;
+    //                    }
+    //                    gM.enM.enemyTarget.MainChaMCChange();
+    //                    break;
+    //            }
+    //        }
 
-            //for (int i = 0; i < cardDsgn.desPassiveEffects.Count; i++)
-            //{
-            //    switch (cardDsgn.desPassiveEffects[i].desPassiveEType)
-            //    {
-            //        case SpecialPassiveEffectType.None:
-            //            break;
-            //        case SpecialPassiveEffectType.IsTeamWork:
-            //            gM.aiM.des.isTeamWork = true;
-            //            gM.buffM.SetBuff(CharacterBuff.IsTeamWork, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 1,BuffSource.Character);
-            //            break;
-            //        case SpecialPassiveEffectType.IsSycn:
-            //            gM.aiM.des.isSycn = true;
-            //            gM.buffM.SetBuff(CharacterBuff.IsSycn, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 1, BuffSource.Character);
-            //            break;
-            //    }
+    //        //for (int i = 0; i < cardDsgn.desPassiveEffects.Count; i++)
+    //        //{
+    //        //    switch (cardDsgn.desPassiveEffects[i].desPassiveEType)
+    //        //    {
+    //        //        case SpecialPassiveEffectType.None:
+    //        //            break;
+    //        //        case SpecialPassiveEffectType.IsTeamWork:
+    //        //            gM.aiM.des.isTeamWork = true;
+    //        //            gM.buffM.SetBuff(CharacterBuff.IsTeamWork, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 1,BuffSource.Character);
+    //        //            break;
+    //        //        case SpecialPassiveEffectType.IsSycn:
+    //        //            gM.aiM.des.isSycn = true;
+    //        //            gM.buffM.SetBuff(CharacterBuff.IsSycn, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 1, BuffSource.Character);
+    //        //            break;
+    //        //    }
 
-            //}
-        }
+    //        //}
+    //    }
 
-        // 程序猿 卡牌相关功能
-        //if (cardInfo is CardInfoPro)
-        if (cardInfo is CardInfoPro)
-        {
-            if (gM.characterM.mainCharacterType != CharacterType.Programmmer)
-            {
-                return;
-            }
-            CardInfoPro cardPro = (CardInfoPro)cardInfo;
+    //    // 程序猿 卡牌相关功能
+    //    //if (cardInfo is CardInfoPro)
+    //    if (cardInfo is CardInfoPro)
+    //    {
+    //        if (gM.characterM.mainCharacterType != CharacterType.Programmmer)
+    //        {
+    //            return;
+    //        }
+    //        CardInfoPro cardPro = (CardInfoPro)cardInfo;
 
-            gM.aiM.pro.CheckCardDebug(cardPro.debugType);
-            gM.aiM.pro.AddRedundantCode(cardPro.codeRedundancy);
+    //        gM.aiM.pro.CheckCardDebug(cardPro.debugType);
+    //        gM.aiM.pro.AddRedundantCode(cardPro.codeRedundancy);
 
-            switch (cardPro.proSpecialFunction)
-            {
-                case SpecialFunctionPro.None:
-                    break;
-                case SpecialFunctionPro.DamageEqualsShield:
-                    gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.aiM.pro.shieldPoint));
-                    break;
-                case SpecialFunctionPro.DoubleShield:
-                    if (gM.buffM.FindBuff(CharacterBuff.Defence) != null)
-                    {
-                    gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, gM.buffM.FindBuff(CharacterBuff.Defence).value, BuffSource.Character);
-                    }
-                    //gM.aiM.pro.shieldPoint += gM.aiM.pro.shieldPoint;
-                    //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
-                    break;
-                case SpecialFunctionPro.UseHandCardsGainShield:
-                    gM.cardFunctionM.isUseCardGainShield = true;
-                    break;
-                case SpecialFunctionPro.DiscardAllHandCard:
-                    if (gM.handM.handCardList.Count > 0)
-                    {
-                        for (int i = gM.handM.handCardList.Count; i > 0; i--)
-                        {
-                            if (gM.handM.handCardList[i - 1].GetComponent<CardManager>().handIndex != handIndex)
-                            {
-                                gM.handM.handCardList[i - 1].GetComponent<CardManager>().DiscardHandCard();
-                                gM.handM.handCardList.RemoveAt(gM.handM.handCardList[i - 1].GetComponent<CardManager>().handIndex - 1);
-                                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, 5, BuffSource.Character);
-                                //gM.aiM.pro.shieldPoint += 5;
-                                //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
-                            }
-                        }
-                        //gM.handM.OrganizeHand();
-                    }
-                    break;
-                case SpecialFunctionPro.Vengeance:
-                    //gM.cardFunctionM.isVengeance = true;
-                    //gM.buffM.SetCharacterBuff(CharacterBuff.Vengeance, true, 4);
-                    gM.buffM.SetBuff(CharacterBuff.Vengeance, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 4,BuffSource.Character);
-                    break;
-                case SpecialFunctionPro.ConsumeShieldDoubleDamage:
-                    //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.aiM.pro.shieldPoint * 2));
-                    //gM.aiM.pro.shieldPoint = 0;
-                    //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
-                    if (gM.buffM.FindBuff(CharacterBuff.Defence) != null)
-                    {
-                    gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.buffM.FindBuff(CharacterBuff.Defence).value * 2));
-                    gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -gM.buffM.FindBuff(CharacterBuff.Defence).value, BuffSource.Character);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    //        switch (cardPro.proSpecialFunction)
+    //        {
+    //            case SpecialFunctionPro.None:
+    //                break;
+    //            case SpecialFunctionPro.DamageEqualsShield:
+    //                //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.aiM.pro.shieldPoint));
+    //                break;
+    //            case SpecialFunctionPro.DoubleShield:
+    //                if (gM.buffM.FindBuff(CharacterBuff.Defence) != null)
+    //                {
+    //                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, gM.buffM.FindBuff(CharacterBuff.Defence).value, BuffSource.Character);
+    //                }
+    //                //gM.aiM.pro.shieldPoint += gM.aiM.pro.shieldPoint;
+    //                //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
+    //                break;
+    //            case SpecialFunctionPro.UseHandCardsGainShield:
+    //                gM.cardFunctionM.isUseCardGainShield = true;
+    //                break;
+    //            case SpecialFunctionPro.DiscardAllHandCard:
+    //                if (gM.handM.handCardList.Count > 0)
+    //                {
+    //                    for (int i = gM.handM.handCardList.Count; i > 0; i--)
+    //                    {
+    //                        if (gM.handM.handCardList[i - 1].GetComponent<CardManager>().handIndex != handIndex)
+    //                        {
+    //                            gM.handM.handCardList[i - 1].GetComponent<CardManager>().DiscardHandCard();
+    //                            gM.handM.handCardList.RemoveAt(gM.handM.handCardList[i - 1].GetComponent<CardManager>().handIndex - 1);
+    //                            gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, 5, BuffSource.Character);
+    //                            //gM.aiM.pro.shieldPoint += 5;
+    //                            //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
+    //                        }
+    //                    }
+    //                    //gM.handM.OrganizeHand();
+    //                }
+    //                break;
+    //            case SpecialFunctionPro.Vengeance:
+    //                //gM.cardFunctionM.isVengeance = true;
+    //                //gM.buffM.SetCharacterBuff(CharacterBuff.Vengeance, true, 4);
+    //                gM.buffM.SetBuff(CharacterBuff.Vengeance, BuffTimeType.Temporary, 1, BuffValueType.SetValue, 4,BuffSource.Character);
+    //                break;
+    //            case SpecialFunctionPro.ConsumeShieldDoubleDamage:
+    //                //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.aiM.pro.shieldPoint * 2));
+    //                //gM.aiM.pro.shieldPoint = 0;
+    //                //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
+    //                if (gM.buffM.FindBuff(CharacterBuff.Defence) != null)
+    //                {
+    //                //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(gM.buffM.FindBuff(CharacterBuff.Defence).value * 2));
+    //                gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, -gM.buffM.FindBuff(CharacterBuff.Defence).value, BuffSource.Character);
+    //                }
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //}
 }

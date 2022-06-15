@@ -32,6 +32,8 @@ public class BuffStateManager : MonoBehaviour
     public BS_Charge chargeState = new BS_Charge();
     public BS_Sync syncState = new BS_Sync();
     public BS_TeamWork teamworkState = new BS_TeamWork();
+    public BS_Inflammable inflammableState = new BS_Inflammable();
+    public BS_Revive reviveState = new BS_Revive();
 
     void Start()
     {
@@ -180,14 +182,14 @@ public class BuffStateManager : MonoBehaviour
         {
             case CharacterBuff.Defence:
                 return gM.buffM.FindBuff(CharacterBuff.Defence).uiObj.GetComponent<RectTransform>();
-            //case CharacterBuff.Vengeance:
-            //    break;
-            //case CharacterBuff.PowerUp:
-            //    break;
+            case CharacterBuff.Vengeance:
+                return gM.buffM.FindBuff(CharacterBuff.Vengeance).uiObj.GetComponent<RectTransform>();
+            case CharacterBuff.PowerUp:
+                return gM.buffM.FindBuff(CharacterBuff.PowerUp).uiObj.GetComponent<RectTransform>();
             case CharacterBuff.Weak:
                 return gM.buffM.FindBuff(CharacterBuff.Weak).uiObj.GetComponent<RectTransform>();
-            //case CharacterBuff.Inflammable:
-            //    break;
+            case CharacterBuff.Inflammable:
+                return gM.buffM.FindBuff(CharacterBuff.Inflammable).uiObj.GetComponent<RectTransform>();
             case CharacterBuff.IsTeamWork:
                 return gM.buffM.FindBuff(CharacterBuff.IsTeamWork).uiObj.GetComponent<RectTransform>();
             case CharacterBuff.IsSycn:
@@ -240,6 +242,8 @@ public class BuffStateManager : MonoBehaviour
             //    return boredState;
             //case CharacterBuff.PowerUp:
             //    return boredState;
+            case CharacterBuff.Inflammable:
+                return inflammableState;
             case CharacterBuff.Weak:
                 return weakState;
             //case CharacterBuff.Inflammable:
@@ -279,8 +283,8 @@ public class BuffStateManager : MonoBehaviour
                 return chargeState;
             //case EnemyBuff.PartialInvincibility:
             //    break;
-            //case EnemyBuff.Revive:
-            //    break;
+            case EnemyBuff.Revive:
+                return reviveState;
             default:
                 return boredState;
         }
@@ -301,73 +305,5 @@ public class BuffStateManager : MonoBehaviour
             characterBuffs.Add(characterBuffArray[i]);
         }
     }
-
-    //public void SetBuffStateFindTrans(EnemyBuff enemyBuff)
-    //{
-    //    switch (enemyBuff)
-    //    {
-    //        case EnemyBuff.Bored:
-    //            currentState = boredState;
-    //            buffTrans = gM.buffM.FindBuff(EnemyBuff.Bored).uiObj.GetComponent<RectTransform>();
-    //                break;
-    //        //case EnemyBuff.Anxiety:
-    //        //    break;
-    //        //case EnemyBuff.InFlow:
-    //        //    break;
-    //        case EnemyBuff.Vulnerable:
-    //            currentState = vulnerableState;
-    //            buffTrans = gM.buffM.FindBuff(EnemyBuff.Vulnerable).uiObj.GetComponent<RectTransform>();
-    //            break;
-    //        case EnemyBuff.Weak:
-    //            currentState = weakState;
-    //            buffTrans = gM.buffM.FindBuff(EnemyBuff.Weak).uiObj.GetComponent<RectTransform>();
-    //            break;
-    //        //case EnemyBuff.Instability:
-    //        //    break;
-    //        //case EnemyBuff.WeakMind:
-    //        //    break;
-    //        case EnemyBuff.Defence:
-    //            currentState = defenceState;
-    //            buffTrans = gM.buffM.FindBuff(EnemyBuff.Defence).uiObj.GetComponent<RectTransform>();
-    //            break;
-    //        //case EnemyBuff.Block:
-    //        //    break;
-    //        //case EnemyBuff.Charge:
-    //        //    break;
-    //        //case EnemyBuff.PartialInvincibility:
-    //        //    break;
-    //        //case EnemyBuff.Revive:
-    //        //    break;
-    //        default:
-    //            currentState = boredState;
-    //            buffTrans = gM.buffM.FindBuff(EnemyBuff.Bored).uiObj.GetComponent<RectTransform>();
-    //            break;
-    //    }
-    //}
-
-    //public void SetBuffStateFindTrans(CharacterBuff characterBuff)
-    //{
-    //    switch (characterBuff)
-    //    {
-    //        case CharacterBuff.Defence:
-    //            currentState = defenceState;
-    //            buffTrans = gM.buffM.FindBuff(CharacterBuff.Defence).uiObj.GetComponent<RectTransform>();
-    //            break;
-    //        case CharacterBuff.Vengeance:
-    //            break;
-    //        case CharacterBuff.PowerUp:
-    //            break;
-    //        case CharacterBuff.Weak:
-    //            break;
-    //        case CharacterBuff.Inflammable:
-    //            break;
-    //        case CharacterBuff.IsTeamWork:
-    //            break;
-    //        case CharacterBuff.IsSycn:
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
 #endregion
 }

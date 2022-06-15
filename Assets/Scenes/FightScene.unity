@@ -791,6 +791,8 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 851c20ef271f4e7418ebfdbf7d526cc1, type: 3}
   - enemyIntention: 13
     image: {fileID: 21300000, guid: e32f1559c03218742b84b6f7e6948642, type: 3}
+  - enemyIntention: 14
+    image: {fileID: 21300000, guid: 6d5a0f65e02df2d4da5ebd3c8550e9a3, type: 3}
   testEnemy: {fileID: 11400000, guid: b26c6f40cf701b644a42d29dc3b15a9c, type: 2}
 --- !u!1 &380860513
 GameObject:
@@ -2722,18 +2724,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   designerBaseCard:
-  - {fileID: 11400000, guid: 70348939933ef0e4e894a792ceabde84, type: 2}
-  - {fileID: 11400000, guid: 85067cf808a0272408bc367551e7f27c, type: 2}
-  - {fileID: 11400000, guid: 1dd72243ad7001248b73a776e7637bdf, type: 2}
-  - {fileID: 11400000, guid: bf466a83ff0eb724f919390d65b756ba, type: 2}
-  - {fileID: 11400000, guid: 688a81a23d00ace419adff843716409a, type: 2}
+  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
+  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
+  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
+  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
   - {fileID: 11400000, guid: c284a22d92ce46c4d95bd267872b3643, type: 2}
+  - {fileID: 11400000, guid: c284a22d92ce46c4d95bd267872b3643, type: 2}
+  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
+  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
+  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
+  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
   - {fileID: 11400000, guid: cc5eac1759afb7c46af4e2d1164037e7, type: 2}
+  - {fileID: 11400000, guid: cc5eac1759afb7c46af4e2d1164037e7, type: 2}
+  - {fileID: 11400000, guid: 70348939933ef0e4e894a792ceabde84, type: 2}
+  - {fileID: 11400000, guid: 1dd72243ad7001248b73a776e7637bdf, type: 2}
+  - {fileID: 11400000, guid: 688a81a23d00ace419adff843716409a, type: 2}
   - {fileID: 11400000, guid: 62f90c8a891d757498d05f4f9f05e376, type: 2}
-  - {fileID: 11400000, guid: 26625abfd03c59649a993cb891d1ab72, type: 2}
+  - {fileID: 11400000, guid: 366f6fe1c408de64e80c71535a7282a6, type: 2}
   - {fileID: 11400000, guid: 65f815c2f83e40a4f899554a9c6e16a0, type: 2}
   - {fileID: 11400000, guid: 51073704aa3dd6348a48cf40b2a6214d, type: 2}
-  - {fileID: 11400000, guid: bc52b1ad26500074782e515a8aa16d6e, type: 2}
+  - {fileID: 11400000, guid: 26625abfd03c59649a993cb891d1ab72, type: 2}
+  - {fileID: 11400000, guid: 26625abfd03c59649a993cb891d1ab72, type: 2}
   programmerBaseCard:
   - {fileID: 11400000, guid: 228e588d514b86642ace3b721895d51d, type: 2}
   - {fileID: 11400000, guid: 699fdd6cb7781704ba8031df20160350, type: 2}
@@ -4549,6 +4560,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 758bbf4cfeefc664a828c661bf8c81be, type: 3}
   - {fileID: 21300000, guid: fc3b2a1d8d86f5540bcfbf0f3eaff2e6, type: 3}
   flowChartPrefab: {fileID: 3643149432931790892, guid: 5be1a21420416be4894acf6eecc887d5, type: 3}
+  flowPre: {fileID: 361511602584877040, guid: 5e197eff077936e4b99c639cf7efe204, type: 3}
   debugUIPrefab: {fileID: 1336081559263251259, guid: 9a54a365dd8e4b441a7f5a5d4f102250, type: 3}
   potentialErrors:
   - errorName: Null Reference
@@ -4920,6 +4932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ee64ff2070e5741ab2ef8b6f6d5668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateIndex: 0
   isUpdate: 0
 --- !u!114 &1744857374
 MonoBehaviour:
@@ -5840,11 +5853,11 @@ PrefabInstance:
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b8958ab463ae23c4d9c037c8d3e832cc, type: 2}
+      objectReference: {fileID: 11400000, guid: 1d1f483d8e444c34ead05ef9536f06d0, type: 2}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: d2a2583e55ed90b49b3ab8f5d22aeed9, type: 2}
+      objectReference: {fileID: 11400000, guid: 103cd09435d19f84a8a46bcca9aca0e2, type: 2}
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[2]
       value: 
@@ -5852,7 +5865,15 @@ PrefabInstance:
     - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
       propertyPath: levelEnemyPool.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: a591e909ece9b4b49b8c5f6170a43c51, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
+      propertyPath: levelEnemyPool.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d1f483d8e444c34ead05ef9536f06d0, type: 2}
+    - target: {fileID: 1400908855204755767, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
+      propertyPath: levelEnemyPool.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d1f483d8e444c34ead05ef9536f06d0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9586ba38c438cfa4198c26cebd3089cb, type: 3}
 --- !u!1 &2074200691

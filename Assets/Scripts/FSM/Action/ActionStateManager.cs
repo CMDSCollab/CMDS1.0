@@ -15,6 +15,11 @@ public class ActionStateManager : MonoBehaviour
     public AS_Block blockState = new AS_Block();
     public AS_MultiAtk multiAtkState = new AS_MultiAtk();
     public AS_Charge chargeState = new AS_Charge();
+    public AS_HoneyShoot honeyShootState = new AS_HoneyShoot();
+    public AS_Revive reviveState = new AS_Revive();
+    public AS_SkipAttack skipAttackState = new AS_SkipAttack();
+    public AS_SkipCI skipCIState = new AS_SkipCI();
+    public AS_SkipTakeDmg skipTakeDmgState = new AS_SkipTakeDmg();
 
     public int changedValue;
     public bool isUpdate;

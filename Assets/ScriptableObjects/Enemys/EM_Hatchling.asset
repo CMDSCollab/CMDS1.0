@@ -17,10 +17,18 @@ MonoBehaviour:
   bossType: 0
   eliteType: 0
   enemyName: Hatchling
-  images: []
-  maxHealth: 40
+  images:
+  - {fileID: 21300000, guid: 4fab8dbf56562db48b50124b94d0a6e0, type: 3}
+  maxHealth: 50
   defaultSkill: 3
   basicIntentions:
   - intention: 0
     tendency: 100
+    skillUp: 1
+  - intention: 1
+    tendency: 0
+    skillUp: 2
+  - intention: 3
+    tendency: 0
+    skillUp: 2
   specialFunctions: 

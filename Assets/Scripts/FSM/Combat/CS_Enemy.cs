@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CS_Enemy : CombatBaseState
 {
-    bool isBeforeAction = false;
-    EnemyBuff[] enterEListRecord = { EnemyBuff.Block, EnemyBuff.Defence, EnemyBuff.Charge };
-    CharacterBuff[] endCListRecord = { CharacterBuff.IsTeamWork, CharacterBuff.IsSycn, CharacterBuff.Defence };
+    EnemyBuff[] enterEListRecord = { EnemyBuff.Block, EnemyBuff.Defence, EnemyBuff.Charge ,EnemyBuff.Revive};
+    EnemyBuff[] endEListRecord = { };
+    CharacterBuff[] enterCListRecord = { CharacterBuff.Weak};
+    CharacterBuff[] endCListRecord = { CharacterBuff.IsTeamWork, CharacterBuff.IsSycn, CharacterBuff.Defence ,CharacterBuff.Inflammable};
     List<EnemyBuff> enterEList = new List<EnemyBuff>();
     List<CharacterBuff> enterCList = new List<CharacterBuff>();
     List<EnemyBuff> endEList = new List<EnemyBuff>();
@@ -34,7 +35,7 @@ public class CS_Enemy : CombatBaseState
     {
         gM.buffM.TempBuffTimeDecrease(endEList);
         gM.buffM.TempBuffTimeDecrease(endCList);
-        gM.combatSM.SwitchCombatState(gM.combatSM.endState);
+        gM.combatSM.SwitchCombatState();
     }
 
     public void TempBuffDecreaseDetermination(GameMaster gM)
@@ -47,10 +48,20 @@ public class CS_Enemy : CombatBaseState
         {
             enterEList.Add(enterEListRecord[i]);
         }
+        for (int i = 0; i < endEListRecord.Length; i++)
+        {
+            endEList.Add(endEListRecord[i]);
+        }
+
+        for (int i = 0; i < enterCListRecord.Length; i++)
+        {
+            enterCList.Add(enterCListRecord[i]);
+        }
         for (int i = 0; i < endCListRecord.Length; i++)
         {
             endCList.Add(endCListRecord[i]);
         }
+
         switch (gM.enM.enemyTarget.currentIntention)
         {
             case EnemyIntention.Attack:

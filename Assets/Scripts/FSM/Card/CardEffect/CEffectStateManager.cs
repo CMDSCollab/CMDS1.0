@@ -58,7 +58,6 @@ public class CEffectStateManager : MonoBehaviour
     {
         if (cardInfo.baseFunctions.Count != 0 && baseEffectSequence != cardInfo.baseFunctions.Count)
         {
-            //Debug.Log("baseEntered");
             CommonEffectsApply(cardInfo.baseFunctions[baseEffectSequence]);
             baseEffectSequence++;
         }
@@ -66,7 +65,6 @@ public class CEffectStateManager : MonoBehaviour
         {
             if (cardInfo.specialFunctions.Count != 0 && specialEffectSequence != cardInfo.specialFunctions.Count)
             {
-                //Debug.Log("specialEntered");
                 SpecialEffectsApply(cardInfo.specialFunctions[specialEffectSequence]);
                 specialEffectSequence++;
             }
@@ -89,7 +87,6 @@ public class CEffectStateManager : MonoBehaviour
                         desEffectSequence = 0;
                         gM.cardSM.discardType = DiscardType.InUse;
                         gM.cardSM.EnterCardState(gM.cardSM.discardState);
-                        //Debug.Log("end");
                     }
                 }
                 else if(cardInfo is CardInfoPro)

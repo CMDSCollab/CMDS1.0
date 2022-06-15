@@ -21,12 +21,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 44c418d49632d704592f442a5f856b93, type: 3}
   - {fileID: 21300000, guid: 6291563ab24ca4845a35af872248b266, type: 3}
   maxHealth: 90
-  defaultSkill: 7
+  defaultSkill: 3
   basicIntentions:
   - intention: 0
-    tendency: 50
-    skillUp: 1
+    tendency: 80
+    skillUp: 0
   - intention: 1
-    tendency: 50
+    tendency: 20
+    skillUp: 1
+  - intention: 11
+    tendency: 0
+    skillUp: 2
+  - intention: 12
+    tendency: 0
     skillUp: 1
   specialFunctions: 01000000

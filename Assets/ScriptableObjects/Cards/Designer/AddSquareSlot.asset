@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61e1691c47110143b506c5abd13c55d, type: 3}
   m_Name: AddSquareSlot
   m_EditorClassIdentifier: 
-  cardName: "\u7A0B\u5E8F\u52A0\u6846"
+  cardName: "\u7A0B\u5E8F\u5C0F\u9700\u6C42"
   description: "\u52A01\u7A0B\u5E8F\u80FD\u91CF\u69FD"
+  merchantBaseValue: 0
+  realValue: 0
   baseFunctions:
   - functionType: 8
     value: 1
