@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EM_TechNerd : BasicEnemy
 {
-    private int defaultDmg = 10;
+    private int defaultDmg = 7;
     private int defaultMultAttackTimes = 10;
 
     public override void TakeAction()
