@@ -3,7 +3,15 @@ guid: f6dc37ea0f4870748a82d68929d127a2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gM: {instanceID: 0}
+  - characterInfo: {instanceID: 0}
+  - hpBar: {instanceID: 0}
+  - hpRatio: {instanceID: 0}
+  - challengeIntText: {instanceID: 0}
+  - flowChart: {instanceID: 0}
+  - flowPre: {fileID: 361511602584877040, guid: 5e197eff077936e4b99c639cf7efe204, type: 3}
+  - flow: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
