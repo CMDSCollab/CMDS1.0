@@ -60,7 +60,7 @@ public class MapManager : MonoBehaviour
 
     public void ActiveFirstLevelNode()
     {
-        Debug.Log("Test" + allLayerNodes[0].Count);
+        //Debug.Log("Test" + allLayerNodes[0].Count);
         for(int i = 0; i < allLayerNodes[0].Count; i++)
         {
             allLayerNodes[0][i].GetComponent<MapNodeManager>().ifApproachable = true;

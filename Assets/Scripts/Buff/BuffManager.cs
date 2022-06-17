@@ -21,7 +21,7 @@ public enum BuffTimeType { Permanent,Temporary }
 public enum BuffValueType { NoValue, SetValue, AddValue}
 public enum EnemyBuff { Bored, Anxiety, InFlow, Vulnerable, Weak, Instability, WeakMind, Defence, Block, Charge, PartialInvincibility,Revive }
 public enum CharacterBuff { Defence, Vengeance, PowerUp, Vulnerable, Weak, Inflammable, IsTeamWork, IsSycn}
-public class BuffInfo 
+public class BuffInfo1 
 {
     public CharacterBuff characterBuffType;
     public EnemyBuff enemyBuffType;
@@ -47,8 +47,8 @@ public class BuffManager : MonoBehaviour
     public List<EnemyBuffImage> enemyBuffs;
     public GameObject buffPrefab;
 
-    public List<BuffInfo> activeCBuffs = new List<BuffInfo>();
-    public List<BuffInfo> activeEBuffs = new List<BuffInfo>();
+    public List<BuffInfo1> activeCBuffs = new List<BuffInfo1>();
+    public List<BuffInfo1> activeEBuffs = new List<BuffInfo1>();
 
     public void Start()
     {
@@ -87,7 +87,7 @@ public class BuffManager : MonoBehaviour
         //当判定为新buff，创建buff和初始化buff
         if (isBuffAlreadyExist == false)
         {
-            BuffInfo buffInfo = new BuffInfo();
+            BuffInfo1 buffInfo = new BuffInfo1();
             buffInfo.characterBuffType = buffType;
             buffInfo.timeType = timeType;
             buffInfo.lastTime = lastTime;
@@ -141,7 +141,7 @@ public class BuffManager : MonoBehaviour
         //当判定为新buff，创建buff和初始化buff
         if (isBuffAlreadyExist == false)
         {
-            BuffInfo buffInfo = new BuffInfo();
+            BuffInfo1 buffInfo = new BuffInfo1();
             buffInfo.enemyBuffType = buffType;
             buffInfo.timeType = timeType;
             buffInfo.lastTime = lastTime;
@@ -163,7 +163,7 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    public bool CheckBuffIsReadyForRemove(BuffInfo buff)
+    public bool CheckBuffIsReadyForRemove(BuffInfo1 buff)
     {
         switch (buff.valueType)
         {
@@ -257,7 +257,7 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    public void SyncBuffUI(BuffInfo buff)
+    public void SyncBuffUI(BuffInfo1 buff)
     {
         switch (buff.valueType)
         {
@@ -290,7 +290,7 @@ public class BuffManager : MonoBehaviour
         }
     }
 
-    public BuffInfo FindBuff(CharacterBuff characterBuff)
+    public BuffInfo1 FindBuff(CharacterBuff characterBuff)
     {
         for (int i = 0; i < activeCBuffs.Count; i++)
         {
@@ -302,7 +302,7 @@ public class BuffManager : MonoBehaviour
         return null;
     }
 
-    public BuffInfo FindBuff(EnemyBuff enemyBuff)
+    public BuffInfo1 FindBuff(EnemyBuff enemyBuff)
     {
         for (int i = 0; i < activeEBuffs.Count; i++)
         {

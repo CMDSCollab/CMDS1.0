@@ -131,7 +131,7 @@ public class BuffStateManager : MonoBehaviour
 
     public void AddNewBuff(CharacterBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value, BuffSource buffSource)
     {
-        BuffInfo buffInfo = new BuffInfo();
+        BuffInfo1 buffInfo = new BuffInfo1();
         buffInfo.characterBuffType = buffType;
         buffInfo.timeType = timeType;
         buffInfo.lastTime = lastTime;
@@ -154,7 +154,7 @@ public class BuffStateManager : MonoBehaviour
 
     public void AddNewBuff(EnemyBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value, BuffSource buffSource)
     {
-        BuffInfo buffInfo = new BuffInfo();
+        BuffInfo1 buffInfo = new BuffInfo1();
         buffInfo.enemyBuffType = buffType;
         buffInfo.timeType = timeType;
         buffInfo.lastTime = lastTime;

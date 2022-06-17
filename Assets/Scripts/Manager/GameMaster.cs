@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour
     public MapManager mapM;
     public MerchantManager merM;
     public CampManager campM;
+    public RelicManager relicM;
 
     public CombatStateManager combatSM;
     public ActionStateManager actionSM;
@@ -38,6 +39,7 @@ public class GameMaster : MonoBehaviour
         }
         characterM.InitializeCharacters();
         enM.InitializeEnemy();
+        relicM.RelicEffectApply(RelicName.HandCardDrawAmountPlus);
         deckM.PrepareDeckAndHand();
     }
 

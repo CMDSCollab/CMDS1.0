@@ -60,6 +60,7 @@ public class MapNodeManager : MonoBehaviour
         else
         {
             ifExplored = true;
+            mapM.gM.relicM.RelicEffectApply(RelicName.HpRegenerationOnMapMove);
         }
 
         switch (mapNode.nodeType)
