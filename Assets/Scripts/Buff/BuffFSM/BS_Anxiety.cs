@@ -9,9 +9,10 @@ public class BS_Anxiety : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Anxiety);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                gM.buffM.InstantiateBuff(EnemyBuff.Anxiety);
+                //gM.buffSM.AddNewBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1);
+                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Anxiety);
+                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 break;

@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: "\u5934\u8111\u98CE\u66B4"
   m_EditorClassIdentifier: 
   cardName: "\u5934\u8111\u98CE\u66B4"
-  description: "-2\u6311\u6218 \u62BD2\u5361"
+  description: "2\u6311\u6218 \u62BD2\u5361"
+  merchantBaseValue: 0
+  realValue: 0
   baseFunctions:
   - functionType: 9
     value: 2
   specialFunctions: 
   desSpecialFunctions:
   - desFunctionType: 1
-    value: -2
+    value: 2

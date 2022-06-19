@@ -10,9 +10,10 @@ public class BS_Sync : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(CharacterBuff.IsSycn, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Character);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.IsSycn);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                gM.buffM.InstantiateBuff(CharacterBuff.IsSycn);
+                //gM.buffSM.AddNewBuff(CharacterBuff.IsSycn, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1);
+                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.IsSycn);
+                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 break;

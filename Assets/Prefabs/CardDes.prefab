@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6641903869422162844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   handIndex: 0
   deckIndexRecord: 0
   ifTouched: 0
+  isOnSell: 0
   cardMovement: 0
 --- !u!114 &8943981980443981887
 MonoBehaviour:

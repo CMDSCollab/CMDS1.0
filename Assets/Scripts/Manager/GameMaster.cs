@@ -45,10 +45,8 @@ public class GameMaster : MonoBehaviour
 
     public void FightEndReset()
     {
-        //buffM.activeCharacterBuffs.Clear();
-        //buffM.activeEnemyBuffs.Clear();
-        buffM.activeCBuffs.Clear();
-        buffM.activeEBuffs.Clear();
+        buffM.chaBuffs.Clear();
+        buffM.enBuffs.Clear();
         handM.handCardList.Clear();
         cardRepoM.discardPile.Clear();
         cardRepoM.drawPile.Clear();
@@ -58,7 +56,7 @@ public class GameMaster : MonoBehaviour
             case CharacterType.Designer:
                 Destroy(aiM.proAI.gameObject);
                 Destroy(aiM.artAI.gameObject);
-                Destroy(aiM.des.flowChart);
+                Destroy(aiM.des.flow);
                 Destroy(aiM.des.gameObject);
                 break;
             case CharacterType.Programmmer:

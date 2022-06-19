@@ -10,9 +10,10 @@ public class BS_Inflammable : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(CharacterBuff.Inflammable, BuffTimeType.Temporary, 3, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.Inflammable);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                gM.buffM.InstantiateBuff(CharacterBuff.Inflammable);
+                //gM.buffSM.AddNewBuff(CharacterBuff.Inflammable, BuffTimeType.Temporary, 3, BuffValueType.NoValue, 1);
+                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.Inflammable);
+                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 gM.buffM.FindBuff(CharacterBuff.Inflammable).lastTime = 3;

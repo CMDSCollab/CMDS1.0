@@ -38,7 +38,7 @@ public class CES_AddEnergy : CEffectBaseState
         timer -= Time.deltaTime;
         if (energyRecord > targetAI.energyPoint)
         {
-            if (timer<=0)
+            if (timer <= 0)
             {
                 energyRecord--;
                 timer = timerRecord;
@@ -46,13 +46,15 @@ public class CES_AddEnergy : CEffectBaseState
         }
         if (energyRecord < targetAI.energyPoint)
         {
-            if (timer<=0)
+            if (timer <= 0)
             {
                 energyRecord++;
                 timer = timerRecord;
             }
         }
-        targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = energyRecord.ToString();
+        targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = energyRecord;
+
+        //targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = energyRecord.ToString();
         targetAI.IntentionValueChangeAndUISync();
         if (energyRecord == targetAI.energyPoint)
         {

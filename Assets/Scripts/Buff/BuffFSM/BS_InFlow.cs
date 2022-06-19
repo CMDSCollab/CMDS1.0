@@ -9,9 +9,10 @@ public class BS_InFlow : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.InFlow);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                //gM.buffSM.AddNewBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1);
+                gM.buffM.InstantiateBuff(EnemyBuff.InFlow);
+                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.InFlow);
+                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 break;

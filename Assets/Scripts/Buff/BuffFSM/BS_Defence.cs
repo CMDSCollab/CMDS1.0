@@ -16,43 +16,45 @@ public class BS_Defence : BuffBaseState
                 defenceValue = changeAmount;
                 if (gM.combatSM.currentState == gM.combatSM.enemyState)
                 {
-                    gM.buffSM.AddNewBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, defenceValue, BuffSource.Enemy);
-                    gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Defence);
-                    gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                    //gM.buffSM.AddNewBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, defenceValue);
+                    gM.buffM.InstantiateBuff(EnemyBuff.Defence);
+                    gM.buffM.FindBuff(EnemyBuff.Defence).BuffCurrentValueChange(defenceValue);
+                    //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Defence);
+                    //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 }
                 else
                 {
-                    gM.buffSM.AddNewBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, defenceValue, BuffSource.Character);
-                    gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.Defence);
-                    gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                    //gM.buffSM.AddNewBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, defenceValue);
+                    gM.buffM.InstantiateBuff(CharacterBuff.Defence);
+                    gM.buffM.FindBuff(CharacterBuff.Defence).BuffCurrentValueChange(defenceValue);
                 }
                 break;
             case BuffUsage.Adjust:
                 if (gM.combatSM.currentState == gM.combatSM.enemyState)
                 {
-                    defenceValue = gM.buffM.FindBuff(EnemyBuff.Defence).value;
+                    defenceValue = gM.buffM.FindBuff(EnemyBuff.Defence).currentValue;
                     defenceValue += changeAmount;
                 }
                 else
                 {
-                    defenceValue = gM.buffM.FindBuff(CharacterBuff.Defence).value;
+                    defenceValue = gM.buffM.FindBuff(CharacterBuff.Defence).currentValue;
                     defenceValue += changeAmount;
                 }
                 break;
             case BuffUsage.EffectApply:
                 if (gM.combatSM.currentState == gM.combatSM.enemyState)
                 {
-                    defenceValue = gM.buffM.FindBuff(CharacterBuff.Defence).value;
+                    defenceValue = gM.buffM.FindBuff(CharacterBuff.Defence).currentValue;
                     if (defenceValue > changeAmount)
                     {
-                        gM.buffM.FindBuff(CharacterBuff.Defence).value -= changeAmount;
+                        gM.buffM.FindBuff(CharacterBuff.Defence).currentValue -= changeAmount;
                         gM.buffSM.valueToCalculate = 0;
                         defenceValue -= changeAmount;
 
                     }
                     else
                     {
-                        gM.buffM.FindBuff(CharacterBuff.Defence).value -= changeAmount;
+                        gM.buffM.FindBuff(CharacterBuff.Defence).currentValue -= changeAmount;
                         gM.buffSM.valueToCalculate -= defenceValue;
                         defenceValue = 0;
                         //gM.buffM.RemoveBuff(CharacterBuff.Defence);
@@ -60,16 +62,16 @@ public class BS_Defence : BuffBaseState
                 }
                 else
                 {
-                    defenceValue = gM.buffM.FindBuff(EnemyBuff.Defence).value;
+                    defenceValue = gM.buffM.FindBuff(EnemyBuff.Defence).currentValue;
                     if (defenceValue > changeAmount)
                     {
-                        gM.buffM.FindBuff(EnemyBuff.Defence).value -= changeAmount;
+                        gM.buffM.FindBuff(EnemyBuff.Defence).currentValue -= changeAmount;
                         gM.buffSM.valueToCalculate = 0;
                         defenceValue -= changeAmount;
                     }
                     else
                     {
-                        gM.buffM.FindBuff(EnemyBuff.Defence).value -= changeAmount;
+                        gM.buffM.FindBuff(EnemyBuff.Defence).currentValue -= changeAmount;
                         gM.buffSM.valueToCalculate -= defenceValue;
                         defenceValue = 0;
                         //gM.buffM.RemoveBuff(EnemyBuff.Defence);
@@ -143,14 +145,14 @@ public class BS_Defence : BuffBaseState
         
                 if (gM.buffM.FindBuff(EnemyBuff.Defence) != null)
                 {
-                    if (gM.buffM.FindBuff(EnemyBuff.Defence).value <= 0)
+                    if (gM.buffM.FindBuff(EnemyBuff.Defence).currentValue <= 0)
                     {
                         gM.buffM.RemoveBuff(EnemyBuff.Defence);
                     }
                 }
                 if (gM.buffM.FindBuff(CharacterBuff.Defence) != null)
                 {
-                    if (gM.buffM.FindBuff(CharacterBuff.Defence).value <= 0)
+                    if (gM.buffM.FindBuff(CharacterBuff.Defence).currentValue <= 0)
                     {
                         gM.buffM.RemoveBuff(CharacterBuff.Defence);
                     }

@@ -23,7 +23,7 @@ public class EM_Hoarder : BasicEnemy
         {
             if (gM.buffM.FindBuff(EnemyBuff.Defence) != null)
             {
-                if (gM.buffM.FindBuff(EnemyBuff.Defence).value <= 0)
+                if (gM.buffM.FindBuff(EnemyBuff.Defence).currentValue <= 0)
                 {
                     this.SetAwaken();
                 }

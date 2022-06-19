@@ -20,15 +20,17 @@ public class BS_Weak : BuffBaseState
             case BuffUsage.AddNew:
                 if (gM.actionSM.currentState == gM.actionSM.tauntState)
                 {
-                    gM.buffSM.AddNewBuff(CharacterBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.Weak);
-                    gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                    //gM.buffSM.AddNewBuff(CharacterBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1);
+                    gM.buffM.InstantiateBuff(CharacterBuff.Weak);
+                    //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(CharacterBuff.Weak);
+                    //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 }
                 else
                 {
-                    gM.buffSM.AddNewBuff(EnemyBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Weak);
-                    gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                    //gM.buffSM.AddNewBuff(EnemyBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1);
+                    gM.buffM.InstantiateBuff(EnemyBuff.Weak);
+                    //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Weak);
+                    //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 }
                 break;
         }

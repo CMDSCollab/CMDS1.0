@@ -52,6 +52,6 @@ public class RelicManager : MonoBehaviour
 
     private void DebugH()
     {
-        Debug.Log("hhhhhh");
+        //Debug.Log("hhhhhh");
     }
 }

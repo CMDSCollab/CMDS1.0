@@ -129,51 +129,49 @@ public class BuffStateManager : MonoBehaviour
         currentState.EnterState(gM);
     }
 
-    public void AddNewBuff(CharacterBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value, BuffSource buffSource)
-    {
-        BuffInfo1 buffInfo = new BuffInfo1();
-        buffInfo.characterBuffType = buffType;
-        buffInfo.timeType = timeType;
-        buffInfo.lastTime = lastTime;
-        buffInfo.valueType = valueType;
-        buffInfo.value = value;
-        buffInfo.source = buffSource;
-        buffInfo.uiObj = Instantiate(gM.buffM.buffPrefab, gM.characterM.mainCharacter.transform.Find("BuffArea"), false);
-        //buffInfo.isReadyToRemove = gM.buffM.CheckBuffIsReadyForRemove(buffInfo);
-        foreach (CharacterBuffImage buff in gM.buffM.characterBuffs)
-        {
-            if (buff.buffType == buffType)
-            {
-                buffInfo.uiObj.GetComponent<Image>().sprite = buff.buffImage;
-            }
-        }
-        gM.buffM.SyncBuffUI(buffInfo);
-        gM.buffM.activeCBuffs.Add(buffInfo);
-        //gM.buffM.CheckBuffAndRemove(buffInfo.characterBuffType);
-    }
+    //public void AddNewBuff(CharacterBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value)
+    //{
+    //    BuffInfo1 buffInfo = new BuffInfo1();
+    //    buffInfo.characterBuffType = buffType;
+    //    buffInfo.timeType = timeType;
+    //    buffInfo.lastTime = lastTime;
+    //    buffInfo.valueType = valueType;
+    //    buffInfo.value = value;
+    //    buffInfo.uiObj = Instantiate(gM.buffM.buffPrefab, gM.characterM.mainCharacter.transform.Find("BuffArea"), false);
+    //    //buffInfo.isReadyToRemove = gM.buffM.CheckBuffIsReadyForRemove(buffInfo);
+    //    foreach (CharacterBuffImage buff in gM.buffM.characterBuffs)
+    //    {
+    //        if (buff.buffType == buffType)
+    //        {
+    //            buffInfo.uiObj.GetComponent<Image>().sprite = buff.buffImage;
+    //        }
+    //    }
+    //    //gM.buffM.SyncBuffUI(buffInfo);
+    //    gM.buffM.activeCBuffs.Add(buffInfo);
+    //    //gM.buffM.CheckBuffAndRemove(buffInfo.characterBuffType);
+    //}
 
-    public void AddNewBuff(EnemyBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value, BuffSource buffSource)
-    {
-        BuffInfo1 buffInfo = new BuffInfo1();
-        buffInfo.enemyBuffType = buffType;
-        buffInfo.timeType = timeType;
-        buffInfo.lastTime = lastTime;
-        buffInfo.valueType = valueType;
-        buffInfo.value = value;
-        buffInfo.source = buffSource;
-        buffInfo.uiObj = Instantiate(gM.buffM.buffPrefab, gM.enM.enemyTarget.transform.Find("BuffArea"), false);
-        //buffInfo.isReadyToRemove = gM.buffM.CheckBuffIsReadyForRemove(buffInfo);
-        foreach (EnemyBuffImage buff in gM.buffM.enemyBuffs)
-        {
-            if (buff.buffType == buffType)
-            {
-                buffInfo.uiObj.GetComponent<Image>().sprite = buff.buffImage;
-            }
-        }
-        gM.buffM.SyncBuffUI(buffInfo);
-        gM.buffM.activeEBuffs.Add(buffInfo);
-        //gM.buffM.CheckBuffAndRemove(buffInfo.characterBuffType);
-    }
+    //public void AddNewBuff(EnemyBuff buffType, BuffTimeType timeType, int lastTime, BuffValueType valueType, int value)
+    //{
+    //    BuffInfo1 buffInfo = new BuffInfo1();
+    //    buffInfo.enemyBuffType = buffType;
+    //    buffInfo.timeType = timeType;
+    //    buffInfo.lastTime = lastTime;
+    //    buffInfo.valueType = valueType;
+    //    buffInfo.value = value;
+    //    buffInfo.uiObj = Instantiate(gM.buffM.buffPrefab, gM.enM.enemyTarget.transform.Find("BuffArea"), false);
+    //    //buffInfo.isReadyToRemove = gM.buffM.CheckBuffIsReadyForRemove(buffInfo);
+    //    foreach (EnemyBuffImage buff in gM.buffM.enemyBuffs)
+    //    {
+    //        if (buff.buffType == buffType)
+    //        {
+    //            buffInfo.uiObj.GetComponent<Image>().sprite = buff.buffImage;
+    //        }
+    //    }
+    //    //gM.buffM.SyncBuffUI(buffInfo);
+    //    gM.buffM.activeEBuffs.Add(buffInfo);
+    //    //gM.buffM.CheckBuffAndRemove(buffInfo.characterBuffType);
+    //}
 
     #region Set Array To List && Get BuffState && Get RectTransform
     public RectTransform GetBuffRectTrans(CharacterBuff characterBuff)
@@ -181,21 +179,21 @@ public class BuffStateManager : MonoBehaviour
         switch (characterBuff)
         {
             case CharacterBuff.Defence:
-                return gM.buffM.FindBuff(CharacterBuff.Defence).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.Defence).GetComponent<RectTransform>();
             case CharacterBuff.Vengeance:
-                return gM.buffM.FindBuff(CharacterBuff.Vengeance).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.Vengeance).GetComponent<RectTransform>();
             case CharacterBuff.PowerUp:
-                return gM.buffM.FindBuff(CharacterBuff.PowerUp).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.PowerUp).GetComponent<RectTransform>();
             case CharacterBuff.Weak:
-                return gM.buffM.FindBuff(CharacterBuff.Weak).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.Weak).GetComponent<RectTransform>();
             case CharacterBuff.Inflammable:
-                return gM.buffM.FindBuff(CharacterBuff.Inflammable).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.Inflammable).GetComponent<RectTransform>();
             case CharacterBuff.IsTeamWork:
-                return gM.buffM.FindBuff(CharacterBuff.IsTeamWork).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.IsTeamWork).GetComponent<RectTransform>();
             case CharacterBuff.IsSycn:
-                return gM.buffM.FindBuff(CharacterBuff.IsSycn).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.IsSycn).GetComponent<RectTransform>();
             default:
-                return gM.buffM.FindBuff(CharacterBuff.Defence).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(CharacterBuff.Defence).GetComponent<RectTransform>();
         }
     }
 
@@ -204,31 +202,31 @@ public class BuffStateManager : MonoBehaviour
         switch (enemyBuff)
         {
             case EnemyBuff.Bored:
-                return gM.buffM.FindBuff(EnemyBuff.Bored).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Bored).GetComponent<RectTransform>();
             case EnemyBuff.Anxiety:
-                return gM.buffM.FindBuff(EnemyBuff.Anxiety).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Anxiety).GetComponent<RectTransform>();
             case EnemyBuff.InFlow:
-                return gM.buffM.FindBuff(EnemyBuff.InFlow).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.InFlow).GetComponent<RectTransform>();
             case EnemyBuff.Vulnerable:
-                return gM.buffM.FindBuff(EnemyBuff.Vulnerable).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Vulnerable).GetComponent<RectTransform>();
             case EnemyBuff.Weak:
-                return gM.buffM.FindBuff(EnemyBuff.Weak).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Weak).GetComponent<RectTransform>();
             case EnemyBuff.Instability:
-                return gM.buffM.FindBuff(EnemyBuff.Instability).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Instability).GetComponent<RectTransform>();
             case EnemyBuff.WeakMind:
-                return gM.buffM.FindBuff(EnemyBuff.WeakMind).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.WeakMind).GetComponent<RectTransform>();
             case EnemyBuff.Defence:
-                return gM.buffM.FindBuff(EnemyBuff.Defence).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Defence).GetComponent<RectTransform>();
             case EnemyBuff.Block:
-                return gM.buffM.FindBuff(EnemyBuff.Block).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Block).GetComponent<RectTransform>();
             case EnemyBuff.Charge:
-                return gM.buffM.FindBuff(EnemyBuff.Charge).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Charge).GetComponent<RectTransform>();
             case EnemyBuff.PartialInvincibility:
-                return gM.buffM.FindBuff(EnemyBuff.PartialInvincibility).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.PartialInvincibility).GetComponent<RectTransform>();
             case EnemyBuff.Revive:
-                return gM.buffM.FindBuff(EnemyBuff.Revive).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Revive).GetComponent<RectTransform>();
             default:
-                return gM.buffM.FindBuff(EnemyBuff.Bored).uiObj.GetComponent<RectTransform>();
+                return gM.buffM.FindBuff(EnemyBuff.Bored).GetComponent<RectTransform>();
         }
     }
 

@@ -83,6 +83,7 @@ public class DeckManager : MonoBehaviour
     {
         gM.buttonM.discardPileButton.gameObject.SetActive(status);
         gM.buttonM.drawPileButton.gameObject.SetActive(status);
+        gM.buttonM.nextTurnButton.gameObject.SetActive(status);
     }
     
     public void GetNewCopyDeck()

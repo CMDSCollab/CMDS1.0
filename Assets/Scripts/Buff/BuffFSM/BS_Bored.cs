@@ -9,9 +9,7 @@ public class BS_Bored : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Bored);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                gM.buffM.InstantiateBuff(EnemyBuff.Bored);
                 break;
             case BuffUsage.Adjust:
                 break;

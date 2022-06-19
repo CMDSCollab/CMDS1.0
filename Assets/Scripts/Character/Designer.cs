@@ -15,9 +15,9 @@ public class Designer : CharacterMate
 
     public Text challengeIntText;
 
-    private Canvas UICanvas;
-    [HideInInspector]
-    public GameObject flowChart;
+    //private Canvas UICanvas;
+    //[HideInInspector]
+    //public GameObject flowChart;
 
     public GameObject flow;
 
@@ -54,19 +54,19 @@ public class Designer : CharacterMate
         }
     }
 
-    public void GoTeamWork(int times)
-    {
-        for (int i = 0; i < times; i++)
-        {
-            int index = Random.Range(0, 2);
-            if (index == 0)
-            {
-                gM.aiM.proAI.EnergyValueChange(1);
-            }
-            else
-            {
-                gM.aiM.artAI.EnergyValueChange(1);
-            }
-        }
-    }
+    //public void GoTeamWork(int times)
+    //{
+    //    for (int i = 0; i < times; i++)
+    //    {
+    //        int index = Random.Range(0, 2);
+    //        if (index == 0)
+    //        {
+    //            gM.aiM.proAI.EnergyValueChange(1);
+    //        }
+    //        else
+    //        {
+    //            gM.aiM.artAI.EnergyValueChange(1);
+    //        }
+    //    }
+    //}
 }

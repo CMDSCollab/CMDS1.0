@@ -11,9 +11,10 @@ public class BS_Vulnerable : BuffBaseState
         switch (gM.buffSM.buffUsage)
         {
             case BuffUsage.AddNew:
-                gM.buffSM.AddNewBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Vulnerable);
-                gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
+                //gM.buffSM.AddNewBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1);
+                gM.buffM.InstantiateBuff(EnemyBuff.Vulnerable);
+                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Vulnerable);
+                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 break;
