@@ -190,12 +190,26 @@ public class AIMate : BasicCharacter
         {
             case Intentions.Attack:
                 gM.actionSM.EnterActionState(gM.actionSM.attackState, intentionValue);
+                if (this is ArtistAI)
+                {
+                    AudioManager.Instance.PlayAudio("Artist_Cast");
+                }
+                else if (this is ProgrammerAI)
+                {
+                    AudioManager.Instance.PlayAudio("Programmer_Attack");
+                }
+                else if (this is DesignerAI)
+                {
+                    AudioManager.Instance.PlayAudio("Designer_Attack");
+                }
                 break;
             case Intentions.Heal:
                 gM.actionSM.EnterActionState(gM.actionSM.healState, intentionValue);
+                AudioManager.Instance.PlayAudio("Artist_Heal");
                 break;
             case Intentions.Shield:
                 gM.actionSM.EnterActionState(gM.actionSM.defenceState, intentionValue);
+                AudioManager.Instance.PlayAudio("Shield01");
                 break;
             case Intentions.Buff:
                 break;
