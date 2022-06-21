@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EM_Hoarder : BasicEnemy
 {
-    private int defaultDmg = 8;
+    private int defaultDmg = 6;
 
     private int goldBonus = 50;
     private int sheildOnSleep = 15;

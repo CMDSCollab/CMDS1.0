@@ -1361,6 +1361,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1367534291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1367534292}
+  - component: {fileID: 1367534293}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1367534292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367534291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1389467213}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367534293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367534291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1ea91b72709e84498f302699234541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosWrapper:
+  - audioClip: {fileID: 8300000, guid: 5c34c63ac8e78b64b998ffce37e5d152, type: 3}
+  - audioClip: {fileID: 8300000, guid: 92d0641ecdd42c14181eff473259056e, type: 3}
+  - audioClip: {fileID: 8300000, guid: 54d5f2e880102f44fa3718211cf136f8, type: 3}
+  - audioClip: {fileID: 8300000, guid: c21fb748a77a053449fdc6fd7fb2236c, type: 3}
+  - audioClip: {fileID: 8300000, guid: 04343656aeaf31a438c9dcd7755adec3, type: 3}
+  - audioClip: {fileID: 8300000, guid: 2d6e55b7cfa3cdc4ea05b0ca7efaa2c2, type: 3}
+  - audioClip: {fileID: 8300000, guid: 5fdc1d51f110adf44951f626bb4e9c68, type: 3}
+  - audioClip: {fileID: 8300000, guid: 36e636fd57a1e294bb0c887d697000ee, type: 3}
+  - audioClip: {fileID: 8300000, guid: fd7c81adcd13dd14680878e6e41ca791, type: 3}
+  - audioClip: {fileID: 8300000, guid: 79aa08ae3f2933749a2fed6ae42c22e8, type: 3}
+  - audioClip: {fileID: 8300000, guid: 496d6e393a0c317489e937f12062ca96, type: 3}
+  - audioClip: {fileID: 8300000, guid: a3940393bba5d374689db6117e8ea575, type: 3}
+  - audioClip: {fileID: 8300000, guid: 04f1862a7bc98b14786a9d6dab14b545, type: 3}
+  - audioClip: {fileID: 8300000, guid: 06661dcb60090484bb53ad456793d0cb, type: 3}
+  - audioClip: {fileID: 8300000, guid: 81cdbbf8c628ec74ea55169f04503409, type: 3}
+  - audioClip: {fileID: 8300000, guid: 5d0258bd338db154188a96b7dba1f705, type: 3}
+  - audioClip: {fileID: 8300000, guid: a9a11df83124f5f439aac81236f7d803, type: 3}
+  - audioClip: {fileID: 8300000, guid: 2926fb14c577e964c8efe4e58f32d379, type: 3}
+  - audioClip: {fileID: 8300000, guid: 0c5af4c24003dce4f86d8854ffa75896, type: 3}
 --- !u!1 &1385871639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2112888854}
+  - {fileID: 1367534292}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2224,6 +2288,8 @@ MonoBehaviour:
   cardRepoM: {fileID: 0}
   drawPileButton: {fileID: 0}
   discardPileButton: {fileID: 0}
+  nextTurnButton: {fileID: 0}
+  deckCardButton: {fileID: 0}
   startScene: {fileID: 2144642976}
   chooseCharacterPanel: {fileID: 2132230964}
 --- !u!1 &2132230964

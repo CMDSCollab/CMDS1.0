@@ -19,7 +19,7 @@ MonoBehaviour:
   enemyName: Speed Runner
   images:
   - {fileID: 21300000, guid: c66712f21f79dd84e845d4810af87de8, type: 3}
-  maxHealth: 30
+  maxHealth: 28
   defaultSkill: 4
   basicIntentions:
   - intention: 0
