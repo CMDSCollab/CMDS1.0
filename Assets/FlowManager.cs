@@ -11,18 +11,14 @@ public class FlowManager : MonoBehaviour
     public List<GameObject> dotsList = new List<GameObject>();
     private float gap = 0.1f;
     private Vector3 startPos;
-
-    void Start()
-    {
-   
-    }
+    public List<bool> overRangeStage = new List<bool>() { false, false, false };
 
     public void InitializeFlow()
     {
         gM = FindObjectOfType<GameMaster>();
         line = GetComponent<LineRenderer>();
         startPos = transform.Find("StartPos").transform.position;
-        BoundarySet();
+        BoundarySet(1);
         dotsPos.Add(startPos);
         dotsPos.Add(startPos);
         foreach (Vector3 dotPos in dotsPos)
@@ -39,16 +35,19 @@ public class FlowManager : MonoBehaviour
         }
     }
 
-    public void BoundarySet()
+    public void BoundarySet(int offset )
     {
         LineRenderer xLine = transform.Find("BoundaryX").GetComponent<LineRenderer>();
         LineRenderer yLine = transform.Find("BoundaryY").GetComponent<LineRenderer>();
         xLine.positionCount = 2;
         yLine.positionCount = 2;
         xLine.SetPosition(0, new Vector3(startPos.x + gap * 10, startPos.y, 0));
-        xLine.SetPosition(1, new Vector3(startPos.x + gap * 30, startPos.y + gap * 20, 0));
         yLine.SetPosition(0, new Vector3(startPos.x, startPos.y + gap * 10, 0));
-        yLine.SetPosition(1, new Vector3(startPos.x + gap * 25, startPos.y + gap * 35, 0));
+
+        int xTargetGrid = 30 * offset;
+        int yTargetGrid = 35 * offset;
+        xLine.SetPosition(1, new Vector3(startPos.x + gap * xTargetGrid, startPos.y + gap * (xTargetGrid - 10), 0));
+        yLine.SetPosition(1, new Vector3(startPos.x + gap * (yTargetGrid - 10), startPos.y + gap * yTargetGrid, 0));
     }
 
     public void ChangeDotPos()
@@ -73,6 +72,40 @@ public class FlowManager : MonoBehaviour
         }
         dot.transform.Find("CurrentDot").gameObject.SetActive(true);
         dot.transform.Find("HistoryDot").gameObject.SetActive(false);
+    }
 
+    public void FlowOverRangeCheck()
+    {
+        if (overRangeStage[0] == false)
+        {
+            if (gM.aiM.des.challengeLv >= 30 || gM.enM.enemyTarget.skillLv >= 30)
+            {
+                overRangeStage[0] = true;
+                gap = 0.05f;
+                AllNodePosReset();
+                BoundarySet(2);
+            }
+        }
+        if (overRangeStage[1] == false)
+        {
+            if (gM.aiM.des.challengeLv >= 60 || gM.enM.enemyTarget.skillLv >= 60)
+            {
+                overRangeStage[1] = true;
+                gap = 0.025f;
+                AllNodePosReset();
+                BoundarySet(4);
+            }
+        }
+
+        void AllNodePosReset()
+        {
+            for (int i = 0; i < dotsList.Count; i++)
+            {
+                Vector3 dotDividePos = new Vector3((dotsPos[i].x - startPos.x) / 2 + startPos.x, (dotsPos[i].y - startPos.y) / 2 + startPos.y);
+                dotsPos[i] = dotDividePos;
+                dotsList[i].transform.position = dotsPos[i];
+                line.SetPosition(i, dotsPos[i]);
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ public class HoverTipManager : MonoBehaviour
         transform.Find("Description").GetComponent<Text>().text = tipDescription;
 
         //transform.gameObject.SetActive(true);
-        transform.position = new Vector2(mousePos.x+transform.Find("TipBg").GetComponent<RectTransform>().sizeDelta.x / 2+20, mousePos.y + transform.Find("TipBg").GetComponent<RectTransform>().sizeDelta.y / 2 + 20);
+        transform.position = new Vector2(mousePos.x + transform.Find("TipBg").GetComponent<RectTransform>().sizeDelta.x / 2 - 5, mousePos.y + transform.Find("TipBg").GetComponent<RectTransform>().sizeDelta.y / 2 - 5);
         //+transform.Find("TipBg").GetComponent<RectTransform>().sizeDelta.x/2
     }
 

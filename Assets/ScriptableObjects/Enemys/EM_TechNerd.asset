@@ -24,11 +24,11 @@ MonoBehaviour:
   basicIntentions:
   - intention: 0
     tendency: 80
-    skillUp: 3
+    skillUp: 6
   - intention: 6
     tendency: 10
-    skillUp: 2
+    skillUp: 4
   - intention: 7
     tendency: 10
-    skillUp: 4
+    skillUp: 8
   specialFunctions: 

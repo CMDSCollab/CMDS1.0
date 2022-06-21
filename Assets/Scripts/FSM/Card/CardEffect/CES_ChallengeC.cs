@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CES_ChallengeC : CEffectBaseState
 {
+    Transform point;
 
     public override void EnterState(GameMaster gM, int value)
     {
@@ -21,7 +22,7 @@ public class CES_ChallengeC : CEffectBaseState
     public override void UpdateState(GameMaster gM, int value)
     {
         FlowManager flowM = gM.aiM.des.flow.GetComponent<FlowManager>();
-        Transform point = flowM.dotsList[flowM.dotsList.Count - 1].transform;
+        point = flowM.dotsList[flowM.dotsList.Count - 1].transform;
         point.position = Vector3.MoveTowards(point.position, flowM.dotsPos[flowM.dotsPos.Count - 1], 0.3f * Time.deltaTime);
         flowM.line.SetPosition(flowM.dotsList.Count - 1, point.position);
         gM.enM.enemyTarget.transform.Find("Coordinate").GetComponent<RectTransform>().position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(point.position.x, point.position.y + 0.2f));
@@ -35,6 +36,9 @@ public class CES_ChallengeC : CEffectBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
+        gM.aiM.des.flow.GetComponent<FlowManager>().FlowOverRangeCheck();
+        gM.enM.enemyTarget.transform.Find("Coordinate").GetComponent<RectTransform>().position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(point.position.x, point.position.y + 0.2f));
+       
         int chaLv = gM.aiM.des.challengeLv;
         int chaSubtractSkill = chaLv - gM.enM.enemyTarget.skillLv;
         int skillSubtractCha = gM.enM.enemyTarget.skillLv - chaLv;

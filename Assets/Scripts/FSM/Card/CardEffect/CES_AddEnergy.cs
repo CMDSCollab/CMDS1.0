@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CES_AddEnergy : CEffectBaseState
 {
     AIMate targetAI;
+    EnergyController energy;
     int energyRecord;
     float timer = 0.2f;
     float timerRecord = 0.2f;
@@ -24,9 +25,10 @@ public class CES_AddEnergy : CEffectBaseState
                 targetAI = gM.aiM.artAI;
                 break;
         }
+        energy = targetAI.transform.Find("Energy").GetComponent<EnergyController>();
         energyRecord = targetAI.energyPoint;
         targetAI.energyPoint += value;
-        if (targetAI.energyPoint>targetAI.energySlotAmount)
+        if (targetAI.energyPoint > targetAI.energySlotAmount)
         {
             targetAI.energyPoint = targetAI.energySlotAmount;
         }
@@ -40,7 +42,9 @@ public class CES_AddEnergy : CEffectBaseState
         {
             if (timer <= 0)
             {
+   
                 energyRecord--;
+                energy.ChangeSprite(energyRecord);
                 timer = timerRecord;
             }
         }
@@ -48,11 +52,13 @@ public class CES_AddEnergy : CEffectBaseState
         {
             if (timer <= 0)
             {
+                energy.ChangeSprite(energyRecord);
                 energyRecord++;
+          
                 timer = timerRecord;
             }
         }
-        targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = energyRecord;
+        //targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = energyRecord;
 
         //targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = energyRecord.ToString();
         targetAI.IntentionValueChangeAndUISync();
