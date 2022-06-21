@@ -21,82 +21,82 @@ public class AIMate : BasicCharacter
         //base.Start();
         intentions = characterInfo.intentions;
         GenerateIntention();
-        EnergyInitialize();
+        //EnergyInitialize();
         //for (int i = 0; i < energySlotAmount; i++)
         //{
         //    AddTheEnergySlot();
         //}
     }
 
-    public void Update()
-    {
+    //public void Update()
+    //{
         
-    }
+    //}
 
-    public void EnergyInitialize()
-    {
-        if (this is DesignerAI)
-        {
-            transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[0];
-        }
-        if (this is ProgrammerAI)
-        {
-            transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[1];
-        }
-        if (this is ArtistAI)
-        {
-            transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[2];
-        }
-        transform.Find("EnergyPos").Find("SlotAmount").GetComponent<Text>().text = energySlotAmount.ToString();
-        transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = energyPoint.ToString();
-    }
+    //public void EnergyInitialize()
+    //{
+    //    if (this is DesignerAI)
+    //    {
+    //        transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[0];
+    //    }
+    //    if (this is ProgrammerAI)
+    //    {
+    //        transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[1];
+    //    }
+    //    if (this is ArtistAI)
+    //    {
+    //        transform.Find("EnergyPos").Find("EnergyImage").GetComponent<Image>().sprite = gM.characterM.energyImages[2];
+    //    }
+    //    transform.Find("EnergyPos").Find("SlotAmount").GetComponent<Text>().text = energySlotAmount.ToString();
+    //    transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = energyPoint.ToString();
+    //}
 
-    public void AddTheEnergySlot()
-    {
-        energy = Instantiate(gM.characterM.energyPrefab);
-        energy.transform.SetParent(transform.Find("EnergyPos"));
+    //public void AddTheEnergySlot()
+    //{
+    //    energy = Instantiate(gM.characterM.energyPrefab);
+    //    energy.transform.SetParent(transform.Find("EnergyPos"));
 
-        if (this is DesignerAI)
-        {
-            energy.GetComponent<Image>().sprite = gM.characterM.energyImages[0];
-        }
-        if (this is ProgrammerAI)
-        {
-            energy.GetComponent<Image>().sprite = gM.characterM.energyImages[1];
-        }
-        if (this is ArtistAI)
-        {
-            energy.GetComponent<Image>().sprite = gM.characterM.energyImages[2];
-        }
-        energy.transform.localScale = new Vector3(1, 1, 1);
-        energyPointImageList.Add(energy.GetComponent<Image>());
-        //重置EnergySlot的位置
-        int singleUnitWidth = (int)energy.GetComponent<RectTransform>().rect.width;
-        float unitStartGenPos = -(singleUnitWidth * energyPointImageList.Count / 2) + singleUnitWidth / 2;
-        for (int i = 0; i < energyPointImageList.Count; i++)
-        {
-            float unitXPos = unitStartGenPos + singleUnitWidth * i;
-            energyPointImageList[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(unitXPos, 0, 0);
-        }
-    }
+    //    if (this is DesignerAI)
+    //    {
+    //        energy.GetComponent<Image>().sprite = gM.characterM.energyImages[0];
+    //    }
+    //    if (this is ProgrammerAI)
+    //    {
+    //        energy.GetComponent<Image>().sprite = gM.characterM.energyImages[1];
+    //    }
+    //    if (this is ArtistAI)
+    //    {
+    //        energy.GetComponent<Image>().sprite = gM.characterM.energyImages[2];
+    //    }
+    //    energy.transform.localScale = new Vector3(1, 1, 1);
+    //    energyPointImageList.Add(energy.GetComponent<Image>());
+    //    //重置EnergySlot的位置
+    //    int singleUnitWidth = (int)energy.GetComponent<RectTransform>().rect.width;
+    //    float unitStartGenPos = -(singleUnitWidth * energyPointImageList.Count / 2) + singleUnitWidth / 2;
+    //    for (int i = 0; i < energyPointImageList.Count; i++)
+    //    {
+    //        float unitXPos = unitStartGenPos + singleUnitWidth * i;
+    //        energyPointImageList[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(unitXPos, 0, 0);
+    //    }
+    //}
 
-    public void EnergyValueChange(int changeAmount)
-    {
-        energyPoint += changeAmount;
+    //public void EnergyValueChange(int changeAmount)
+    //{
+    //    energyPoint += changeAmount;
 
-        for (int i = 0; i < energyPointImageList.Count; i++)
-        {
-            if (i < energyPoint)
-            {
-                energyPointImageList[i].color = Color.blue;
-            }
-            else
-            {
-                energyPointImageList[i].color = Color.white;
-            }
-        }
-        IntentionValueChangeAndUISync();
-    }
+    //    for (int i = 0; i < energyPointImageList.Count; i++)
+    //    {
+    //        if (i < energyPoint)
+    //        {
+    //            energyPointImageList[i].color = Color.blue;
+    //        }
+    //        else
+    //        {
+    //            energyPointImageList[i].color = Color.white;
+    //        }
+    //    }
+    //    IntentionValueChangeAndUISync();
+    //}
 
     #region Intention
     public void GenerateIntention()
@@ -129,27 +129,27 @@ public class AIMate : BasicCharacter
             case Intentions.Attack:
                 currentIntention = Intentions.Attack;
                 transform.Find("IntentionPos").Find("Image").GetComponent<Image>().sprite = intentionM.image;
-                transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Attack";
+                //transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Attack";
                 break;
             case Intentions.Heal:
                 currentIntention = Intentions.Heal;
                 transform.Find("IntentionPos").Find("Image").GetComponent<Image>().sprite = intentionM.image;
-                transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Heal";
+                //transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Heal";
                 break;
             case Intentions.Shield:
                 currentIntention = Intentions.Shield;
                 transform.Find("IntentionPos").Find("Image").GetComponent<Image>().sprite = intentionM.image;
-                transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Shield";
+                //transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Shield";
                 break;
             case Intentions.Buff:
                 currentIntention = Intentions.Buff;
                 transform.Find("IntentionPos").Find("Image").GetComponent<Image>().sprite = intentionM.image;
-                transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Buff";
+                //transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Buff";
                 break;
             case Intentions.Debuff:
                 currentIntention = Intentions.Debuff;
                 transform.Find("IntentionPos").Find("Image").GetComponent<Image>().sprite = intentionM.image;
-                transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Debuff";
+                //transform.Find("IntentionPos").Find("Name").GetComponent<Text>().text = "Debuff";
                 break;
         }
     }
@@ -189,23 +189,32 @@ public class AIMate : BasicCharacter
         switch (currentIntention)
         {
             case Intentions.Attack:
-                //gM.enM.enemyTarget.TakeDamage(gM.buffM.CharacterAttack(intentionValue));
                 gM.actionSM.EnterActionState(gM.actionSM.attackState, intentionValue);
+                if (this is ArtistAI)
+                {
+                    AudioManager.Instance.PlayAudio("Artist_Cast");
+                }
+                else if (this is ProgrammerAI)
+                {
+                    AudioManager.Instance.PlayAudio("Programmer_Attack");
+                }
+                else if (this is DesignerAI)
+                {
+                    AudioManager.Instance.PlayAudio("Designer_Attack");
+                }
                 break;
             case Intentions.Heal:
-                //gM.characterM.mainCharacter.HealSelf(intentionValue);
                 gM.actionSM.EnterActionState(gM.actionSM.healState, intentionValue);
+                AudioManager.Instance.PlayAudio("Artist_Heal");
                 break;
             case Intentions.Shield:
                 gM.actionSM.EnterActionState(gM.actionSM.defenceState, intentionValue);
-                //gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, intentionValue, BuffSource.AI);
+                AudioManager.Instance.PlayAudio("Shield01");
                 break;
             case Intentions.Buff:
                 break;
             case Intentions.Debuff:
                 break;
         }
-        //EnergyValueChange(-energyPoint);
-        //GenerateIntention();
     }
 }

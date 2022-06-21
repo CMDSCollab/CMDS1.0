@@ -10,6 +10,11 @@ public class MapNodeManager : MonoBehaviour
     public MapNode mapNode;
     public int linkTargetCount;
     public List<int> linkTargetIndexList;
+    public int step;
+    public bool ifApproachable;
+    public bool ifExplored;
+    public float scaleChangeSpeed;
+    public float time;
 
     public void Awake()
     {
@@ -18,16 +23,46 @@ public class MapNodeManager : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        this.GetComponent<SpriteRenderer>().color = Color.red;
+        if (ifApproachable)
+        {
+            //this.GetComponent<SpriteRenderer>().sprite = mapNode.activeSprite;
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.12f, 0.12f, 1);
+        }
     }
 
     public void OnMouseExit()
     {
-        this.GetComponent<SpriteRenderer>().color = Color.white;
+        this.GetComponent<SpriteRenderer>().sprite = mapNode.inactiveSprite;
+
+        if (ifExplored)
+        {
+            GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
+        transform.localScale = new Vector3(0.1f, 0.1f, 1);
+
     }
 
     public void OnMouseDown()
     {
+        if (!ifApproachable)
+        {
+            return;
+        }
+        else
+        {
+            ifExplored = true;
+            mapM.gM.relicM.RelicEffectApply(RelicName.HpRegenerationOnMapMove);
+        }
+
         switch (mapNode.nodeType)
         {
             case NodeType.None:
@@ -52,6 +87,9 @@ public class MapNodeManager : MonoBehaviour
             case NodeType.Uncertainty:
                 break;
         }
+
+        ActiveNextLevelNode();
+        ResetCurrentLevelNode();
     }
 
     public void EnterBattleScene(EnemyType enemyType)
@@ -80,5 +118,57 @@ public class MapNodeManager : MonoBehaviour
     public void EnterCamp()
     {
         mapM.gM.campM.OnClickMapnode_Camp();
+    }
+
+    public void ResetCurrentLevelNode()
+    {
+        for(int i = 0; i < mapM.allLayerNodes[step].Count; i++)
+        {
+            mapM.allLayerNodes[step][i].GetComponent<MapNodeManager>().ResetToInactive();
+        }
+    }
+
+    public void ResetToInactive()
+    {
+        ifApproachable = false;
+        transform.localScale = new Vector3(0.1f, 0.1f, 1);
+
+        if (ifExplored)
+        {
+            GetComponent<SpriteRenderer>().color = Color.black;
+
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
+
+    public void ActiveNextLevelNode()
+    {
+        for (int i = 0; i < linkTargetCount; i++)
+        {
+            mapM.allLayerNodes[step + 1][linkTargetIndexList[i]].GetComponent<MapNodeManager>().ifApproachable = true;
+        }
+    }
+
+    public void ScaleChangeWhenActive(float change)
+    {
+        float scaleChange = ScaleFunction(change);
+        transform.localScale = new Vector3(scaleChange, scaleChange, 1);
+    }
+
+    public float ScaleFunction(float angle)
+    {
+        return (Mathf.Cos(angle) + 2) * 0.1f;
+    }
+
+    private void Update()
+    {
+        if (ifApproachable)
+        {
+            time += Time.deltaTime;
+            ScaleChangeWhenActive(scaleChangeSpeed * time);
+        }
     }
 }

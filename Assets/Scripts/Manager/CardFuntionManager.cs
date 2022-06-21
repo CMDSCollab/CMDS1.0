@@ -41,11 +41,11 @@ public class CardFuntionManager : MonoBehaviour
 
     public void FunctionEffectApply()
     {
-        if (isUseCardGainShield == true)
-        {
-            gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, 3, BuffSource.Character);
-            //gM.aiM.pro.shieldPoint += 3;
-            //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
-        }
+        //if (isUseCardGainShield == true)
+        //{
+        //    gM.buffM.SetBuff(CharacterBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, 3);
+        //    //gM.aiM.pro.shieldPoint += 3;
+        //    //gM.buffM.SetCharacterBuff(CharacterBuff.Defence, true, gM.aiM.pro.shieldPoint);
+        //}
     }
 }

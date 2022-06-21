@@ -67,7 +67,7 @@ public class Programmer : CharacterMate
     {
         base.OnNewGameStarted();
 
-        gM.enM.enemyTarget.MainChaMCChange();
+        //gM.enM.enemyTarget.MainChaMCChange();
         CheckRedundantCode();
     }
 

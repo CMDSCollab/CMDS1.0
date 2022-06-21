@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour
     public MapManager mapM;
     public MerchantManager merM;
     public CampManager campM;
+    public RelicManager relicM;
 
     public CombatStateManager combatSM;
     public ActionStateManager actionSM;
@@ -38,15 +39,14 @@ public class GameMaster : MonoBehaviour
         }
         characterM.InitializeCharacters();
         enM.InitializeEnemy();
+        relicM.RelicEffectApply(RelicName.HandCardDrawAmountPlus);
         deckM.PrepareDeckAndHand();
     }
 
     public void FightEndReset()
     {
-        //buffM.activeCharacterBuffs.Clear();
-        //buffM.activeEnemyBuffs.Clear();
-        buffM.activeCBuffs.Clear();
-        buffM.activeEBuffs.Clear();
+        buffM.chaBuffs.Clear();
+        buffM.enBuffs.Clear();
         handM.handCardList.Clear();
         cardRepoM.discardPile.Clear();
         cardRepoM.drawPile.Clear();
@@ -56,7 +56,7 @@ public class GameMaster : MonoBehaviour
             case CharacterType.Designer:
                 Destroy(aiM.proAI.gameObject);
                 Destroy(aiM.artAI.gameObject);
-                Destroy(aiM.des.flowChart);
+                Destroy(aiM.des.flow);
                 Destroy(aiM.des.gameObject);
                 break;
             case CharacterType.Programmmer:

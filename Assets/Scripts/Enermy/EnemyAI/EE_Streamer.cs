@@ -39,7 +39,7 @@ public class EE_Streamer : BasicEnemy
                 // 如果破盾，则设置hasBeenImpressed
                 if (gM.buffM.FindBuff(EnemyBuff.Defence) != null)
                 {
-                    if (gM.buffM.FindBuff(EnemyBuff.Defence).value <= 0)
+                    if (gM.buffM.FindBuff(EnemyBuff.Defence).currentValue <= 0)
                     {
                         hasBeenImpressed = true;
                     }
@@ -69,37 +69,37 @@ public class EE_Streamer : BasicEnemy
         }
 
 
-        switch (currentIntention)
-        {
-            case EnemyIntention.Attack:
-                //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack( defaultDmg));
-                break;
-            case EnemyIntention.ToComment:
+        //switch (currentIntention)
+        //{
+        //    case EnemyIntention.Attack:
+        //        //gM.characterM.mainCharacter.TakeDamage(gM.buffM.EnemyAttack( defaultDmg));
+        //        break;
+        //    case EnemyIntention.ToComment:
 
-                gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, sheildOnComment,BuffSource.Enemy);
-                sheildOnComment += 10;
+        //        gM.buffM.SetBuff(EnemyBuff.Defence, BuffTimeType.Temporary, 1, BuffValueType.AddValue, sheildOnComment,BuffSource.Enemy);
+        //        sheildOnComment += 10;
                 
-                hasBeenImpressed = false;
-                gM.buffM.SetBuff(EnemyBuff.PartialInvincibility, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                break;
+        //        hasBeenImpressed = false;
+        //        gM.buffM.SetBuff(EnemyBuff.PartialInvincibility, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
+        //        break;
                 
-            case EnemyIntention.Comment:
-                if (hasBeenImpressed)
-                {
-                    gM.characterM.mainCharacter.HealSelf(10);
-                    charToScoreDic[characterToComment] = 2;
-                    Debug.Log(characterToComment.ToString()+"获得了好评");
-                }
-                else
-                {
-                    //gM.buffM.SetCharacterBuff(CharacterBuff.Weak, false, 1);
-                    gM.buffM.SetBuff(CharacterBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    charToScoreDic[characterToComment] = 1;
-                    Debug.Log(characterToComment.ToString() + "获得了中评");
-                }
+        //    case EnemyIntention.Comment:
+        //        if (hasBeenImpressed)
+        //        {
+        //            gM.characterM.mainCharacter.HealSelf(10);
+        //            charToScoreDic[characterToComment] = 2;
+        //            Debug.Log(characterToComment.ToString()+"获得了好评");
+        //        }
+        //        else
+        //        {
+        //            //gM.buffM.SetCharacterBuff(CharacterBuff.Weak, false, 1);
+        //            gM.buffM.SetBuff(CharacterBuff.Weak, BuffTimeType.Temporary, 1, BuffValueType.NoValue, 1, BuffSource.Enemy);
+        //            charToScoreDic[characterToComment] = 1;
+        //            Debug.Log(characterToComment.ToString() + "获得了中评");
+        //        }
 
-                break;
-        }
+        //        break;
+        //}
         this.GenerateEnemyIntention();
     }
 

@@ -226,109 +226,109 @@ public class BasicEnemy : MonoBehaviour
     //只有消减Count到0时，掉出概率才会重置（同时Recapture），否则取最高值（例：将6个BUG消至1个BUG，掉出概率依然为50%）
     private int highestDropWeight = 0;
 
-    public void MainChaMCChange()
-    {
-        switch (gM.characterM.mainCharacterType)
-        {
-            case CharacterType.Designer:
-                int chaLv = gM.aiM.des.challengeLv;
-                int chaSubtractSkill = chaLv - skillLv;
-                int skillSubtractCha = skillLv - chaLv;
-                if (skillSubtractCha > 10)
-                {
-                    gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    MagicCircleDropOut(30);
-                }
-                if (chaSubtractSkill <= 10  && skillSubtractCha <= 10)
-                {
-                    gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    MagicCirleRecapture();
-                }
-                if (chaSubtractSkill > 10)
-                {
-                    gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-                    gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-                    MagicCircleDropOut(60);
-                }
-                break;
-            case CharacterType.Programmmer:
-                Programmer programmer = gM.aiM.pro;
-                int dropWeight = 0;
-                // 当highestDropWeight == 0，说明刚刚重置，此时只要看是否Count>=2，并记录最高值
-                if (highestDropWeight == 0)
-                {
-                    if (programmer.currentErrors.Count >= 2)
-                    {
-                        dropWeight = 10 * programmer.currentErrors.Count;
-                        highestDropWeight = dropWeight;
-                    }
-                }
-                else
-                {
-                    // 首先判断Count是否已经等于0，如果是则进行重置，并重新挂上MC
-                    if (programmer.currentErrors.Count == 0)
-                    {
-                        dropWeight = 0;
-                        highestDropWeight = 0;
-                        MagicCirleRecapture();
-                    }
-                    // 如果Count>0，则比较一下当前值和最高值，记录最高值或将最高值赋给dropWeight
-                    else
-                    {
-                        dropWeight = 10 * programmer.currentErrors.Count;
-                        if (dropWeight >= highestDropWeight)
-                        {
-                            highestDropWeight = dropWeight;
-                        }
-                        else
-                        {
-                            dropWeight = highestDropWeight;
-                        }
-                    }
+    //public void MainChaMCChange()
+    //{
+    //    switch (gM.characterM.mainCharacterType)
+    //    {
+    //        case CharacterType.Designer:
+    //            int chaLv = gM.aiM.des.challengeLv;
+    //            int chaSubtractSkill = chaLv - skillLv;
+    //            int skillSubtractCha = skillLv - chaLv;
+    //            if (skillSubtractCha > 10)
+    //            {
+    //                gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                MagicCircleDropOut(30);
+    //            }
+    //            if (chaSubtractSkill <= 10  && skillSubtractCha <= 10)
+    //            {
+    //                gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                MagicCirleRecapture();
+    //            }
+    //            if (chaSubtractSkill > 10)
+    //            {
+    //                gM.buffM.SetBuff(EnemyBuff.InFlow, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Bored, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //                gM.buffM.SetBuff(EnemyBuff.Anxiety, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
+    //                MagicCircleDropOut(60);
+    //            }
+    //            break;
+    //        case CharacterType.Programmmer:
+    //            Programmer programmer = gM.aiM.pro;
+    //            int dropWeight = 0;
+    //            // 当highestDropWeight == 0，说明刚刚重置，此时只要看是否Count>=2，并记录最高值
+    //            if (highestDropWeight == 0)
+    //            {
+    //                if (programmer.currentErrors.Count >= 2)
+    //                {
+    //                    dropWeight = 10 * programmer.currentErrors.Count;
+    //                    highestDropWeight = dropWeight;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                // 首先判断Count是否已经等于0，如果是则进行重置，并重新挂上MC
+    //                if (programmer.currentErrors.Count == 0)
+    //                {
+    //                    dropWeight = 0;
+    //                    highestDropWeight = 0;
+    //                    MagicCirleRecapture();
+    //                }
+    //                // 如果Count>0，则比较一下当前值和最高值，记录最高值或将最高值赋给dropWeight
+    //                else
+    //                {
+    //                    dropWeight = 10 * programmer.currentErrors.Count;
+    //                    if (dropWeight >= highestDropWeight)
+    //                    {
+    //                        highestDropWeight = dropWeight;
+    //                    }
+    //                    else
+    //                    {
+    //                        dropWeight = highestDropWeight;
+    //                    }
+    //                }
                     
-                }
-                // 进行MC掉出判定
-                MagicCircleDropOut(dropWeight);
-                //Debug.Log("当前MC掉出概率：" + dropWeight);
-                break;
-            case CharacterType.Artist:
-                break;
-        }
-    }
+    //            }
+    //            // 进行MC掉出判定
+    //            MagicCircleDropOut(dropWeight);
+    //            //Debug.Log("当前MC掉出概率：" + dropWeight);
+    //            break;
+    //        case CharacterType.Artist:
+    //            break;
+    //    }
+    //}
 
-    public void MagicCircleDropOut(int weight)
-    {
-        int dice = Random.Range(0, 100);
-        if (dice < weight)
-        {
-            magicCircleState = MagicCircleState.Out;
-            transform.Find("MagicCircle").gameObject.SetActive(false);
-            gM.buffM.SetBuff(EnemyBuff.Weak, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-            gM.buffM.SetBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
-        }
-    }
+    //public void MagicCircleDropOut(int weight)
+    //{
+    //    int dice = Random.Range(0, 100);
+    //    if (dice < weight)
+    //    {
+    //        magicCircleState = MagicCircleState.Out;
+    //        transform.Find("MagicCircle").gameObject.SetActive(false);
+    //        gM.buffM.SetBuff(EnemyBuff.Weak, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //        gM.buffM.SetBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 0, BuffSource.Enemy);
+    //    }
+    //}
 
-    public void MagicCirleRecapture()
-    {
-            magicCircleState = MagicCircleState.In;
-            transform.Find("MagicCircle").gameObject.SetActive(true);
-            gM.buffM.SetBuff(EnemyBuff.Weak, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-            gM.buffM.SetBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-    }
+    //public void MagicCirleRecapture()
+    //{
+    //        magicCircleState = MagicCircleState.In;
+    //        transform.Find("MagicCircle").gameObject.SetActive(true);
+    //        gM.buffM.SetBuff(EnemyBuff.Weak, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
+    //        gM.buffM.SetBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
+    //}
 
-    public void MagicCirleStateControl(string pro)
-    {
+    //public void MagicCirleStateControl(string pro)
+    //{
        
-    }
+    //}
 
-    public void MagicCirleStateControl(float art)
-    {
+    //public void MagicCirleStateControl(float art)
+    //{
 
-    }
+    //}
     #endregion
 }

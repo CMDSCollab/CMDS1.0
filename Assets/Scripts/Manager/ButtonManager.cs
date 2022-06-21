@@ -12,6 +12,7 @@ public class ButtonManager : MonoBehaviour
 
     public Button drawPileButton;
     public Button discardPileButton;
+    public Button nextTurnButton;
     public Button deckCardButton;
     public GameObject startScene;
     public GameObject chooseCharacterPanel;
@@ -70,7 +71,11 @@ public class ButtonManager : MonoBehaviour
     public void OnClickNextTurn()
     {
         //gM.fightM.FightProcessManager();
-        gM.combatSM.CombatStateProcess();
+        if (gM.cardSM.currentState == gM.cardSM.defaultState && gM.combatSM.currentState == gM.combatSM.startState)
+        {
+            gM.combatSM.CombatStateProcess();
+        }
+
     }
 
     public void onClickStartButton()

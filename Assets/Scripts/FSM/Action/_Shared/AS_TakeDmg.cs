@@ -33,6 +33,8 @@ public class AS_TakeDmg : ActionBaseState
             gM.enM.enemyTarget.TakeDamage(gM.actionSM.changedValue);
         }
         gM.actionSM.isUpdate = true;
+
+        AudioManager.Instance.PlayAudio("Hit 01");
     }
 
     public override void UpdateState(GameMaster gM, int value)

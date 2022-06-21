@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     #region 设计变量
     [Header("设计")]
     public GameObject flowChartPrefab;
-
+    public GameObject flowPre;
     #endregion
 
     #region 程序变量
@@ -80,30 +80,37 @@ public class CharacterManager : MonoBehaviour
         aiObj.transform.SetAsFirstSibling();
         if (leftOrRight == "Left")
         {
-            aiObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-750, -30, 0);
+            aiObj.transform.Find("LeftPanel").gameObject.SetActive(true);
+            aiObj.transform.Find("RightPanel").gameObject.SetActive(false);
+            aiObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-826, -125, 0);
         }
         else
         {
-            aiObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-500, -30, 0);
+            aiObj.transform.Find("LeftPanel").gameObject.SetActive(false);
+            aiObj.transform.Find("RightPanel").gameObject.SetActive(true);
+            aiObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-605, -125, 0);
         }
         switch (characterType)
         {
             case CharacterType.Designer:
                 aiObj.AddComponent<DesignerAI>();
                 aiObj.GetComponent<DesignerAI>().characterInfo = characters[0];
-                aiObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[0];
+                aiObj.transform.Find("ChaImageMask").Find("DesImage").gameObject.SetActive(true);
+                aiObj.transform.Find("NameArea").Find("Name").GetComponent<Text>().text = "Designer";
                 gM.aiM.desAI = aiObj.GetComponent<DesignerAI>();
                 break;
             case CharacterType.Programmmer:
                 aiObj.AddComponent<ProgrammerAI>();
                 aiObj.GetComponent<ProgrammerAI>().characterInfo = characters[1];
-                aiObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[1];
+                aiObj.transform.Find("ChaImageMask").Find("ProImage").gameObject.SetActive(true);
+                aiObj.transform.Find("NameArea").Find("Name").GetComponent<Text>().text = "Programmer";
                 gM.aiM.proAI = aiObj.GetComponent<ProgrammerAI>();
                 break;
             case CharacterType.Artist:
                 aiObj.AddComponent<ArtistAI>();
                 aiObj.GetComponent<ArtistAI>().characterInfo = characters[2];
-                aiObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[2];
+                aiObj.transform.Find("ChaImageMask").Find("ArtImage").gameObject.SetActive(true);
+                aiObj.transform.Find("NameArea").Find("Name").GetComponent<Text>().text = "Artist";
                 gM.aiM.artAI = aiObj.GetComponent<ArtistAI>();
                 break;
         }
@@ -112,8 +119,8 @@ public class CharacterManager : MonoBehaviour
     public void MainChaGenerateAndInitialize(CharacterType characterType)
     {
         GameObject chaObj = Instantiate(templateCha, gM.uiCanvas.transform, false);
-        chaObj.transform.SetAsFirstSibling();
-        chaObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-625, 300, 0);
+        chaObj.transform.SetAsLastSibling();
+        chaObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(-710, 225, 0);
         
         switch (characterType)
         {
@@ -121,21 +128,21 @@ public class CharacterManager : MonoBehaviour
                 chaObj.AddComponent<Designer>();
                 chaObj.GetComponent<Designer>().characterInfo = characters[0];
                 mainCharacter = chaObj.GetComponent<Designer>();
-                chaObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[0];
+                chaObj.transform.Find("ChaImageMask").Find("DesImage").gameObject.SetActive(true);
                 gM.aiM.des = chaObj.GetComponent<Designer>();
                 break;
             case CharacterType.Programmmer:
                 chaObj.AddComponent<Programmer>();
                 chaObj.GetComponent<Programmer>().characterInfo = characters[1];
                 mainCharacter = chaObj.GetComponent<Programmer>();
-                chaObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[1];
+                chaObj.transform.Find("ChaImageMask").Find("ProImage").gameObject.SetActive(true);
                 gM.aiM.pro = chaObj.GetComponent<Programmer>();
                 break;
             case CharacterType.Artist:
                 chaObj.AddComponent<Artist>();
                 chaObj.GetComponent<Artist>().characterInfo = characters[2];
                 mainCharacter = chaObj.GetComponent<Artist>();
-                chaObj.transform.Find("CharacterImage").GetComponent<Image>().sprite = characterImages[2];
+                chaObj.transform.Find("ChaImageMask").Find("ArtImage").gameObject.SetActive(true);
                 gM.aiM.art = chaObj.GetComponent<Artist>();
                 break;
         }

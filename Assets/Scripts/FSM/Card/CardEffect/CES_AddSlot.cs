@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class CES_AddSlot : CEffectBaseState
 {
     AIMate targetAI;
-    int slotRecord;
-    float timer = 0.5f;
-    float timerRecord = 0.5f;
+    //float timer = 0.5f;
+    //float timerRecord = 0.5f;
+    //float maskUnit = 25;
+    float[] proSlotRecord = { 27,55,81,107,137,167 };
+    float[] artSlotRecord = { 28,56,84,112,140,168 };
+    float[] slotRecordArray;
 
     public override void EnterState(GameMaster gM, int value)
     {
@@ -19,38 +22,30 @@ public class CES_AddSlot : CEffectBaseState
                 break;
             case CEffectStateManager.AITarget.Pro:
                 targetAI = gM.aiM.proAI;
+                slotRecordArray = proSlotRecord;
                 break;
             case CEffectStateManager.AITarget.Art:
                 targetAI = gM.aiM.artAI;
+                slotRecordArray = artSlotRecord;
                 break;
         }
-        slotRecord = targetAI.energySlotAmount;
         targetAI.energySlotAmount += value;
+        if (targetAI.energySlotAmount > 6)
+        {
+            targetAI.energySlotAmount = 6;
+        }
         gM.cEffectSM.isUpdate = true;
     }
 
     public override void UpdateState(GameMaster gM, int value)
     {
-        timer -= Time.deltaTime;
-        if (slotRecord > targetAI.energySlotAmount)
+        Transform energyBar = targetAI.transform.Find("EnergyBar").transform;
+        energyBar.Find("Mask").GetComponent<RectMask2D>().padding = new Vector4(slotRecordArray[targetAI.energySlotAmount-1], 0, 0, 0);
+        //Debug.Log(energyBar.Find("Mask").GetComponent<RectMask2D>().padding.w);
+        //Debug.Log(slotRecordArray[targetAI.energySlotAmount - 1]);
+        if (energyBar.Find("Mask").GetComponent<RectMask2D>().padding.x == slotRecordArray[targetAI.energySlotAmount-1]) 
         {
-            if (timer <= 0)
-            {
-                slotRecord--;
-                timer = timerRecord;
-            }
-        }
-        if (slotRecord < targetAI.energySlotAmount)
-        {
-            if (timer <= 0)
-            {
-                slotRecord++;
-                timer = timerRecord;
-            }
-        }
-        targetAI.transform.Find("EnergyPos").Find("SlotAmount").GetComponent<Text>().text = slotRecord.ToString();
-        if (slotRecord == targetAI.energySlotAmount)
-        {
+            //Debug.Log("Entered");
             gM.cEffectSM.isUpdate = false;
             EndState(gM, value);
         }
@@ -65,7 +60,8 @@ public class CES_AddSlot : CEffectBaseState
             {
                 targetAI.energyPoint = targetAI.energySlotAmount;
             }
-            targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
+            targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = targetAI.energyPoint;
+            //targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
             targetAI.IntentionValueChangeAndUISync();
         }
         if (gM.cEffectSM.isCardEffectRunning == true)

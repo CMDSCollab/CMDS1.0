@@ -17,7 +17,7 @@ public class AS_Attack : ActionBaseState
         }
         else
         {
-            //Debug.Log("entered");
+            gM.relicM.RelicEffectApply(RelicName.PlayerDmgPlus);
             gM.buffSM.SetBuffList(cBuffs);
         }
         gM.buffSM.BuffEffectsApply();

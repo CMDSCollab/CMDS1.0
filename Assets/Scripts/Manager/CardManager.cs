@@ -43,6 +43,8 @@ public class CardManager : MonoBehaviour
                 gM.merchantSM.currentItemRectTrans = this.gameObject.GetComponent<RectTransform>();
                 gM.merchantSM.originPos = new Vector3(0, 0, 0);
                 gM.merchantSM.EnterMerchantState(gM.merchantSM.selectState);
+
+                AudioManager.Instance.PlayAudio("Card_Hover");
             }
         }
         if (gM.cardSM.currentState == gM.cardSM.defaultState || gM.cardSM.currentState == gM.cardSM.endSelectState)
@@ -50,6 +52,8 @@ public class CardManager : MonoBehaviour
             gM.cardSM.isUpdate = false;
             gM.cardSM.selectCardIndex = handIndex - 1;
             gM.cardSM.EnterCardState(gM.cardSM.selectState);
+
+            AudioManager.Instance.PlayAudio("Card_Hover");
         }
 
 
@@ -90,10 +94,15 @@ public class CardManager : MonoBehaviour
                     gM.cardFunctionM.GetCardFromMerchant(this.gameObject);
                     gM.merchantSM.EnterMerchantState(gM.merchantSM.soldState);
                     gM.comStatusBar.GoldChange(- cardInfo.realValue);
+
+                    AudioManager.Instance.PlayAudio("Card_Hover");
+                    AudioManager.Instance.PlayAudio("Coins_Purchase");
                 }
                 else
                 {
                     Debug.Log("No Gold");
+
+                    AudioManager.Instance.PlayAudio("UI Tight 14");
                 }
 
             }
@@ -122,6 +131,10 @@ public class CardManager : MonoBehaviour
                 gM.cardFunctionM.GetCardFromDrawPile(deckIndexRecord);
             }
             gM.cardFunctionM.FunctionEffectApply();
+
+
+            AudioManager.Instance.PlayAudio("Card_Play");
+
         }
     }
 

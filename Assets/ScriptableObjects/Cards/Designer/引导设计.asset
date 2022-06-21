@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: "\u5F15\u5BFC\u8BBE\u8BA1"
   m_EditorClassIdentifier: 
   cardName: "\u5F15\u5BFC\u8BBE\u8BA1"
-  description: "-2\u6311\u6218 -3Skill"
+  description: 1 Skill 2 challenge
   merchantBaseValue: 0
   realValue: 0
   baseFunctions: []
   specialFunctions: 
   desSpecialFunctions:
   - desFunctionType: 1
-    value: -2
+    value: 2
   - desFunctionType: 2
-    value: -3
+    value: 1

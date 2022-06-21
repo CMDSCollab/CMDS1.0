@@ -20,4 +20,7 @@ public class MapNode : ScriptableObject
 {
     public Sprite iconImage;
     public NodeType nodeType;
+
+    public Sprite activeSprite;
+    public Sprite inactiveSprite;
 }

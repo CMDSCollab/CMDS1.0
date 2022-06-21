@@ -21,4 +21,9 @@ public class FlowPoint : MonoBehaviour
     {
         targetPos = new Vector2(initialPos.x + xGap * gM.aiM.des.challengeLv, initialPos.y + yGap * gM.enM.enemyTarget.skillLv);
     }
+
+    public void LineInitialize()
+    {
+
+    }
 }
