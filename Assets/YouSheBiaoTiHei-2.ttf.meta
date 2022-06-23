@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6269c21358b74504ab68bd0471087f72
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - YouSheBiaoTiHei
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3ade6fac11b79e346b69b2cf44616aed, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
