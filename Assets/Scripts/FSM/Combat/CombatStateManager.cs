@@ -54,6 +54,7 @@ public class CombatStateManager : MonoBehaviour
 
     public void CombatStateProcess()
     {
+        stateIndex = 0;
         currentState = startState;
         currentState.EnterState(gM);
     }

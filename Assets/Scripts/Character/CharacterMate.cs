@@ -40,35 +40,33 @@ public class CharacterMate : BasicCharacter
     //}
     }
 
-    public virtual void SyncCharacterUI()
-    {
-        hpBar.value = healthPoint;
-        hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
-        CommonStatusBar statusBar = FindObjectOfType<CommonStatusBar>();
-    }
-
     private void InitializeCharacter()
     {
-        maxHp = characterInfo.maxHp;
-        healthPoint = maxHp;
+        //maxHp = characterInfo.maxHp;
+        //healthPoint = maxHp;
+        maxHp = gM.comStatusBar.maxHealth;
+        healthPoint = gM.comStatusBar.healthPoint;
         hpBar = transform.Find("HpBar").GetComponent<Slider>();
         hpRatio = hpBar.transform.Find("HpRatio").GetComponent<Text>();
         hpBar.maxValue = maxHp;
         SyncCharacterUI();
     }
 
+    public virtual void SyncCharacterUI()
+    {
+        hpBar.value = healthPoint;
+        hpRatio.text = healthPoint.ToString() + "/" + maxHp.ToString();
+        //CommonStatusBar statusBar = FindObjectOfType<CommonStatusBar>();
+    }
+
     public virtual void TakeDamage(int dmg)
     {
-        //Debug.Log("tdDmg:" + dmg);
-        //Debug.Log("tdDmgddadsas£º" + gM.buffM.CharacterTakeDamage(dmg));
         healthPoint -= dmg;
         gM.comStatusBar.HealthUIUpdate();
     }
 
     public virtual void HealSelf(int healAmount)
     {
-        //Debug.Log("Hp:"+healthPoint);
-        //Debug.Log("Ha:"+healAmount);
         healthPoint += healAmount;
         if (healthPoint >= maxHp)
         {

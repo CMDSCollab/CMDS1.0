@@ -65,7 +65,9 @@ public class CES_AddSlot : CEffectBaseState
             {
                 targetAI.energyPoint = targetAI.energySlotAmount;
             }
-            targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = targetAI.energyPoint;
+            energy.ChangeSprite(targetAI.energyPoint - 1);
+            Debug.Log("e+");
+            //targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = targetAI.energyPoint;
             //targetAI.transform.Find("EnergyPos").Find("EnergyPoint").GetComponent<Text>().text = targetAI.energyPoint.ToString();
             targetAI.IntentionValueChangeAndUISync();
         }

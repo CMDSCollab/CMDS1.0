@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\u5F15\u5BFC\u8BBE\u8BA1"
   m_EditorClassIdentifier: 
   cardName: "\u5F15\u5BFC\u8BBE\u8BA1"
+  cardImage: {fileID: 21300000, guid: b40c963cdaf0bee4cb2b58665cedb58b, type: 3}
   description: 1 Skill 2 challenge
   merchantBaseValue: 0
   realValue: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a891fd814b339442ae36f7dcbce3d91, type: 3}
   m_Name: MN_Merchant
   m_EditorClassIdentifier: 
-  iconImage: {fileID: 21300000, guid: 5ecc2adc81e2ae744b10260f14350c0e, type: 3}
+  iconImage: {fileID: 21300000, guid: cf8e2a04098722f46b3d0434a73ffb0a, type: 3}
   nodeType: 6
   activeSprite: {fileID: 0}
-  inactiveSprite: {fileID: 21300000, guid: 5ecc2adc81e2ae744b10260f14350c0e, type: 3}
+  inactiveSprite: {fileID: 21300000, guid: 906c09e02e114e94f8a14d52d85e2b47, type: 3}

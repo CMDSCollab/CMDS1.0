@@ -47,19 +47,10 @@ public class BasicEnemy : MonoBehaviour
         gM = FindObjectOfType<GameMaster>();
     }
 
-    public void Update()
-    {
-        //if (hpBar.value <= 0 && !isDefeated)
-        //{
-        //    isDefeated = true;
-        //    EnemyDefeated();
-        //}
-    }
-
     public virtual void InitializeEnemyUI()
     {
         enemyName = transform.Find("Name").GetComponent<Text>(); 
-        portrait = transform.Find("Portrait").GetComponent<Image>();
+        portrait = transform.Find("PortraitMask").Find("Portrait").GetComponent<Image>();
         hpBar = transform.Find("HpBar").GetComponent<Slider>();
         hpRatio = transform.Find("HpBar").Find("HpRatio").GetComponent<Text>();
 
@@ -121,24 +112,6 @@ public class BasicEnemy : MonoBehaviour
                 random -= tendencyValues[i];
             }
         }
-        //EnemyIntention lastIntention = currentIntention;
-        //Debug.Log(currentIntention);
-        //do
-        //{
-        //    int random = Random.Range(0, 100);
-        //    for (int i = 0; i < tendencyValues.Count; i++)
-        //    {
-        //        if (random < tendencyValues[i])
-        //        {
-        //            currentIntention = enemyInfo.basicIntentions[i].intention;
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            random -= tendencyValues[i];
-        //        }
-        //    }
-        //} while (lastIntention == currentIntention);
         SetIntentionUI();
     }
 
@@ -213,6 +186,17 @@ public class BasicEnemy : MonoBehaviour
     }
     #endregion
 
+    public IEnumerator TypeText(string sentence)
+    {
+        Text textDisplay = transform.Find("TextArea").Find("Text").GetComponent<Text>();
+        textDisplay.text = "";
+        foreach (char letter in sentence)
+        {
+            textDisplay.text += letter;
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+
     #region Magic Circle
     //设计师MC逻辑：输入 设计师的cha 与 敌人skillLv 两者进行比较 diff = cha - skillLv
     //当 diff > 10 时，敌人获得anxiety 并进行MC判定 30%掉出
@@ -224,7 +208,7 @@ public class BasicEnemy : MonoBehaviour
     //当 Count = 2时，MC判定每回合10%掉出 
     //在此之上，Count每多1，MC掉出概率高10%（最高6个BUG，掉出概率50%），并记录最高值（highestDropWeight）
     //只有消减Count到0时，掉出概率才会重置（同时Recapture），否则取最高值（例：将6个BUG消至1个BUG，掉出概率依然为50%）
-    private int highestDropWeight = 0;
+    //private int highestDropWeight = 0;
 
     //public void MainChaMCChange()
     //{

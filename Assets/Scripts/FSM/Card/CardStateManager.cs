@@ -13,6 +13,7 @@ public enum DiscardType
 public class CardStateManager : MonoBehaviour
 {
     private GameMaster gM;
+    public Sprite[] cardTemplateImage;
     public CardBaseState currentState;
     public CardS_Default defaultState = new CardS_Default();
     public CardS_Draw drawState = new CardS_Draw();

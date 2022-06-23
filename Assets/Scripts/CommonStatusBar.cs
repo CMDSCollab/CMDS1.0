@@ -9,8 +9,8 @@ public class CommonStatusBar : MonoBehaviour
     public GameMaster gM;
     public int gold = 0;
     public Text hpIntText;
-
-
+    public int healthPoint;
+    public int maxHealth;
 
     public List<CharacterInfo> chaInfos;
     public CharacterInfo currentInfo;
@@ -30,7 +30,8 @@ public class CommonStatusBar : MonoBehaviour
 
     public void HealthUIUpdate()
     {
-        hpIntText.text = gM.characterM.mainCharacter.healthPoint.ToString() + "/" + gM.characterM.mainCharacter.maxHp;
+        healthPoint = gM.characterM.mainCharacter.healthPoint;
+        hpIntText.text = healthPoint + "/" + maxHealth;
     }
 
     public void DetectChaType()
@@ -47,14 +48,14 @@ public class CommonStatusBar : MonoBehaviour
             default:
                 break;
         }
-
         ParametersInitilization();
-    }
 
-    public void ParametersInitilization()
-    {
-        GoldChange(currentInfo.initialGold);
-        hpIntText.text = currentInfo.maxHp.ToString() + "/" + currentInfo.maxHp.ToString();
-
+        void ParametersInitilization()
+        {
+            GoldChange(currentInfo.initialGold);
+            maxHealth = currentInfo.maxHp;
+            healthPoint = currentInfo.maxHp;
+            hpIntText.text = healthPoint.ToString() + "/" + maxHealth.ToString();
+        }
     }
 }

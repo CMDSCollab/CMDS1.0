@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     public List<NamedAudio> audiosWrapper;
     public Dictionary<string, AudioClip> nameToClipDic;
+
     public Camera gameCamera
     {
         get
@@ -16,7 +17,6 @@ public class AudioManager : MonoBehaviour
     }
 
     public static AudioManager Instance  { get; private set; }
-
 
     private void Awake()
     {

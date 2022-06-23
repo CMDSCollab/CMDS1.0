@@ -14,10 +14,10 @@ public enum CardMovement
 
 public class CardManager : MonoBehaviour
 {
+    public GameMaster gM;
     public CardInfo cardInfo;
     public Text cardNameText;
     public Image cardTemplate;
-    public GameMaster gM;
 
     public int handIndex;
     public int deckIndexRecord;
@@ -101,7 +101,6 @@ public class CardManager : MonoBehaviour
                 else
                 {
                     Debug.Log("No Gold");
-
                     AudioManager.Instance.PlayAudio("UI Tight 14");
                 }
 
@@ -149,20 +148,21 @@ public class CardManager : MonoBehaviour
     public void UpdateUI()
     {
         cardNameText.text = cardInfo.cardName;
-        cardTemplate.color = new Color(Random.Range(0.2f,0.7f), Random.Range(0.2f, 0.7f), Random.Range(0.2f, 0.7f));
+        cardTemplate.sprite = cardInfo.cardImage!;
+        //cardTemplate.color = new Color(Random.Range(0.2f,0.7f), Random.Range(0.2f, 0.7f), Random.Range(0.2f, 0.7f));
         transform.Find("CardDescription").GetComponent<Text>().text = "Description:" +"\n" +cardInfo.description;
         for (int i = 0; i < cardInfo.baseFunctions.Count; i++)
         {
             switch (cardInfo.baseFunctions[i].functionType)
             {
                 case BaseFunctionType.ArtEnergy:
-                    transform.Find("ArtEnergy").Find("Value").GetComponent<Text>().text = "+" + cardInfo.baseFunctions[i].value.ToString();
+                    transform.Find("ArtEnergy").Find("Value").GetComponent<Text>().text = cardInfo.baseFunctions[i].value.ToString();
                     break;
                 case BaseFunctionType.DsgnEnergy:
-                    transform.Find("DsgnEnergy").Find("Value").GetComponent<Text>().text = "+" + cardInfo.baseFunctions[i].value.ToString();
+                    transform.Find("DsgnEnergy").Find("Value").GetComponent<Text>().text = cardInfo.baseFunctions[i].value.ToString();
                     break;
                 case BaseFunctionType.ProEnergy:
-                    transform.Find("ProEnergy").Find("Value").GetComponent<Text>().text = "+" + cardInfo.baseFunctions[i].value.ToString();
+                    transform.Find("ProEnergy").Find("Value").GetComponent<Text>().text = cardInfo.baseFunctions[i].value.ToString();
                     break;
                 default:
                     break;

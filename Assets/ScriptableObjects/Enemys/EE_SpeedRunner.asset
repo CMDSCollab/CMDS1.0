@@ -18,8 +18,8 @@ MonoBehaviour:
   eliteType: 1
   enemyName: Speed Runner
   images:
-  - {fileID: 21300000, guid: c66712f21f79dd84e845d4810af87de8, type: 3}
-  maxHealth: 28
+  - {fileID: 21300000, guid: ef9562794ef3c8f45b00aba8ae9de8bc, type: 3}
+  maxHealth: 10
   defaultSkill: 4
   basicIntentions:
   - intention: 0
@@ -29,3 +29,4 @@ MonoBehaviour:
     tendency: 50
     skillUp: 0
   specialFunctions: 
+  sentences: []

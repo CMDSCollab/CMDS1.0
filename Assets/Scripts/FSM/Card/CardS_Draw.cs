@@ -152,6 +152,8 @@ public class CardS_Draw : CardBaseState
                 {
                     targetAI.energyPoint = targetAI.energySlotAmount;
                 }
+                targetAI.transform.Find("Energy").GetComponent<EnergyController>().ChangeSprite(targetAI.energyPoint - 1);
+                Debug.Log("e+");
                 targetAI.transform.Find("EnergyBar").GetComponent<Slider>().value = targetAI.energyPoint;
                 targetAI.IntentionValueChangeAndUISync();
             }

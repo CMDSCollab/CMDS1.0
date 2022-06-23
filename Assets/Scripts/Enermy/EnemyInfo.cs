@@ -29,4 +29,7 @@ public class EnemyInfo : ScriptableObject
     public int defaultSkill;
     public List<EnemyIntentionRatio> basicIntentions;
     public List<EnemySpecialIntention> specialFunctions;
+
+    [TextArea(2,5)]
+    public string[] sentences;
 }

@@ -74,7 +74,7 @@ public class EnemyMaster : MonoBehaviour
                 switch (enemyInfo.eliteType)
                 {
                     case EliteType.Streamer:
-                        objToAdd.AddComponent<EE_Streamer>();
+                        //objToAdd.AddComponent<EE_Streamer>();
                         break;
                     case EliteType.SpeedRunner:
                         objToAdd.AddComponent<EE_SpeedRunner>();

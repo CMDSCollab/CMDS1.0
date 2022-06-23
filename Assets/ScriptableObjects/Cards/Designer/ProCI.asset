@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ProCI
   m_EditorClassIdentifier: 
   cardName: "\u7A0B\u5E8F\u8C03\u6574"
+  cardImage: {fileID: 21300000, guid: dbab0f019f107734db77b0ca7151bc75, type: 3}
   description: "\u6539\u53D8\u7A0B\u5E8F\u733F\u7684\u610F\u56FE +1\u7A0B\u5E8F\u5145\u80FD"
   merchantBaseValue: 0
   realValue: 0

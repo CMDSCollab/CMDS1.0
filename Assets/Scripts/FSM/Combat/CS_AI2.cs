@@ -32,21 +32,7 @@ public class CS_AI2 : CombatBaseState
 
     public override void EndState(GameMaster gM)
     {
-        switch (gM.characterM.mainCharacterType)
-        {
-            case CharacterType.Designer:
-                gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Art;
-                gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.artAI.energyPoint);
-                break;
-            case CharacterType.Programmmer:
-                gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Art;
-                gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.artAI.energyPoint);
-                break;
-            case CharacterType.Artist:
-                gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Pro;
-                gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.proAI.energyPoint);
-                break;
-        }
+ 
         gM.combatSM.SwitchCombatState();
     }
 }

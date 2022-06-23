@@ -26,6 +26,7 @@ public abstract class CardInfo : ScriptableObject
     #region 卡牌基本信息
     [Header("Basic Info")]
     public string cardName;
+    public Sprite cardImage;
     [TextArea]
     public string description;
     public int merchantBaseValue;

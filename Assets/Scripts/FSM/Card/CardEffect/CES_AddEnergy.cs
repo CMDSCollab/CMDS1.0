@@ -42,7 +42,6 @@ public class CES_AddEnergy : CEffectBaseState
         {
             if (timer <= 0)
             {
-   
                 energyRecord--;
                 energy.ChangeSprite(energyRecord);
                 timer = timerRecord;

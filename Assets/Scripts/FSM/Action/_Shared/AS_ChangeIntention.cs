@@ -32,6 +32,42 @@ public class AS_ChangeIntention : ActionBaseState
         }
         else
         {
+            if (gM.combatSM.currentState == gM.combatSM.ai1State)
+            {
+                switch (gM.characterM.mainCharacterType)
+                {
+                    case CharacterType.Designer:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Pro;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.proAI.energyPoint);
+                        break;
+                    case CharacterType.Programmmer:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Des;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.desAI.energyPoint);
+                        break;
+                    case CharacterType.Artist:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Des;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.desAI.energyPoint);
+                        break;
+                }
+            }
+            else if (gM.combatSM.currentState == gM.combatSM.ai2State)
+            {
+                switch (gM.characterM.mainCharacterType)
+                {
+                    case CharacterType.Designer:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Art;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.artAI.energyPoint);
+                        break;
+                    case CharacterType.Programmmer:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Art;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.artAI.energyPoint);
+                        break;
+                    case CharacterType.Artist:
+                        gM.cEffectSM.aiTarget = CEffectStateManager.AITarget.Pro;
+                        gM.cEffectSM.EnterCardState(gM.cEffectSM.addEnergyState, -gM.aiM.proAI.energyPoint);
+                        break;
+                }
+            }
             gM.actionSM.isUpdate = true;
         }
     }

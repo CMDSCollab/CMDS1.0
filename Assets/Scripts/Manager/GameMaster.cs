@@ -13,7 +13,6 @@ public class GameMaster : MonoBehaviour
     public CardFuntionManager cardFunctionM;
     public CharacterManager characterM;
     public BuffManager buffM;
-    public FightManager fightM;
     public MapManager mapM;
     public MerchantManager merM;
     public CampManager campM;
@@ -74,5 +73,7 @@ public class GameMaster : MonoBehaviour
         {
             Destroy(handObj.transform.GetChild(i).gameObject);
         }
+        combatSM.currentState = combatSM.startState;
+        cardSM.currentState = cardSM.defaultState;
     }
 }

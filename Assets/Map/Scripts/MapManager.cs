@@ -104,7 +104,7 @@ public class MapManager : MonoBehaviour
                 }
             }
             //调用该mapNodeObj的组件中的mapNode中的图片信息赋值给Image的Sprite
-            mapNodeObj.GetComponent<SpriteRenderer>().sprite = mapNodeObj.GetComponent<MapNodeManager>().mapNode.iconImage;
+            mapNodeObj.transform.Find("NodeImage").GetComponent<SpriteRenderer>().sprite = mapNodeObj.GetComponent<MapNodeManager>().mapNode.iconImage;
             //设定父物体
             mapNodeObj.transform.SetParent(transform.Find("NodeCollection"));
             //调整水平位置关系

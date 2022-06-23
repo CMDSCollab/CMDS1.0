@@ -15,6 +15,7 @@ public class CampMaster : MonoBehaviour
     {
         gM = FindObjectOfType<GameMaster>();
     }
+
     private void Start()
     {
         gM.characterM.mainCharacter.TakeDamage(20);

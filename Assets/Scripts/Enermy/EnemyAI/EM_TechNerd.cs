@@ -15,12 +15,15 @@ public class EM_TechNerd : BasicEnemy
         {
             case EnemyIntention.Attack:
                 gM.actionSM.EnterActionState(gM.actionSM.attackState, defaultDmg);
+                StartCoroutine(TypeText(enemyInfo.sentences[0]));
                 break;
             case EnemyIntention.Charge:
                 gM.actionSM.EnterActionState(gM.actionSM.chargeState, 1);
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
                 break;
             case EnemyIntention.Block:
                 gM.actionSM.EnterActionState(gM.actionSM.blockState, 1);
+                StartCoroutine(TypeText(enemyInfo.sentences[2]));
                 break;
         }
     }

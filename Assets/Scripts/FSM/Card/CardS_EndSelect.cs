@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardS_EndSelect : CardBaseState
 {
@@ -8,14 +9,16 @@ public class CardS_EndSelect : CardBaseState
     {
         //Debug.Log("EndSelect");
         gM.cardSM.CalculateAllCardsDefaultPos(gM);
-        //for (int i = 0; i < gM.handM.handCardList.Count; i++)
-        //{
-        //    if (i == gM.cardSM.selectCardIndex)
-        //    {
-        //        gM.cardSM.selectedRect = gM.handM.handCardList[i].GetComponent<RectTransform>();
-        //        gM.cardSM.selectedTargetPos = new Vector3(gM.cardSM.selectedRect.anchoredPosition.x, gM.cardSM.selectedRect.anchoredPosition.y - gM.cardSM.selectMoveAmount, 0);
-        //    }
-        //}
+        for (int i = 0; i < gM.handM.handCardList.Count; i++)
+        {
+            if (i == gM.cardSM.selectCardIndex)
+            {
+                gM.handM.handCardList[i].transform.Find("CardTemplate").GetComponent<Image>().sprite = gM.cardSM.cardTemplateImage[0];
+                gM.handM.handCardList[i].transform.Find("CardName").GetComponent<Text>().color = Color.white;
+                //gM.cardSM.selectedRect = gM.handM.handCardList[i].GetComponent<RectTransform>();
+                //gM.cardSM.selectedTargetPos = new Vector3(gM.cardSM.selectedRect.anchoredPosition.x, gM.cardSM.selectedRect.anchoredPosition.y - gM.cardSM.selectMoveAmount, 0);
+            }
+        }
         gM.cardSM.isUpdate = true;
     }
 

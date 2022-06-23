@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardS_Select : CardBaseState
 {
@@ -12,6 +13,8 @@ public class CardS_Select : CardBaseState
         {
             if (i == gM.cardSM.selectCardIndex)
             {
+                gM.handM.handCardList[i].transform.Find("CardTemplate").GetComponent<Image>().sprite = gM.cardSM.cardTemplateImage[1];
+                gM.handM.handCardList[i].transform.Find("CardName").GetComponent<Text>().color = Color.black;
                 gM.cardSM.selectedRect = gM.handM.handCardList[i].GetComponent<RectTransform>();
                 gM.cardSM.selectedTargetPos = new Vector3(gM.cardSM.cardsPos[i].x, gM.cardSM.selectedRect.anchoredPosition.y + gM.cardSM.selectMoveAmount, 0);
             }

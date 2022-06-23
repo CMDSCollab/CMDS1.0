@@ -115,21 +115,22 @@ public class CardS_Discard : CardBaseState
                 gM.handM.handCardList.Clear();
                 break;
         }
-        if (gM.enM.enemyTarget is EE_SpeedRunner)
-        {
-            int random = Random.Range(0, 4);
-            if (random == 0)
-            {
-                gM.combatSM.CombatStateProcess();
-            }
-            else
-            {
-                gM.cardSM.EnterCardState(gM.cardSM.defaultState);
-            }
-        }
-        else
-        {
-            gM.cardSM.EnterCardState(gM.cardSM.defaultState);
-        }
+        //if (gM.enM.enemyTarget is EE_SpeedRunner)
+        //{
+        //    int random = Random.Range(0, 4);
+        //    if (random == 0)
+        //    {
+        //        gM.combatSM.CombatStateProcess();
+        //    }
+        //    else
+        //    {
+        //        gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+        //    }
+        //}
+        //else
+        //{
+        //    gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+        //}
+        gM.cardSM.EnterCardState(gM.cardSM.defaultState);
     }
 }

@@ -9,11 +9,12 @@ public class AS_Heal : ActionBaseState
     public override void EnterState(GameMaster gM, int value)
     {
         gM.actionSM.changedValue = value;
-        gM.characterM.mainCharacter.healthPoint += gM.actionSM.changedValue;
-        if (gM.characterM.mainCharacter.healthPoint >= gM.characterM.mainCharacter.maxHp)
-        {
-            gM.characterM.mainCharacter.healthPoint = gM.characterM.mainCharacter.maxHp;
-        }
+        gM.characterM.mainCharacter.HealSelf(gM.actionSM.changedValue);
+        //gM.characterM.mainCharacter.healthPoint += gM.actionSM.changedValue;
+        //if (gM.characterM.mainCharacter.healthPoint >= gM.characterM.mainCharacter.maxHp)
+        //{
+        //    gM.characterM.mainCharacter.healthPoint = gM.characterM.mainCharacter.maxHp;
+        //}
         gM.actionSM.isUpdate = true;
     }
 
