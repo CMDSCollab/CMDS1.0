@@ -28,7 +28,8 @@ public class CharacterMate : BasicCharacter
 
     public void CharacterDefeated()
     {
-        gM.uiCanvas.transform.Find("StatisticPanel").gameObject.SetActive(true);
+        //gM.uiCanvas.transform.Find("StatisticPanel").gameObject.SetActive(true);
+        gM.panelM.InstantiatePanel(PanelType.Reward);
     }
 
     public void Update()

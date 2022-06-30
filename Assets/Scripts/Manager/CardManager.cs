@@ -12,6 +12,14 @@ public enum CardMovement
     Use
 }
 
+public enum CardInWhere
+{
+    InShop,
+    InDeck,
+    InBattle,
+    InChest
+}
+
 public class CardManager : MonoBehaviour
 {
     public GameMaster gM;
@@ -22,120 +30,123 @@ public class CardManager : MonoBehaviour
     public int handIndex;
     public int deckIndexRecord;
     public bool ifTouched = false;
-    public bool isOnSell; //是否在商店中出售；
     public CardMovement cardMovement = CardMovement.Null;
+    public CardInWhere inWhere = CardInWhere.InBattle;
 
     private void Start()
     {
         gM = FindObjectOfType<GameMaster>();
-        UpdateUI();
+        IntializeCard();
     }
 
     public void OnMouseEnter()
     {
-        //Debug.Log("AAAA" + gM.cardSM.currentState.ToString());
-
-        if (isOnSell)
+        switch (inWhere)
         {
-            if(gM.merchantSM.currentState == gM.merchantSM.defaultState || gM.merchantSM.currentState == gM.merchantSM.deselectState)
-            {
-                gM.merchantSM.isUpdate = false;
-                gM.merchantSM.currentItemRectTrans = this.gameObject.GetComponent<RectTransform>();
-                gM.merchantSM.originPos = new Vector3(0, 0, 0);
-                gM.merchantSM.EnterMerchantState(gM.merchantSM.selectState);
-
-                AudioManager.Instance.PlayAudio("Card_Hover");
-            }
+            case CardInWhere.InShop:
+                if (gM.merchantSM.currentState == gM.merchantSM.defaultState || gM.merchantSM.currentState == gM.merchantSM.deselectState)
+                {
+                    gM.merchantSM.isUpdate = false;
+                    gM.merchantSM.currentItemRectTrans = this.gameObject.GetComponent<RectTransform>();
+                    gM.merchantSM.originPos = new Vector3(0, 0, 0);
+                    gM.merchantSM.EnterMerchantState(gM.merchantSM.selectState);
+                }
+                break;
+            case CardInWhere.InDeck:
+                break;
+            case CardInWhere.InBattle:
+                if (gM.cardSM.currentState == gM.cardSM.defaultState || gM.cardSM.currentState == gM.cardSM.endSelectState)
+                {
+                    gM.cardSM.isUpdate = false;
+                    gM.cardSM.selectCardIndex = handIndex - 1;
+                    gM.cardSM.EnterCardState(gM.cardSM.selectState);
+                    AudioManager.Instance.PlayAudio("Card_Hover");
+                }
+                break;
+            case CardInWhere.InChest:
+                transform.GetComponent<RectTransform>().localScale = new Vector3(1.2f, 1.2f, 0);
+                break;
         }
-        if (gM.cardSM.currentState == gM.cardSM.defaultState || gM.cardSM.currentState == gM.cardSM.endSelectState)
-        {
-            gM.cardSM.isUpdate = false;
-            gM.cardSM.selectCardIndex = handIndex - 1;
-            gM.cardSM.EnterCardState(gM.cardSM.selectState);
-
-            AudioManager.Instance.PlayAudio("Card_Hover");
-        }
-
-
-        //transform.position += Vector3.up * 50;
-        //ifTouched = true;
     }
 
     public void OnMouseExit()
     {
-        if (isOnSell)
+        switch (inWhere)
         {
-            if (gM.merchantSM.currentState == gM.merchantSM.selectState)
-            {
-                gM.merchantSM.isUpdate = false;
-                gM.merchantSM.EnterMerchantState(gM.merchantSM.deselectState);
-            }
+            case CardInWhere.InShop:
+                if (gM.merchantSM.currentState == gM.merchantSM.selectState)
+                {
+                    gM.merchantSM.isUpdate = false;
+                    gM.merchantSM.EnterMerchantState(gM.merchantSM.deselectState);
+                }
+                break;
+            case CardInWhere.InDeck:
+                break;
+            case CardInWhere.InBattle:
+                if (gM.cardSM.currentState == gM.cardSM.selectState)
+                {
+                    gM.cardSM.isUpdate = false;
+                    gM.cardSM.selectCardIndex = handIndex - 1;
+                    gM.cardSM.EnterCardState(gM.cardSM.endSelectState);
+                }
+                break;
+            case CardInWhere.InChest:
+                transform.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 0);
+                break;
         }
-        if (gM.cardSM.currentState == gM.cardSM.selectState)
-        {
-            gM.cardSM.isUpdate = false;
-            gM.cardSM.selectCardIndex = handIndex - 1;
-            gM.cardSM.EnterCardState(gM.cardSM.endSelectState);
-        }
-
-        //transform.position += Vector3.down * 50;
-        //ifTouched = false;
     }
 
     public void OnMouseClick()
     {
-
-        if (isOnSell)
+        switch (inWhere)
         {
-            if (gM.merchantSM.currentState == gM.merchantSM.selectState)
-            {
-                if (cardInfo.realValue <= gM.comStatusBar.gold)
+            case CardInWhere.InShop:
+                if (gM.merchantSM.currentState == gM.merchantSM.selectState)
                 {
-                    gM.cardFunctionM.GetCardFromMerchant(this.gameObject);
-                    gM.merchantSM.EnterMerchantState(gM.merchantSM.soldState);
-                    gM.comStatusBar.GoldChange(- cardInfo.realValue);
+                    if (cardInfo.realValue <= gM.comStatusBar.gold)
+                    {
+                        gM.cardFunctionM.GetNewCard(this.gameObject);
+                        gM.merchantSM.EnterMerchantState(gM.merchantSM.soldState);
+                        gM.comStatusBar.GoldChange(-cardInfo.realValue);
 
-                    AudioManager.Instance.PlayAudio("Card_Hover");
-                    AudioManager.Instance.PlayAudio("Coins_Purchase");
+                        AudioManager.Instance.PlayAudio("Card_Hover");
+                        AudioManager.Instance.PlayAudio("Coins_Purchase");
+                    }
+                    else
+                    {
+                        Debug.Log("No Gold");
+                        AudioManager.Instance.PlayAudio("UI Tight 14");
+                    }
                 }
-                else
+                break;
+            case CardInWhere.InDeck:
+                if (gM.cardFunctionM.cardCanbeGetFromDrawPile == true)
                 {
-                    Debug.Log("No Gold");
-                    AudioManager.Instance.PlayAudio("UI Tight 14");
+                    gM.cardFunctionM.GetCardFromDrawPile(deckIndexRecord);
                 }
-
-            }
-
-            return;
-
+                break;
+            case CardInWhere.InBattle:
+                if (gM.cardSM.currentState == gM.cardSM.selectState)
+                {
+                    if (gameObject.transform.parent.name != "CardLayout") //确认不是弃抽牌堆的卡再使用
+                    {
+                        if (cardInfo.specialFunctions.Contains(SpecialFunctionType.Exhausted) == false)
+                        {
+                            cardMovement = CardMovement.Use;
+                            gM.cardSM.EnterCardState(gM.cardSM.useState);
+                        }
+                    }
+                    gM.cardFunctionM.FunctionEffectApply();
+                    AudioManager.Instance.PlayAudio("Card_Play");
+                }
+                break;
+            case CardInWhere.InChest:
+                gM.cardFunctionM.GetNewCard(this.gameObject);
+                Destroy(this.gameObject);
+                break;
         }
-
-        if (gM.cardSM.currentState == gM.cardSM.selectState)
-        {
-            if (gameObject.transform.parent.name != "CardLayout") //确认不是弃抽牌堆的卡再使用
-            {
-                //CardFuntion();
-                if (cardInfo.specialFunctions.Contains(SpecialFunctionType.Exhausted) == false)
-                {
-                    cardMovement = CardMovement.Use;
-                    gM.cardSM.EnterCardState(gM.cardSM.useState);
-                    //cardMovement = CardMovement.Discard;
-                    //gM.cardSM.EnterCardState(gM.cardSM.discardState);
-                    //DiscardHandCard();
-                }
-                //gM.handM.OrganizeHand();
-            }
-            if (gameObject.transform.parent.name == "CardLayout" && gM.cardFunctionM.cardCanbeGetFromDrawPile == true)
-            {
-                gM.cardFunctionM.GetCardFromDrawPile(deckIndexRecord);
-            }
-            gM.cardFunctionM.FunctionEffectApply();
-
-
-            AudioManager.Instance.PlayAudio("Card_Play");
-
-        }
-    }
+    } 
+    
 
     //丢弃手牌：在打出卡牌与回合结束时调用
     public void DiscardHandCard()
@@ -145,7 +156,7 @@ public class CardManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void UpdateUI()
+    public void IntializeCard()
     {
         cardNameText.text = cardInfo.cardName;
         cardTemplate.sprite = cardInfo.cardImage!;

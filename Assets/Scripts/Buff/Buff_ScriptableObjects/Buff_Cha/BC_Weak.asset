@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba39e82f0c9f7147a0d8f09aa05a385, type: 3}
   m_Name: BC_Weak
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 0061a89775b437048ac45edbf35b073c, type: 3}
+  image: {fileID: 21300000, guid: 57bd128622ab73144ba87abd75cbf13a, type: 3}
   buffName: Weak
   description: asddgbbbzvxc
   characterBuffType: 5

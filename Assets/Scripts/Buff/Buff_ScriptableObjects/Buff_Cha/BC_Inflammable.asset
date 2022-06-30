@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba39e82f0c9f7147a0d8f09aa05a385, type: 3}
   m_Name: BC_Inflammable
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: d1f584fdc4884594c805ec3b7f078882, type: 3}
+  image: {fileID: 21300000, guid: 8660351376280fc498c3a2351c8f4170, type: 3}
   buffName: Inflammable
   description: adsadsdsasads
   characterBuffType: 6

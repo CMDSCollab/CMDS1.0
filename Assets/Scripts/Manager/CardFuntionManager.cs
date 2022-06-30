@@ -14,7 +14,7 @@ public class CardFuntionManager : MonoBehaviour
         gM = FindObjectOfType<GameMaster>();
     }
 
-    public void GetCardFromMerchant(GameObject newCard)
+    public void GetNewCard(GameObject newCard)
     {
         gM.deckM.cardInDeck.Add(gM.deckM.cardInDeck.Count, newCard.GetComponent<CardManager>().cardInfo);
     }

@@ -6,8 +6,8 @@ using System;
 
 public class HoverTipManager : MonoBehaviour
 {
-    public static Action<string, string, Vector2> OnMouseHover;
-    public static Action OnMouseLoseFocus;
+    //public static Action<string, string, Vector2> OnMouseHover;
+    //public static Action OnMouseLoseFocus;
 
     public void ShowTip(string tipName,string tipDescription, Vector2 mousePos)
     {

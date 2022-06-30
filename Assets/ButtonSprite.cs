@@ -13,7 +13,6 @@ public class ButtonSprite : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         buttonImg.sprite = touchSpr;
-        Debug.Log("1");
     }
 
     public void OnPointerExit(PointerEventData eventData)

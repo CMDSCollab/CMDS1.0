@@ -84,10 +84,6 @@ public class ButtonManager : MonoBehaviour
         chooseCharacterPanel.SetActive(true);
     }
 
-    public void onClickQuitButton()
-    {
-        QuitGame();
-    }
     public void OnClickDesigner()
     {
         globalM.characterType = CharacterType.Designer;
@@ -112,16 +108,5 @@ public class ButtonManager : MonoBehaviour
         gM.FightEndReset();
         gM.mapM.gameObject.SetActive(true);
         //gM.uiCanvas.gameObject.SetActive(false);
-    }
-
-    public void OnClickBackToMainMenu()
-    {
-        //globalM.characterType = null;
-        SceneManager.LoadScene("SelectCharacter");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }

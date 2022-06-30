@@ -96,11 +96,12 @@ public class EB_JosefFames : BasicEnemy
                 enemySequence = 1;
             }
             gM.actionSM.EnterActionState(gM.actionSM.reviveState, 1);
-       
         }
         else
         {
             base.EnemyDefeated();
+            FindObjectOfType<Panel_Reward>().transform.Find("BackToMap").gameObject.SetActive(false);
+            FindObjectOfType<Panel_Reward>().transform.Find("BackToMain").gameObject.SetActive(true);
         }
     }
 }

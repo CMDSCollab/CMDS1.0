@@ -8,7 +8,11 @@ public class MapInteraction : MonoBehaviour
 
     void Update()
     {
-        MapScroll();
+        if (FindObjectOfType<GameMaster>().panelM.isPanelOpen == false)
+        {
+            MapScroll();
+        }
+
     }
 
     public void MapScroll()
