@@ -1,57 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum RelicName
-{
-    HandCardDrawAmountPlus,
-    PlayerDmgPlus,
-    HpRegenerationOnMapMove
-}
+using System.Linq;
 
 public class RelicManager : MonoBehaviour
 {
     public GameMaster gM;
-    public List<RelicName> activeRelics = new List<RelicName>();
-    public delegate void RelicDelegate();
+    public List<RelicInfo> relicPool;
+    public List<RelicInfo> activeRelics = new List<RelicInfo>();
 
-
-    RelicDelegate relicDelegate;
-    // Start is called before the first frame update
     void Start()
     {
         gM = FindObjectOfType<GameMaster>();
-        relicDelegate = DebugH;
-        //relicDelegate = new RelicDelegate { Debug.Log("asdasda")};
-        relicDelegate();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RelicEffectApply(RelicEffectType effectType)
     {
-        
-    }
-
-    public void RelicEffectApply(RelicName relicName)
-    {
-        if (activeRelics.Contains(relicName))
+        List<RelicEffectType> activeEffects = new List<RelicEffectType>();
+        foreach (RelicInfo info in activeRelics)
         {
-            switch (relicName)
+            activeEffects.Add(info.effectType);
+        }
+        if (activeEffects.Contains(effectType))
+        {
+            switch (effectType)
             {
-                case RelicName.HandCardDrawAmountPlus:
+                case RelicEffectType.HandCardDrawAmountPlus:
                     gM.deckM.drawCardAmount = 4;
                     break;
-                case RelicName.PlayerDmgPlus:
+                case RelicEffectType.PlayerDmgPlus:
                     gM.buffSM.valueToCalculate += 1;
                     break;
-                case RelicName.HpRegenerationOnMapMove:
+                case RelicEffectType.HpRegenerationOnMapMove:
+                    gM.characterM.mainCharacter.HealSelf(3);
                     break;
             }
         }
     }
 
-    private void DebugH()
+    public List<RelicInfo> FindUnobtainedRelics()
     {
-        //Debug.Log("hhhhhh");
+        List<RelicInfo> unobtainedRelics = new List<RelicInfo>();
+        foreach (RelicInfo info in relicPool)
+        {
+            if (!activeRelics.Contains(info))
+            {
+                unobtainedRelics.Add(info);
+            }
+        }
+        //List<RelicInfo> unobtainedRelics = relicPool.Union(activeRelics).ToList(); //剔除重复项
+        //List<RelicInfo> unobtainedRelics = relicPool.Concat(activeRelics).ToList(); //保留重复项
+        //List<RelicInfo> unobtainedRelics = relicPool.Where(a => activeRelics.Contains(a)!).ToList();
+        return unobtainedRelics;
     }
 }

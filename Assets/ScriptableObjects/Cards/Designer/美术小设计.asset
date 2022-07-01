@@ -16,7 +16,7 @@ MonoBehaviour:
   cardImage: {fileID: 21300000, guid: 28586a85e1dc0ff449fbf6da98b5a1f1, type: 3}
   description: 
   merchantBaseValue: 0
-  realValue: 0
+  realValue: 50
   baseFunctions:
   - functionType: 3
     value: 2

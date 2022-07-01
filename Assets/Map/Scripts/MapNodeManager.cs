@@ -13,7 +13,7 @@ public class MapNodeManager : MonoBehaviour
     public int step;
     public bool ifApproachable;
     public bool ifExplored;
-    public float scaleChangeSpeed;
+    private float scaleChangeSpeed = 2;
     public float time;
 
     public void Awake()
@@ -25,8 +25,7 @@ public class MapNodeManager : MonoBehaviour
     {
         if (ifApproachable)
         {
-            //this.GetComponent<SpriteRenderer>().sprite = mapNode.activeSprite;
-            GetComponent<SpriteRenderer>().color = Color.red;
+            scaleChangeSpeed = 0;
         }
         else
         {
@@ -36,19 +35,14 @@ public class MapNodeManager : MonoBehaviour
 
     public void OnMouseExit()
     {
-        this.GetComponent<SpriteRenderer>().sprite = mapNode.inactiveSprite;
-
-        if (ifExplored)
+        if (ifApproachable)
         {
-            GetComponent<SpriteRenderer>().color = Color.black;
+            scaleChangeSpeed = 2;
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.white;
+            transform.localScale = new Vector3(0.1f, 0.1f, 1);
         }
-
-        transform.localScale = new Vector3(0.1f, 0.1f, 1);
-
     }
 
     public void OnMouseDown()
@@ -60,7 +54,7 @@ public class MapNodeManager : MonoBehaviour
         else
         {
             ifExplored = true;
-            mapM.gM.relicM.RelicEffectApply(RelicName.HpRegenerationOnMapMove);
+            mapM.gM.relicM.RelicEffectApply(RelicEffectType.HpRegenerationOnMapMove);
         }
 
         switch (mapNode.nodeType)
@@ -77,12 +71,13 @@ public class MapNodeManager : MonoBehaviour
                 EnterBattleScene(EnemyType.Boss);
                 break;
             case NodeType.Chest:
+                mapM.gM.panelM.InstantiatePanel(PanelType.Chest);
                 break;
             case NodeType.Rest:
-                EnterCamp();
+                mapM.gM.panelM.InstantiatePanel(PanelType.Rest);
                 break;
             case NodeType.Merchant:
-                EnterMerchant();
+                mapM.gM.panelM.InstantiatePanel(PanelType.Merchant);
                 break;
             case NodeType.Uncertainty:
                 break;
@@ -110,16 +105,6 @@ public class MapNodeManager : MonoBehaviour
         mapM.gameObject.SetActive(false);
     }
 
-    public void EnterMerchant()
-    {
-        mapM.gM.merM.OnClickMapNode_Merchant();    
-    }
-
-    public void EnterCamp()
-    {
-        mapM.gM.campM.OnClickMapnode_Camp();
-    }
-
     public void ResetCurrentLevelNode()
     {
         for(int i = 0; i < mapM.allLayerNodes[step].Count; i++)
@@ -135,12 +120,15 @@ public class MapNodeManager : MonoBehaviour
 
         if (ifExplored)
         {
-            GetComponent<SpriteRenderer>().color = Color.black;
+            //transform.Find("NodeImage").GetComponent<SpriteRenderer>().sprite = mapNode.inactiveSprite;
+            //transform.Find("NodeImage").GetComponent<SpriteRenderer>().color = Color.black;
 
         }
         else
         {
-            GetComponent<SpriteRenderer>().color = Color.white;
+            transform.Find("NodeImage").GetComponent<SpriteRenderer>().sprite = mapNode.inactiveSprite;
+            //transform.Find("NodeImage").GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f);
+            //transform.Find("NodeImage").GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
@@ -154,14 +142,15 @@ public class MapNodeManager : MonoBehaviour
 
     public void ScaleChangeWhenActive(float change)
     {
-        float scaleChange = ScaleFunction(change);
+        //float scaleChange = ScaleFunction(change);
+        float scaleChange = (Mathf.Cos(change) + 2) * 0.1f;
         transform.localScale = new Vector3(scaleChange, scaleChange, 1);
     }
 
-    public float ScaleFunction(float angle)
-    {
-        return (Mathf.Cos(angle) + 2) * 0.1f;
-    }
+    //public float ScaleFunction(float angle)
+    //{
+    //    //return (Mathf.Cos(angle) + 2) * 0.1f;
+    //}
 
     private void Update()
     {

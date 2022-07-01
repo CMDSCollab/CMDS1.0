@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba39e82f0c9f7147a0d8f09aa05a385, type: 3}
   m_Name: BE_Inflow
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 17fcf6410f0cd0b4fb2a4f712ceb28d5, type: 3}
+  image: {fileID: 21300000, guid: 56105abb1bd904e43b01b224c919f6a0, type: 3}
   buffName: In Flow
   description: "\u5FC3\u6D41\uFF1A\u83B7\u5F97\u6613\u4F24Buff"
   characterBuffType: 0

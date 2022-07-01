@@ -89,4 +89,10 @@ public class EM_Hoarder : BasicEnemy
                 break;
         }
     }
+
+    public override void EnemyDefeated()
+    {
+        gM.comStatusBar.GoldChange(goldBonus);
+        base.EnemyDefeated();
+    }
 }

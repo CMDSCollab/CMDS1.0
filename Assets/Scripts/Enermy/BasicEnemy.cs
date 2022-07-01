@@ -67,8 +67,8 @@ public class BasicEnemy : MonoBehaviour
 
     public virtual void EnemyDefeated()
     {
-        gM.uiCanvas.transform.Find("RewardPanel").GetComponent<RewardPanel>().SetRewardPanel(enemyLv);
-        gM.uiCanvas.transform.Find("RewardPanel").gameObject.SetActive(true);
+        gM.panelM.InstantiatePanel(PanelType.Reward);
+        FindObjectOfType<Panel_Reward>().isPlayerWin = true;
     }
 
     public virtual void TakeAction()

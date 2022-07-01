@@ -8,7 +8,7 @@ public class CharacterManager : MonoBehaviour
     #region 角色通用变量
     [Header("通用")]
     public GameMaster gM;
-    public CharacterType mainCharacterType;
+    public CharacterType mainCharacterType = CharacterType.Designer;
     public GameObject templateAI;
     public GameObject templateCha;
     public List<CharacterInfo> characters = new List<CharacterInfo>();

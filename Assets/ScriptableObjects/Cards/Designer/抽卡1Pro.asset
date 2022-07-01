@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: "\u62BD\u53611Pro"
   m_EditorClassIdentifier: 
   cardName: "\u62BD\u53611 ProE"
+  cardImage: {fileID: 21300000, guid: 14222c90d13abf44882bf78f21ed43df, type: 3}
   description: "\u62BD\u4E00\u5F20\u5361"
+  merchantBaseValue: 0
+  realValue: -23
   baseFunctions:
   - functionType: 9
     value: 1

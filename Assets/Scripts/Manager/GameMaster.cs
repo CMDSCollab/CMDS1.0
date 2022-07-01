@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class GameMaster : MonoBehaviour
     public CharacterManager characterM;
     public BuffManager buffM;
     public MapManager mapM;
-    public MerchantManager merM;
-    public CampManager campM;
+    public PanelManager panelM;
+    //public MerchantManager merM;
+    //public CampManager campM;
+    //public ChestManager chestM;
     public RelicManager relicM;
 
     public CombatStateManager combatSM;
@@ -38,8 +41,9 @@ public class GameMaster : MonoBehaviour
         }
         characterM.InitializeCharacters();
         enM.InitializeEnemy();
-        relicM.RelicEffectApply(RelicName.HandCardDrawAmountPlus);
+        relicM.RelicEffectApply(RelicEffectType.HandCardDrawAmountPlus);
         deckM.PrepareDeckAndHand();
+        comStatusBar.transform.Find("SceneName").GetComponent<Text>().text = "FIGHT";
     }
 
     public void FightEndReset()
@@ -75,5 +79,6 @@ public class GameMaster : MonoBehaviour
         }
         combatSM.currentState = combatSM.startState;
         cardSM.currentState = cardSM.defaultState;
+        comStatusBar.transform.Find("SceneName").GetComponent<Text>().text = "MAP LEVEL 1";
     }
 }

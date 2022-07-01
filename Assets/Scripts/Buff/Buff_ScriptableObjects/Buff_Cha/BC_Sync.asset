@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba39e82f0c9f7147a0d8f09aa05a385, type: 3}
   m_Name: BC_Sync
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 9f7b6a4577c01794b94f7966cc079a89, type: 3}
+  image: {fileID: 21300000, guid: 679607c883ce2f743bde223e8306dc2c, type: 3}
   buffName: Sync
   description: sadsdsdaadssaddsaads
   characterBuffType: 8

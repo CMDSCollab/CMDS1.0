@@ -11,9 +11,11 @@ public class CommonStatusBar : MonoBehaviour
     public Text hpIntText;
     public int healthPoint;
     public int maxHealth;
+    private int highestRelicCount = 9;
 
     public List<CharacterInfo> chaInfos;
     public CharacterInfo currentInfo;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -57,5 +59,14 @@ public class CommonStatusBar : MonoBehaviour
             healthPoint = currentInfo.maxHp;
             hpIntText.text = healthPoint.ToString() + "/" + maxHealth.ToString();
         }
+    }
+
+    public Vector3 RelicPosSet()
+    {
+        float relicAreaWidth = transform.Find("RelicArea").GetComponent<RectTransform>().rect.width;
+        float singleRelicRange = relicAreaWidth / highestRelicCount;
+        float startPos = -relicAreaWidth / 2 + singleRelicRange / 2;
+        Vector3 targetPos = new Vector3((gM.relicM.activeRelics.Count-1) * singleRelicRange + startPos, 0, 0);
+        return targetPos;
     }
 }
