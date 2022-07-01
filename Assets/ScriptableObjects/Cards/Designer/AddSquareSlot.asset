@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: AddSquareSlot
   m_EditorClassIdentifier: 
   cardName: "\u7A0B\u5E8F\u5C0F\u9700\u6C42"
-  cardImage: {fileID: 21300000, guid: ddb6668bb29cec74db136b30c0952245, type: 3}
-  description: "\u52A01\u7A0B\u5E8F\u80FD\u91CF\u69FD"
+  cardImage: {fileID: 21300000, guid: 14222c90d13abf44882bf78f21ed43df, type: 3}
+  description: "\u589E\u52A01\u4E2A\u7A0B\u5E8F\u80FD\u91CF\u69FD"
   merchantBaseValue: 0
   realValue: 0
   baseFunctions:
   - functionType: 8
+    value: 1
+  - functionType: 5
     value: 1
   specialFunctions: 
   desSpecialFunctions: []

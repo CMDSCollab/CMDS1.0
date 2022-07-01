@@ -16,15 +16,15 @@ MonoBehaviour:
   minionType: 0
   bossType: 0
   eliteType: 1
-  enemyName: Speed Runner
+  enemyName: "\u901F\u901A\u73A9\u5BB6"
   images:
   - {fileID: 21300000, guid: ef9562794ef3c8f45b00aba8ae9de8bc, type: 3}
-  maxHealth: 10
-  defaultSkill: 4
+  maxHealth: 21
+  defaultSkill: 12
   basicIntentions:
   - intention: 0
     tendency: 50
-    skillUp: 1
+    skillUp: 3
   - intention: 14
     tendency: 50
     skillUp: 0

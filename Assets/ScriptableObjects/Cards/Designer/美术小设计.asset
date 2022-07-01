@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: "\u7F8E\u672F\u5C0F\u8BBE\u8BA1"
   cardImage: {fileID: 21300000, guid: 28586a85e1dc0ff449fbf6da98b5a1f1, type: 3}
-  description: "+2\u7F8E\u672F\u5145\u80FD"
+  description: 
   merchantBaseValue: 0
   realValue: 0
   baseFunctions:

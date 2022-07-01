@@ -16,21 +16,21 @@ MonoBehaviour:
   minionType: 0
   bossType: 0
   eliteType: 0
-  enemyName: TechNerd
+  enemyName: "\u79D1\u6280\u515A"
   images:
   - {fileID: 21300000, guid: ba7bb594556e2f24cadf60c9a252e3ca, type: 3}
-  maxHealth: 10
-  defaultSkill: 3
+  maxHealth: 40
+  defaultSkill: 9
   basicIntentions:
   - intention: 0
     tendency: 60
-    skillUp: 1
+    skillUp: 3
   - intention: 6
-    tendency: 20
-    skillUp: 2
+    tendency: 25
+    skillUp: 6
   - intention: 7
-    tendency: 20
-    skillUp: 2
+    tendency: 15
+    skillUp: 6
   specialFunctions: 
   sentences:
   - "\u505A\u7684\u4E00\u822C"

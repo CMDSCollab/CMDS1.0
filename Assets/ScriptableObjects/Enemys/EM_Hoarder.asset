@@ -16,18 +16,18 @@ MonoBehaviour:
   minionType: 3
   bossType: 0
   eliteType: 0
-  enemyName: The Hoarder
+  enemyName: "\u559C\u52A0\u4E00\u515A"
   images:
   - {fileID: 21300000, guid: 96418984737668e4182ed98690c76a86, type: 3}
-  maxHealth: 10
-  defaultSkill: 4
+  maxHealth: 50
+  defaultSkill: 8
   basicIntentions:
   - intention: 0
     tendency: 70
-    skillUp: 1
+    skillUp: 3
   - intention: 3
     tendency: 30
-    skillUp: 2
+    skillUp: 6
   - intention: 13
     tendency: 0
     skillUp: 0
