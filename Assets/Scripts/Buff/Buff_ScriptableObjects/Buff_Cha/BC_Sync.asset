@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 679607c883ce2f743bde223e8306dc2c, type: 3}
   buffName: Sync
-  description: sadsdsdaadssaddsaads
+  description: "\u9700\u6C42\u540C\u6B65\uFF1A\u589E\u52A0\u5145\u80FD\u69FD\u65F6\u4F1A\u989D\u5916\u589E\u52A0\u80FD\u91CF"
   characterBuffType: 8
   enemyBuffType: 0
   timeType: 1

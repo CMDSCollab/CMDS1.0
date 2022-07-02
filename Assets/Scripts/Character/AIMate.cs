@@ -80,7 +80,7 @@ public class AIMate : BasicCharacter
     public void IntentionValueChangeAndUISync()
     {
         int[] atk     = { 1, 5, 7, 10, 14, 25, 40 };
-        int[] heal    = { 0, 1, 2, 3, 4, 5, 6 };
+        int[] heal    = { 0, 1, 2, 3, 5, 7, 10 };
         int[] defence = { 1, 5, 7, 10, 14, 19, 25 };
 
         switch (currentIntention)
