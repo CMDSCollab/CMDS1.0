@@ -64,9 +64,9 @@ public class MapNodeManager : MonoBehaviour
             case NodeType.Minion:
                 EnterBattleScene(EnemyType.Minion);
                 break;
-            case NodeType.Elite:
-                EnterBattleScene(EnemyType.Elite);
-                break;
+            //case NodeType.Elite:
+            //    EnterBattleScene(EnemyType.Elite);
+            //    break;
             case NodeType.Boss:
                 EnterBattleScene(EnemyType.Boss);
                 break;

@@ -16,20 +16,20 @@ MonoBehaviour:
   minionType: 2
   bossType: 0
   eliteType: 0
-  enemyName: Hatchling
+  enemyName: "\u83DC\u5B9D"
   images:
   - {fileID: 21300000, guid: 987ec8c13d049924997e1ee995661e79, type: 3}
-  maxHealth: 25
-  defaultSkill: 3
+  maxHealth: 50
+  defaultSkill: 6
   basicIntentions:
   - intention: 0
     tendency: 100
-    skillUp: 1
+    skillUp: 3
   - intention: 1
     tendency: 0
-    skillUp: 2
+    skillUp: 6
   - intention: 3
     tendency: 0
-    skillUp: 2
+    skillUp: 6
   specialFunctions: 
   sentences: []

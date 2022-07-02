@@ -16,11 +16,11 @@ MonoBehaviour:
   minionType: 0
   bossType: 0
   eliteType: 0
-  enemyName: Streamer
+  enemyName: "\u6E38\u620F\u4E3B\u64AD"
   images:
   - {fileID: 21300000, guid: c22571700a56ec14c958e9dd63cfee39, type: 3}
-  maxHealth: 40
-  defaultSkill: 5
+  maxHealth: 20
+  defaultSkill: 15
   basicIntentions:
   - intention: 0
     tendency: 50

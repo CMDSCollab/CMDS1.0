@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: "\u5F15\u5BFC\u8BBE\u8BA1"
   cardImage: {fileID: 21300000, guid: b40c963cdaf0bee4cb2b58665cedb58b, type: 3}
-  description: 1 Skill 2 challenge
+  description: "\u51CF\u5C113\u70B9\u6311\u6218"
   merchantBaseValue: 0
   realValue: 0
-  baseFunctions: []
+  baseFunctions:
+  - functionType: 5
+    value: 1
   specialFunctions: 
   desSpecialFunctions:
   - desFunctionType: 1
-    value: 2
-  - desFunctionType: 2
-    value: 1
+    value: -3

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 57bd128622ab73144ba87abd75cbf13a, type: 3}
   buffName: Weak
-  description: asddgbbbzvxc
+  description: "\u865A\u5F31\uFF1A\u653B\u51FB\u9020\u6210\u7684\u4F24\u5BB3\u51CF\u5C113\u70B9"
   characterBuffType: 5
   enemyBuffType: 0
   timeType: 1

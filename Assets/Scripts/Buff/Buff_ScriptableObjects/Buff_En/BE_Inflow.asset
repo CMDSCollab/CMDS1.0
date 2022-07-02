@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 56105abb1bd904e43b01b224c919f6a0, type: 3}
   buffName: In Flow
-  description: "\u5FC3\u6D41\uFF1A\u654C\u4EBA\u83B7\u5F97\u6613\u4F24Buff"
+  description: "\u5FC3\u6D41\uFF1A\u83B7\u5F97\u6613\u4F24Buff"
   characterBuffType: 0
   enemyBuffType: 3
   timeType: 0

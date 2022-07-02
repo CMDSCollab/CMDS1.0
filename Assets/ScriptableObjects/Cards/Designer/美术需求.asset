@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61e1691c47110143b506c5abd13c55d, type: 3}
   m_Name: "\u7F8E\u672F\u9700\u6C42"
   m_EditorClassIdentifier: 
-  cardName: "\u7F8E\u672F\u9700\u6C42"
+  cardName: "\u7F8E\u672F\u5C0F\u9700\u6C42"
   cardImage: {fileID: 21300000, guid: b3d4982e9ee3ce140a2b10e46a8afe59, type: 3}
-  description: "\u52A01\u7F8E\u672F\u80FD\u91CF\u69FD"
+  description: "\u589E\u52A01\u4E2A\u7F8E\u672F\u80FD\u91CF\u69FD"
   merchantBaseValue: 0
   realValue: 0
   baseFunctions:
   - functionType: 6
+    value: 1
+  - functionType: 3
     value: 1
   specialFunctions: 
   desSpecialFunctions: []

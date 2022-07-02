@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 8fe3134fc7bb89c43812d8774fc587c0, type: 3}
   buffName: Charge
-  description: asdasadsasadfcxzzcxzc
+  description: "\u4FEE\u6539ini\u6587\u4EF6\uFF1A\u4E0B\u6B21\u653B\u51FB\u9020\u6210\u7684\u4F24\u5BB3\u7FFB\u500D"
   characterBuffType: 0
   enemyBuffType: 10
   timeType: 1

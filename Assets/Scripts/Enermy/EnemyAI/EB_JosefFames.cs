@@ -59,7 +59,7 @@ public class EB_JosefFames : BasicEnemy
     public override void InitializeEnemyUI()
     {
         enemyName = transform.Find("Name").GetComponent<Text>();
-        portrait = transform.Find("Portrait").GetComponent<Image>();
+        portrait = transform.Find("PortraitMask").Find("Portrait").GetComponent<Image>();
         hpBar = transform.Find("HpBar").GetComponent<Slider>();
         hpRatio = transform.Find("HpBar").Find("HpRatio").GetComponent<Text>();
 
