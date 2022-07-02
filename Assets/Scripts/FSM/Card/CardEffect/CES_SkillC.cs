@@ -23,7 +23,7 @@ public class CES_SkillC : CEffectBaseState
     {
         FlowManager flowM = gM.aiM.des.flow.GetComponent<FlowManager>();
         point = flowM.dotsList[flowM.dotsList.Count - 1].transform;
-        point.position = Vector3.MoveTowards(point.position, flowM.dotsPos[flowM.dotsPos.Count - 1], 0.3f * Time.deltaTime);
+        point.position = Vector3.MoveTowards(point.position, flowM.dotsPos[flowM.dotsPos.Count - 1], 1 * Time.deltaTime);
         flowM.line.SetPosition(flowM.dotsList.Count - 1, point.position);
         gM.enM.enemyTarget.transform.Find("Coordinate").GetComponent<RectTransform>().position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(point.position.x, point.position.y+0.2f));
 
