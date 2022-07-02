@@ -232,8 +232,8 @@ public class MapManager : MonoBehaviour
                     LineRenderer line = newObj.GetComponent<LineRenderer>();
                     line.SetPosition(0, newObj.transform.position);
                     line.SetPosition(1, allLayerNodes[i + 1][allLayerNodes[i][j].GetComponent<MapNodeManager>().linkTargetIndexList[n]].transform.position);
-                    line.startWidth = 0.01f;
-                    line.endWidth = 0.01f;
+                    line.startWidth = 0.05f;
+                    line.endWidth = 0.05f;
                 }
             }
         }
