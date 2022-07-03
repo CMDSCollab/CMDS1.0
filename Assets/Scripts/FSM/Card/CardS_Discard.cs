@@ -54,7 +54,7 @@ public class CardS_Discard : CardBaseState
 
                         if (isRotateOver == false)
                         {
-                            cardRect.Rotate(0, 0, -2f);
+                            cardRect.Rotate(0, 0, -8f);
                             if (cardRect.rotation.z <= -0.7f) // -0.7=90¶È
                             {
                                 cardRect.rotation = Quaternion.Euler(0, 0, -90);
