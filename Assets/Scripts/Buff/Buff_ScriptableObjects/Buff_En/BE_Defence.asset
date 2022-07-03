@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 910eb8b88ebabd34e9ca5c8d9d4d3e2f, type: 3}
   buffName: Defence
-  description: gsdfafafsafafas
+  description: "\u62A4\u7532\uFF1A\u53EF\u4EE5\u62B5\u6D88\u7B49\u503C\u4F24\u5BB3"
   characterBuffType: 0
   enemyBuffType: 8
   timeType: 1
