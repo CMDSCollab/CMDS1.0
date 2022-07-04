@@ -6,6 +6,7 @@ using UnityEngine.UI;
 //放置在BaseMapNode这个prefab上，后续功能是当这个Node点击后产生的效果，和记录当前Node的信息
 public class MapNodeManager : MonoBehaviour
 {
+    GameMaster gM;
     private MapManager mapM;
     public MapNode mapNode;
     public int linkTargetCount;
@@ -19,11 +20,12 @@ public class MapNodeManager : MonoBehaviour
     public void Awake()
     {
         mapM = FindObjectOfType<MapManager>();
+        gM = FindObjectOfType<GameMaster>();
     }
 
     public void OnMouseEnter()
     {
-        if (ifApproachable)
+        if (ifApproachable && gM.panelM.isPanelOpen == false)
         {
             scaleChangeSpeed = 0;
         }
@@ -35,7 +37,7 @@ public class MapNodeManager : MonoBehaviour
 
     public void OnMouseExit()
     {
-        if (ifApproachable)
+        if (ifApproachable && gM.panelM.isPanelOpen == false)
         {
             scaleChangeSpeed = 2;
         }
@@ -47,7 +49,8 @@ public class MapNodeManager : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (!ifApproachable)
+  
+        if (!ifApproachable || gM.panelM.isPanelOpen == true)
         {
             return;
         }
@@ -61,12 +64,12 @@ public class MapNodeManager : MonoBehaviour
         {
             case NodeType.None:
                 break;
-            case NodeType.Minion:
-                EnterBattleScene(EnemyType.Minion);
-                break;
-            //case NodeType.Elite:
-            //    EnterBattleScene(EnemyType.Elite);
+            //case NodeType.Minion:
+            //    EnterBattleScene(EnemyType.Minion);
             //    break;
+            case NodeType.Elite:
+                EnterBattleScene(EnemyType.Elite);
+                break;
             case NodeType.Boss:
                 EnterBattleScene(EnemyType.Boss);
                 break;

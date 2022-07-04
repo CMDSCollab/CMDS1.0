@@ -32,7 +32,10 @@ public class RelicManager : MonoBehaviour
                     gM.buffSM.valueToCalculate += 1;
                     break;
                 case RelicEffectType.HpRegenerationOnMapMove:
-                    gM.characterM.mainCharacter.HealSelf(3);
+                    if (gM.characterM.mainCharacter!=null)
+                    {
+                        gM.characterM.mainCharacter.HealSelf(3);
+                    }
                     break;
             }
         }

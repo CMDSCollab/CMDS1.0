@@ -50,7 +50,7 @@ public class AS_SkipCI : AS_ChangeIntention
             RectTransform intentionRect = gM.enM.enemyTarget.transform.Find("Intention").GetComponent<RectTransform>();
             if (firstState == true)
             {
-                intentionRect.Rotate(0, 0.2f, 0);
+                intentionRect.Rotate(0, 5f, 0);
                 if (intentionRect.rotation.y >= 0.5)
                 {
                     firstState = false;
@@ -59,7 +59,7 @@ public class AS_SkipCI : AS_ChangeIntention
             }
             else
             {
-                intentionRect.Rotate(0, -0.2f, 0);
+                intentionRect.Rotate(0, -5f, 0);
                 if (intentionRect.rotation.y <= 0.05)
                 {
                     firstState = true;

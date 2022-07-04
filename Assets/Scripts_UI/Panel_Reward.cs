@@ -10,6 +10,7 @@ public class Panel_Reward : PanelController
     public GameObject preGold;
     public GameObject preCard;
     public bool isPlayerWin = false;
+    public List<CardInfo> rewardCardPool = new List<CardInfo>();
 
     public override void Start()
     {
@@ -56,8 +57,8 @@ public class Panel_Reward : PanelController
         {
             GameObject newCard = Instantiate(preCard);
             CardManager cardM = newCard.GetComponent<CardManager>();
-            int random = Random.Range(0, gM.deckM.cardInDeck.Count);
-            cardM.cardInfo = gM.deckM.cardInDeck[random];
+            int random = Random.Range(0, rewardCardPool.Count);
+            cardM.cardInfo = rewardCardPool[random];
             cardM.IntializeCard();
             cardM.inWhere = CardInWhere.InChest;
             newCard.transform.SetParent(this.transform);

@@ -196,10 +196,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gM: {fileID: 0}
   isEnd: 0
-  goldPercentage: 70
+  goldPercentage: 10
   preGold: {fileID: 4292624280200632318, guid: 0e7d8ae3aeed814499a1b4d1a5df326b, type: 3}
   preCard: {fileID: 1596943046692765748, guid: 701f33fa0496a9d41b84c2e7550f1814, type: 3}
   isPlayerWin: 0
+  rewardCardPool:
+  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
+  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
+  - {fileID: 11400000, guid: 65f815c2f83e40a4f899554a9c6e16a0, type: 2}
+  - {fileID: 11400000, guid: 51073704aa3dd6348a48cf40b2a6214d, type: 2}
 --- !u!1 &7972066250291551678
 GameObject:
   m_ObjectHideFlags: 0
