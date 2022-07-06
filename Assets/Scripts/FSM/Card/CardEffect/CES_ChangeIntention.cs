@@ -29,7 +29,7 @@ public class CES_ChangeIntention : CEffectBaseState
         RectTransform intentionRect = targetAI.transform.Find("IntentionPos").GetComponent<RectTransform>();
         if (firstState == true)
         {
-            intentionRect.Rotate(0, 0.2f, 0);
+            intentionRect.Rotate(0, 5f, 0);
             if (intentionRect.rotation.y >= 0.5)
             {
                 firstState = false;
@@ -38,7 +38,7 @@ public class CES_ChangeIntention : CEffectBaseState
         }
         else
         {
-            intentionRect.Rotate(0, -0.2f, 0);
+            intentionRect.Rotate(0, -5f, 0);
             if (intentionRect.rotation.y <= 0.05)
             {
                 firstState = true;

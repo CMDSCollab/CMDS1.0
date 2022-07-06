@@ -42,7 +42,7 @@ public class CardStateManager : MonoBehaviour
         currentState = drawState;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isUpdate == true)
         {

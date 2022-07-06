@@ -82,7 +82,7 @@ public class AS_ChangeIntention : ActionBaseState
             RectTransform intentionRect = gM.enM.enemyTarget.transform.Find("Intention").GetComponent<RectTransform>();
             if (firstState == true)
             {
-                intentionRect.Rotate(0, 0.2f, 0);
+                intentionRect.Rotate(0, 5f, 0);
                 if (intentionRect.rotation.y >= 0.5)
                 {
                     firstState = false;
@@ -91,7 +91,7 @@ public class AS_ChangeIntention : ActionBaseState
             }
             else
             {
-                intentionRect.Rotate(0, -0.2f, 0);
+                intentionRect.Rotate(0, -5f, 0);
                 if (intentionRect.rotation.y <= 0.05)
                 {
                     firstState = true;
@@ -105,7 +105,7 @@ public class AS_ChangeIntention : ActionBaseState
             RectTransform intentionRect = CurrentAITarget(gM).Find("IntentionPos").GetComponent<RectTransform>();
             if (firstState == true)
             {
-                intentionRect.Rotate(0, 0.2f, 0);
+                intentionRect.Rotate(0, 5f, 0);
                 if (intentionRect.rotation.y >= 0.5)
                 {
                     firstState = false;
@@ -114,7 +114,7 @@ public class AS_ChangeIntention : ActionBaseState
             }
             else
             {
-                intentionRect.Rotate(0, -0.2f, 0);
+                intentionRect.Rotate(0, -5f, 0);
                 if (intentionRect.rotation.y <= 0.05)
                 {
                     firstState = true;

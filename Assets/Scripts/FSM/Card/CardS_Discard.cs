@@ -54,7 +54,7 @@ public class CardS_Discard : CardBaseState
 
                         if (isRotateOver == false)
                         {
-                            cardRect.Rotate(0, 0, -2f);
+                            cardRect.Rotate(0, 0, -8f);
                             if (cardRect.rotation.z <= -0.7f) // -0.7=90¶È
                             {
                                 cardRect.rotation = Quaternion.Euler(0, 0, -90);
@@ -115,22 +115,23 @@ public class CardS_Discard : CardBaseState
                 gM.handM.handCardList.Clear();
                 break;
         }
-        //if (gM.enM.enemyTarget is EE_SpeedRunner)
-        //{
-        //    int random = Random.Range(0, 4);
-        //    if (random == 0)
-        //    {
-        //        gM.combatSM.CombatStateProcess();
-        //    }
-        //    else
-        //    {
-        //        gM.cardSM.EnterCardState(gM.cardSM.defaultState);
-        //    }
-        //}
-        //else
-        //{
-        //    gM.cardSM.EnterCardState(gM.cardSM.defaultState);
-        //}
-        gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+        if (gM.enM.enemyTarget is EE_SpeedRunner)
+        {
+            int random = Random.Range(0, 4);
+            if (random == 0)
+            {
+                gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+                gM.combatSM.CombatStateProcess();
+            }
+            else
+            {
+                gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+            }
+        }
+        else
+        {
+            gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+        }
+        //gM.cardSM.EnterCardState(gM.cardSM.defaultState);
     }
 }

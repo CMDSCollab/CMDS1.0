@@ -30,7 +30,7 @@ public class ActionStateManager : MonoBehaviour
         currentState = attackState;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isUpdate == true)
         {

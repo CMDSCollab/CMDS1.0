@@ -62,7 +62,7 @@ public class CardS_Draw : CardBaseState
 
                     if (isRotateOver == false)
                     {
-                        cardRect.Rotate(0, 0, 1f);
+                        cardRect.Rotate(0, 0, 10f);
                         if (cardRect.rotation.z >= 0)
                         {
                             cardRect.rotation = Quaternion.Euler(0, 0, 0);

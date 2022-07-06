@@ -24,7 +24,7 @@ public class CEffectStateManager : MonoBehaviour
         //currentState = drawState;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isUpdate == true)
         {

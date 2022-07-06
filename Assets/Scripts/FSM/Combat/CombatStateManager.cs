@@ -31,7 +31,7 @@ public class CombatStateManager : MonoBehaviour
         runningSequence = defaultSequence;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isUpdate == true)
         {

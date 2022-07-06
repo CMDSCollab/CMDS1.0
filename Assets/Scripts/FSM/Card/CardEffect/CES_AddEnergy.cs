@@ -8,8 +8,8 @@ public class CES_AddEnergy : CEffectBaseState
     AIMate targetAI;
     EnergyController energy;
     int energyRecord;
-    float timer = 0.2f;
-    float timerRecord = 0.2f;
+    float timer = 0.1f;
+    float timerRecord = 0.1f;
 
     public override void EnterState(GameMaster gM, int value)
     {

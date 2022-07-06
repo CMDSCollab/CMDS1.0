@@ -52,7 +52,6 @@ public class MapManager : MonoBehaviour
             Dictionary<int, GameObject> newDic = new Dictionary<int, GameObject>(singleLayerNodes);
             allLayerNodes.Add(i, newDic);
             singleLayerNodes.Clear();
-
         }
 
         ActiveFirstLevelNode();

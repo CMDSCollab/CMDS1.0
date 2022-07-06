@@ -23,7 +23,7 @@ public class AnimCollection : MonoBehaviour
         gM = FindObjectOfType<GameMaster>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (currentChoice != AnimChoice.Null)
         {
