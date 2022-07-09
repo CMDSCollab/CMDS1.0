@@ -21,10 +21,12 @@ public class CES_AddSlot : CEffectBaseState
             case CEffectStateManager.AITarget.Pro:
                 targetAI = gM.aiM.proAI;
                 //slotRecordArray = proSlotRecord;
+                AudioManager.Instance.PlayAudio("Programmer_Of_Course");
                 break;
             case CEffectStateManager.AITarget.Art:
                 targetAI = gM.aiM.artAI;
                 //slotRecordArray = artSlotRecord;
+                AudioManager.Instance.PlayAudio("Artist_Thank_You");
                 break;
         }
         energy = targetAI.transform.Find("Energy").GetComponent<EnergyController>();

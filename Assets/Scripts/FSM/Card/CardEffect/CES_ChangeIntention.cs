@@ -16,9 +16,11 @@ public class CES_ChangeIntention : CEffectBaseState
                 break;
             case CEffectStateManager.AITarget.Pro:
                 targetAI = gM.aiM.proAI;
+                AudioManager.Instance.PlayAudio("Programmer_Consider_It_Done");
                 break;
             case CEffectStateManager.AITarget.Art:
                 targetAI = gM.aiM.artAI;
+                AudioManager.Instance.PlayAudio("Artist_Copy_That");
                 break;
         }
         gM.cEffectSM.isUpdate = true;

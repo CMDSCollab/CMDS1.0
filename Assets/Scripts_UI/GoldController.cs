@@ -35,6 +35,7 @@ public class GoldController : MonoBehaviour
 
     public void OnMouseClick()
     {
+        AudioManager.Instance.PlayAudio("Coins_Pick up");
 
         isGoldGet = true;
     }

@@ -115,10 +115,12 @@ public class AIMate : BasicCharacter
                 if (this is ArtistAI)
                 {
                     AudioManager.Instance.PlayAudio("Artist_Cast");
+                    AudioManager.Instance.PlayAudio("Artist_Don't_Cross_Me");
                 }
                 else if (this is ProgrammerAI)
                 {
                     AudioManager.Instance.PlayAudio("Programmer_Attack");
+                    AudioManager.Instance.PlayAudio("Programmer_Incoming");
                 }
                 else if (this is DesignerAI)
                 {
@@ -128,6 +130,7 @@ public class AIMate : BasicCharacter
             case Intentions.Heal:
                 gM.actionSM.EnterActionState(gM.actionSM.healState, intentionValue);
                 AudioManager.Instance.PlayAudio("Artist_Heal");
+                AudioManager.Instance.PlayAudio("Artist_Need_A_Repair");
                 break;
             case Intentions.Shield:
                 gM.actionSM.EnterActionState(gM.actionSM.defenceState, intentionValue);
