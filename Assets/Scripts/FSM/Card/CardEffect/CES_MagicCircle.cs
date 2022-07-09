@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CES_MagicCircle : CEffectBaseState
 {
     public override void EnterState(GameMaster gM, int value)
     {
+        Animator anim = gM.enM.enemyTarget.transform.Find("MagicCircle").GetComponent<Animator>();
         switch (gM.enM.enemyTarget.magicCircleState)
         {
             case MagicCircleState.In:
@@ -13,10 +15,10 @@ public class CES_MagicCircle : CEffectBaseState
                 {
                     gM.buffSM.AddOrAdjustBuff(EnemyBuff.Vulnerable);
                 }
-                gM.enM.enemyTarget.transform.Find("MagicCircle").gameObject.SetActive(true);
+                anim.SetBool("IsMagicCircleIn", true);
                 break;
             case MagicCircleState.Out:
-                gM.enM.enemyTarget.transform.Find("MagicCircle").gameObject.SetActive(false);
+                anim.SetBool("IsMagicCircleIn", false);
                 break;
         }
         EndState(gM, value);
@@ -45,15 +47,5 @@ public class CES_MagicCircle : CEffectBaseState
         //gM.enM.enemyTarget.transform.Find("MagicCircle").gameObject.SetActive(true);
         //gM.buffM.SetBuff(EnemyBuff.Weak, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
         //gM.buffM.SetBuff(EnemyBuff.Vulnerable, BuffTimeType.Permanent, 999, BuffValueType.NoValue, 1, BuffSource.Enemy);
-    }
-
-    public void MagicCirleStateControl(string pro)
-    {
-
-    }
-
-    public void MagicCirleStateControl(float art)
-    {
-
     }
 }

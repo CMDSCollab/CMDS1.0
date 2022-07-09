@@ -23,6 +23,7 @@ public class EnemyMaster : MonoBehaviour
     private GameObject enemyObj;
 
     public EnemyInfo testEnemy;
+    public GameObject flow;
 
     void Start()
     {
@@ -42,9 +43,16 @@ public class EnemyMaster : MonoBehaviour
 
         enemyTarget = enemyObj.GetComponent<BasicEnemy>();
         enemyTarget.enemyInfo = enemyInfo;
+        InstantiateFlow();
         gM.cEffectSM.EnterCardState(gM.cEffectSM.skillCState, enemyInfo.defaultSkill);
         enemyTarget.enemyLv = (int)enemyInfo.enemyType;
         enemyTarget.InitializeEnemyUI();
+
+        void InstantiateFlow()
+        {
+            flow = Instantiate(gM.characterM.flowPre);
+            flow.GetComponent<FlowManager>().InitializeFlow();
+        }
     }
 
     private void EnemyObjAddComponent(GameObject objToAdd)

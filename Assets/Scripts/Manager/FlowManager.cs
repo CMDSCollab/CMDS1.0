@@ -16,6 +16,7 @@ public class FlowManager : MonoBehaviour
     public void InitializeFlow()
     {
         gM = FindObjectOfType<GameMaster>();
+        AdjustFlowPos();
         line = GetComponent<LineRenderer>();
         startPos = transform.Find("StartPos").transform.position;
         BoundarySet(1);
@@ -33,6 +34,20 @@ public class FlowManager : MonoBehaviour
         {
             line.SetPosition(i, dotsPos[i]);
         }
+    }
+
+    public void AdjustFlowPos()
+    {
+        //Transform flowUIPosition = gM.enM.enemyTarget.transform.Find("FlowTargetPos").transform;
+        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(flowUIPosition.position);
+        //transform.position = worldPos;
+        Vector3 uiPoint = gM.enM.enemyTarget.transform.Find("FlowTargetPos").transform.position;
+        //Debug.Log(uiPoint);
+        Vector2 screenPoint = PositionConvert.UIPointToScreenPoint(uiPoint);
+        //Debug.Log(screenPoint);
+        Vector3 worldPoint = PositionConvert.ScreenPointToWorldPoint(screenPoint, 8.65f);
+        //Debug.Log(worldPoint);
+        transform.position = worldPoint;
     }
 
     public void BoundarySet(int offset )

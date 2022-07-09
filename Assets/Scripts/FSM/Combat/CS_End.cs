@@ -29,7 +29,7 @@ public class CS_End : CombatBaseState
         switch (gM.characterM.mainCharacterType)
         {
             case CharacterType.Designer:
-                gM.aiM.des.flow.GetComponent<FlowManager>().AddDot();
+                gM.enM.flow.GetComponent<FlowManager>().AddDot();
                 break;
             case CharacterType.Programmmer:
                 break;

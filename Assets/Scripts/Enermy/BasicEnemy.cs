@@ -38,6 +38,7 @@ public class BasicEnemy : MonoBehaviour
     public Text hpRatio;
     public MagicCircleState magicCircleState = MagicCircleState.In;
 
+
     #region 设计师相关变量
     public int skillLv;
     #endregion
@@ -49,6 +50,7 @@ public class BasicEnemy : MonoBehaviour
 
     public virtual void InitializeEnemyUI()
     {
+
         enemyName = transform.Find("Name").GetComponent<Text>(); 
         portrait = transform.Find("PortraitMask").Find("Portrait").GetComponent<Image>();
         hpBar = transform.Find("HpBar").GetComponent<Slider>();

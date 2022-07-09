@@ -59,7 +59,7 @@ public class GameMaster : MonoBehaviour
             case CharacterType.Designer:
                 Destroy(aiM.proAI.gameObject);
                 Destroy(aiM.artAI.gameObject);
-                Destroy(aiM.des.flow);
+                Destroy(enM.flow);
                 Destroy(aiM.des.gameObject);
                 break;
             case CharacterType.Programmmer:

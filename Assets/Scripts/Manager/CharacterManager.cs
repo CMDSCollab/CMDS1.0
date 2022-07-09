@@ -21,7 +21,6 @@ public class CharacterManager : MonoBehaviour
 
     #region 设计变量
     [Header("设计")]
-    public GameObject flowChartPrefab;
     public GameObject flowPre;
     #endregion
 
@@ -52,7 +51,6 @@ public class CharacterManager : MonoBehaviour
                 AIGenerateAndInitialize(CharacterType.Artist, "Left");
                 AIGenerateAndInitialize(CharacterType.Programmmer, "Right");
                 mainCharacter = gM.aiM.des;
-                gM.aiM.des.PrepareFlowChart();
                 break;
             case CharacterType.Programmmer:
                 MainChaGenerateAndInitialize(CharacterType.Programmmer);
