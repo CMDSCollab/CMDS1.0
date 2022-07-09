@@ -8,12 +8,7 @@ public class HoverTipManager : MonoBehaviour
 {
     //public static Action<string, string, Vector2> OnMouseHover;
     //public static Action OnMouseLoseFocus;
-    RectTransform tipBgRect;
-
-    private void Start()
-    {
-        tipBgRect = transform.Find("TipBg").GetComponent<RectTransform>();
-    }
+    public RectTransform tipBgRect;
 
     public void ShowTip(string tipName,string tipDescription, Vector2 mousePos)
     {
