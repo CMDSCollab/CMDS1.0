@@ -17,7 +17,7 @@ public class BS_Anxiety : BuffBaseState
             case BuffUsage.Adjust:
                 break;
             case BuffUsage.EffectApply:
-                gM.buffSM.valueToCalculate = 0;
+                gM.buffSM.valueToCalculate += 1;
                 break;
         }
         gM.buffSM.isUpdate = true;

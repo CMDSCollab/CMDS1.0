@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AS_TakeDmg : ActionBaseState
 {
-    private EnemyBuff[] eBuffs = { EnemyBuff.Vulnerable, EnemyBuff.Block, EnemyBuff.Defence};
+    private EnemyBuff[] eBuffs = { EnemyBuff.Vulnerable,EnemyBuff.Bored, EnemyBuff.Block, EnemyBuff.Defence};
     private CharacterBuff[] cBuffs = { CharacterBuff.Defence, CharacterBuff.Vengeance, CharacterBuff.Inflammable };
 
     public override void EnterState(GameMaster gM, int value)

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AS_Attack : ActionBaseState
 {
-    private EnemyBuff[] eBuffs = { EnemyBuff.Weak, EnemyBuff.Charge };
+    private EnemyBuff[] eBuffs = { EnemyBuff.Weak, EnemyBuff.Anxiety, EnemyBuff.Charge };
     private CharacterBuff[] cBuffs = { CharacterBuff.Weak};
 
     public override void EnterState(GameMaster gM, int value)
