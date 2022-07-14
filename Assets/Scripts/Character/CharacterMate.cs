@@ -28,17 +28,7 @@ public class CharacterMate : BasicCharacter
 
     public void CharacterDefeated()
     {
-        Debug.Log("Entered");
         gM.panelM.InstantiatePanel(PanelType.Reward);
-    }
-
-    public void Update()
-    {
-    //    if (healthPoint <= 0 && !isDefeated)
-    //    {
-    //        isDefeated = true;
-    //        CharacterDefeated();
-    //}
     }
 
     private void InitializeCharacter()

@@ -12,7 +12,8 @@ public class AS_TakeDmg : ActionBaseState
         gM.buffSM.valueToCalculate = value;
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
-            gM.buffSM.SetBuffList(cBuffs);
+            Debug.Log(cBuffs.Length)
+;            gM.buffSM.SetBuffList(cBuffs);
         }
         else
         {
@@ -80,17 +81,6 @@ public class AS_TakeDmg : ActionBaseState
 
     public override void EndState(GameMaster gM, int value)
     {
-        if (gM.enM.enemyTarget.healthPoint <= 0)
-        {
-            gM.enM.enemyTarget.EnemyDefeated();
-        }
-        else if (gM.characterM.mainCharacter.healthPoint <= 0)
-        {
-            gM.characterM.mainCharacter.CharacterDefeated();
-        }
-        else
-        {
-            gM.actionSM.EnterActionState(gM.actionSM.changeIState, value);
-        }
+        gM.actionSM.EnterActionState(gM.actionSM.changeIState, value);
     }
 }

@@ -11,9 +11,6 @@ public class BS_Revive : BuffBaseState
         {
             case BuffUsage.AddNew:
                 gM.buffM.InstantiateBuff(EnemyBuff.Revive);
-                //gM.buffSM.AddNewBuff(EnemyBuff.Revive, BuffTimeType.Temporary, 4, BuffValueType.NoValue, 1);
-                //gM.buffSM.buffTrans = gM.buffSM.GetBuffRectTrans(EnemyBuff.Revive);
-                //gM.buffSM.buffTrans.localScale = new Vector3(0, 0, 0);
                 break;
             case BuffUsage.Adjust:
                 gM.buffM.FindBuff(EnemyBuff.Revive).lastTime = 3;
