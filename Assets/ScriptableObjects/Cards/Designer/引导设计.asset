@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: "\u5F15\u5BFC\u8BBE\u8BA1"
   cardImage: {fileID: 21300000, guid: b40c963cdaf0bee4cb2b58665cedb58b, type: 3}
   description: "\u51CF\u5C113\u70B9\u6311\u6218"
-  merchantBaseValue: 0
+  merchantBaseValue: 75
   realValue: 0
   baseFunctions:
   - functionType: 5

@@ -32,14 +32,14 @@ MonoBehaviour:
     possibleNodeType: 0200000004000000
     possibleEmergeNodesCount: 4
     randomizeNodesType: 0.4
-  - nodeType: 5
+  - nodeType: 1
     possibleNodeType: 0400000002000000
     possibleEmergeNodesCount: 3
     randomizeNodesType: 0.5
   - nodeType: 6
     possibleNodeType: 0200000001000000
     possibleEmergeNodesCount: 2
-    randomizeNodesType: 0.6
+    randomizeNodesType: 0.2
   - nodeType: 2
     possibleNodeType: 0100000006000000
     possibleEmergeNodesCount: 3
@@ -48,14 +48,14 @@ MonoBehaviour:
     possibleNodeType: 0200000004000000
     possibleEmergeNodesCount: 3
     randomizeNodesType: 0.5
-  - nodeType: 5
+  - nodeType: 4
     possibleNodeType: 0200000006000000
     possibleEmergeNodesCount: 2
     randomizeNodesType: 0.6
-  - nodeType: 2
+  - nodeType: 6
     possibleNodeType: 01000000050000000600000004000000
     possibleEmergeNodesCount: 3
-    randomizeNodesType: 0.4
+    randomizeNodesType: 0.2
   - nodeType: 1
     possibleNodeType: 0500000004000000
     possibleEmergeNodesCount: 2
@@ -64,10 +64,10 @@ MonoBehaviour:
     possibleNodeType: 0100000004000000
     possibleEmergeNodesCount: 4
     randomizeNodesType: 0.7
-  - nodeType: 6
+  - nodeType: 5
     possibleNodeType: 010000000200000004000000
     possibleEmergeNodesCount: 3
-    randomizeNodesType: 0.5
+    randomizeNodesType: 0
   - nodeType: 3
     possibleNodeType: 
     possibleEmergeNodesCount: 1

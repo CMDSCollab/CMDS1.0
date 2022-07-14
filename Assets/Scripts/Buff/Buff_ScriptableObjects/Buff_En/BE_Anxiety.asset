@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BE_Anxiety
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 59db47b52d9702949876a69751909e78, type: 3}
-  buffName: "\u7126\u8651"
-  description: sadasasd
+  buffName: Anxiety
+  description: "\u7126\u8651\uFF1A\u6311\u6218\u8FC7\u9AD8\u3002\u9020\u6210\u7684\u653B\u51FB\u589E\u52A02"
   characterBuffType: 0
   enemyBuffType: 2
   timeType: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: c3cfcab9aa1a7ab4eb1fb3d81de8c7c5, type: 3}
   buffName: Teamwork
-  description: "\u56E2\u961F\u534F\u4F5C\uFF1A\u6BCF\u62BD\u53D61\u5F20\u5361 \u968F\u673A\u589E\u52A01\u70B9\u80FD\u91CF"
+  description: "\u56E2\u961F\u534F\u4F5C\uFF1A\u6BCF\u6B21\u62BD\u5361\u65F6\u968F\u673A\u589E\u52A01\u70B9\u80FD\u91CF"
   characterBuffType: 7
   enemyBuffType: 0
   timeType: 1

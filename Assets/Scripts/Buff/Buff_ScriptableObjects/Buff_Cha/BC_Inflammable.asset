@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 8660351376280fc498c3a2351c8f4170, type: 3}
   buffName: Inflammable
-  description: adsadsdsasads
+  description: "\u6613\u71C3\uFF1A\u53D7\u5230\u30101P\u3011\u5F62\u6001\u7684\u3010\u706B\u7130\u653B\u51FB\u3011\u65F6\u627F\u53D7\u53CC\u500D\u4F24\u5BB3"
   characterBuffType: 6
   enemyBuffType: 0
   timeType: 1

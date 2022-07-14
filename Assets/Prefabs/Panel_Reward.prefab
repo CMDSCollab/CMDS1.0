@@ -201,10 +201,16 @@ MonoBehaviour:
   preCard: {fileID: 1596943046692765748, guid: 701f33fa0496a9d41b84c2e7550f1814, type: 3}
   isPlayerWin: 0
   rewardCardPool:
-  - {fileID: 11400000, guid: b61d9d425b048cd4a8853a96a2675955, type: 2}
-  - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
   - {fileID: 11400000, guid: 65f815c2f83e40a4f899554a9c6e16a0, type: 2}
   - {fileID: 11400000, guid: 51073704aa3dd6348a48cf40b2a6214d, type: 2}
+  - {fileID: 11400000, guid: 1dd72243ad7001248b73a776e7637bdf, type: 2}
+  - {fileID: 11400000, guid: 1dd72243ad7001248b73a776e7637bdf, type: 2}
+  - {fileID: 11400000, guid: 688a81a23d00ace419adff843716409a, type: 2}
+  - {fileID: 11400000, guid: 688a81a23d00ace419adff843716409a, type: 2}
+  - {fileID: 11400000, guid: 70348939933ef0e4e894a792ceabde84, type: 2}
+  - {fileID: 11400000, guid: 366f6fe1c408de64e80c71535a7282a6, type: 2}
+  - {fileID: 11400000, guid: 26625abfd03c59649a993cb891d1ab72, type: 2}
+  - {fileID: 11400000, guid: 62f90c8a891d757498d05f4f9f05e376, type: 2}
 --- !u!1 &7972066250291551678
 GameObject:
   m_ObjectHideFlags: 0

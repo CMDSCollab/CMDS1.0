@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 1941c9e3bd72f274fbda1472cf9d96e4, type: 3}
   buffName: Revive
-  description: "\u590D\u6D3B\u51B7\u5374\uFF1A"
+  description: "\u590D\u6D3B\u51B7\u5374\uFF1A\u6B64\u65F6\u88AB\u51FB\u8D25\u5219\u65E0\u6CD5\u590D\u6D3B"
   characterBuffType: 0
   enemyBuffType: 12
   timeType: 1

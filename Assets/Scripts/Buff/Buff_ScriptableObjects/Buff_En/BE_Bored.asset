@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 4cd8160a28e1a1c4cb790729d39db1fd, type: 3}
   buffName: Bored
-  description: "\u65E0\u804A\uFF1A\u514D\u75AB\u4E00\u5207\u4F24\u5BB3"
+  description: "\u65E0\u804A\uFF1A\u6311\u6218\u8FC7\u4F4E\u3002\u514D\u75AB\u4E00\u5207\u4F24\u5BB3\u3002"
   characterBuffType: 0
   enemyBuffType: 1
   timeType: 0

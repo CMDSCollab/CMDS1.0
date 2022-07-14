@@ -2699,12 +2699,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 93ab8da0961130d4aa1e3c0287163a1e, type: 2}
   - {fileID: 11400000, guid: cc5eac1759afb7c46af4e2d1164037e7, type: 2}
   - {fileID: 11400000, guid: 70348939933ef0e4e894a792ceabde84, type: 2}
-  - {fileID: 11400000, guid: 1dd72243ad7001248b73a776e7637bdf, type: 2}
-  - {fileID: 11400000, guid: 688a81a23d00ace419adff843716409a, type: 2}
-  - {fileID: 11400000, guid: 62f90c8a891d757498d05f4f9f05e376, type: 2}
   - {fileID: 11400000, guid: 366f6fe1c408de64e80c71535a7282a6, type: 2}
   - {fileID: 11400000, guid: 65f815c2f83e40a4f899554a9c6e16a0, type: 2}
-  - {fileID: 11400000, guid: 51073704aa3dd6348a48cf40b2a6214d, type: 2}
   - {fileID: 11400000, guid: 26625abfd03c59649a993cb891d1ab72, type: 2}
   programmerBaseCard:
   - {fileID: 11400000, guid: 228e588d514b86642ace3b721895d51d, type: 2}
