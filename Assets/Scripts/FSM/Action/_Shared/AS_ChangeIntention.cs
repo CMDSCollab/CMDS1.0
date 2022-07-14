@@ -22,12 +22,6 @@ public class AS_ChangeIntention : ActionBaseState
                     }
                     //gM.enM.enemyTarget.MainChaMCChange();
                     break;
-                case CharacterType.Programmmer:
-                    gM.actionSM.isUpdate = true;
-                    break;
-                case CharacterType.Artist:
-                    gM.actionSM.isUpdate = true;
-                    break;
             }
         }
         else
@@ -130,6 +124,18 @@ public class AS_ChangeIntention : ActionBaseState
     }
     public override void EndState(GameMaster gM, int value)
     {
-        gM.combatSM.isUpdate = true;
+        if (gM.enM.enemyTarget.healthPoint <= 0)
+        {
+            gM.enM.enemyTarget.EnemyDefeated();
+        }
+        else if (gM.characterM.mainCharacter.healthPoint <= 0)
+        {
+            gM.characterM.mainCharacter.CharacterDefeated();
+        }
+        else
+        {
+            gM.combatSM.isUpdate = true;
+        }
+
     }
 }
