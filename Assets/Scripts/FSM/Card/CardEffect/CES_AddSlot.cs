@@ -7,9 +7,6 @@ public class CES_AddSlot : CEffectBaseState
 {
     AIMate targetAI;
     EnergyController energy;
-    //float[] proSlotRecord = { 27,55,81,107,137,167 };
-    //float[] artSlotRecord = { 28,56,84,112,140,168 };
-    //float[] slotRecordArray;
 
     public override void EnterState(GameMaster gM, int value)
     {
@@ -31,7 +28,7 @@ public class CES_AddSlot : CEffectBaseState
         }
         energy = targetAI.transform.Find("Energy").GetComponent<EnergyController>();
         targetAI.energySlotAmount += value;
-        if (targetAI.energySlotAmount >= 6)
+        if (targetAI.energySlotAmount > 6)
         {
             targetAI.energySlotAmount = 6;
         }
@@ -49,13 +46,6 @@ public class CES_AddSlot : CEffectBaseState
             gM.cEffectSM.isUpdate = false;
             EndState(gM, value);
         }
-        //Transform energyBar = targetAI.transform.Find("EnergyBar").transform;
-        //energyBar.Find("Mask").GetComponent<RectMask2D>().padding = new Vector4(slotRecordArray[targetAI.energySlotAmount-1], 0, 0, 0);
-        //if (energyBar.Find("Mask").GetComponent<RectMask2D>().padding.x == slotRecordArray[targetAI.energySlotAmount-1]) 
-        //{
-        //    gM.cEffectSM.isUpdate = false;
-        //    EndState(gM, value);
-        //}
     }
 
     public override void EndState(GameMaster gM, int value)

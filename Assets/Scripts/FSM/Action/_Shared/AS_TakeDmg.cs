@@ -12,7 +12,6 @@ public class AS_TakeDmg : ActionBaseState
         gM.buffSM.valueToCalculate = value;
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
-            Debug.Log(cBuffs.Length)
 ;            gM.buffSM.SetBuffList(cBuffs);
         }
         else
@@ -25,6 +24,7 @@ public class AS_TakeDmg : ActionBaseState
     public override void BeforeUpdate(GameMaster gM, int value)
     {
         gM.actionSM.changedValue = value;
+        Debug.Log(gM.actionSM.changedValue);
         if (gM.combatSM.currentState == gM.combatSM.enemyState)
         {
             gM.characterM.mainCharacter.TakeDamage(gM.actionSM.changedValue);

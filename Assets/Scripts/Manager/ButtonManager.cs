@@ -81,6 +81,7 @@ public class ButtonManager : MonoBehaviour
     public void onClickStartButton()
     {
         startScene.SetActive(false);
+        GameObject.Find("Canvas").transform.Find("VideoPlayer").gameObject.SetActive(false);
         chooseCharacterPanel.SetActive(true);
     }
 

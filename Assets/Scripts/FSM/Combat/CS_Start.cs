@@ -9,7 +9,7 @@ public class CS_Start : CombatBaseState
         switch (gM.characterM.mainCharacterType)
         {
             case CharacterType.Designer:
-                gM.aiM.des.ChallengeDMG();
+                //gM.aiM.des.ChallengeDMG();
                 break;
             case CharacterType.Programmmer:
                 gM.aiM.pro.OnPlayerTurnEnded();
