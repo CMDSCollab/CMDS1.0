@@ -64,24 +64,24 @@ public class MapNodeManager : MonoBehaviour
         {
             case NodeType.None:
                 break;
-            //case NodeType.Minion:
-            //    EnterBattleScene(EnemyType.Minion);
-            //    break;
-            //case NodeType.Elite:
-            //    EnterBattleScene(EnemyType.Elite);
-            //    break;
+            case NodeType.Minion:
+                EnterBattleScene(EnemyType.Minion);
+                break;
+            case NodeType.Elite:
+                EnterBattleScene(EnemyType.Elite);
+                break;
             case NodeType.Boss:
                 EnterBattleScene(EnemyType.Boss);
                 break;
-            //case NodeType.Chest:
-            //    mapM.gM.panelM.InstantiatePanel(PanelType.Chest);
-            //    break;
-            //case NodeType.Rest:
-            //    mapM.gM.panelM.InstantiatePanel(PanelType.Rest);
-            //    break;
-            //case NodeType.Merchant:
-            //    mapM.gM.panelM.InstantiatePanel(PanelType.Merchant);
-            //    break;
+            case NodeType.Chest:
+                mapM.gM.panelM.InstantiatePanel(PanelType.Chest);
+                break;
+            case NodeType.Rest:
+                mapM.gM.panelM.InstantiatePanel(PanelType.Rest);
+                break;
+            case NodeType.Merchant:
+                mapM.gM.panelM.InstantiatePanel(PanelType.Merchant);
+                break;
             case NodeType.Uncertainty:
                 break;
         }

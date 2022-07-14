@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EB_JosefFames : BasicEnemy
 {
-    public int maxHealth1P = 25;
+    public int maxHealth1P = 30;
     public int maxHealth2P = 60;
     public int damage1P = 10;
     public int damage2P = 5;
