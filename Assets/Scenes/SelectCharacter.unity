@@ -2062,6 +2062,17 @@ MonoBehaviour:
   - audioClip: {fileID: 8300000, guid: 359383bb34ba3b4409f87312431e3e67, type: 3}
   - audioClip: {fileID: 8300000, guid: 4fea8cd1abdba634e9ee14316d901bab, type: 3}
   - audioClip: {fileID: 8300000, guid: 39be7c2d19c15bd41aae1cb53442025e, type: 3}
+  - audioClip: {fileID: 8300000, guid: 8c4cde04f193af9429c4c476eb5c6ed2, type: 3}
+  - audioClip: {fileID: 8300000, guid: e0964b8db73a5cf418a5a0fd2f1b66ba, type: 3}
+  - audioClip: {fileID: 8300000, guid: c2a43ba1f29d8e241a76688bd2551630, type: 3}
+  - audioClip: {fileID: 8300000, guid: c5e8bde2dbc6b4a45bdc96f6ce9e06e9, type: 3}
+  - audioClip: {fileID: 8300000, guid: 44b28504c67039245afc5e926393a482, type: 3}
+  - audioClip: {fileID: 8300000, guid: 67a568bf1461a1f46a4b5263fe63e92b, type: 3}
+  - audioClip: {fileID: 8300000, guid: b4060a85c7a407c4f9fe9b5136f38cbd, type: 3}
+  - audioClip: {fileID: 8300000, guid: fd1ac1c6819921e45b3683505ef04390, type: 3}
+  - audioClip: {fileID: 8300000, guid: cb489c90c1ab6744fba82e583bc1d99a, type: 3}
+  - audioClip: {fileID: 8300000, guid: 4dec0888b43d53148aa8b94763e3bbf1, type: 3}
+  - audioClip: {fileID: 8300000, guid: 66494490861d7c348b6e24dd9859ecd2, type: 3}
 --- !u!1 &1376126462
 GameObject:
   m_ObjectHideFlags: 0
