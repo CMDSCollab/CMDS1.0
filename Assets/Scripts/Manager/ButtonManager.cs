@@ -81,10 +81,10 @@ public class ButtonManager : MonoBehaviour
     public void onClickStartButton()
     {
         startScene.SetActive(false);
-        GameObject.Find("Canvas").transform.Find("VideoPlayer").gameObject.SetActive(false);
+        //GameObject.Find("Canvas").transform.Find("VideoPlayer").gameObject.SetActive(false);
         chooseCharacterPanel.SetActive(true);
     }
-
+    #region 选人相关
     public void OnClickDesigner()
     {
         globalM.characterType = CharacterType.Designer;
@@ -93,15 +93,33 @@ public class ButtonManager : MonoBehaviour
 
     public void OnClickProgrammer()
     {
-        globalM.characterType = CharacterType.Programmmer;
-        SceneManager.LoadScene("FightScene");
+        //globalM.characterType = CharacterType.Programmmer;
+        //SceneManager.LoadScene("FightScene");
     }
 
     public void OnClickArtist()
     {
-        globalM.characterType = CharacterType.Artist;
-        SceneManager.LoadScene("FightScene");
+        //globalM.characterType = CharacterType.Artist;
+        //SceneManager.LoadScene("FightScene");
     }
+
+    public void OnPointerEnterPro()
+    {
+        GameObject.Find("Anim_Pro").GetComponent<Animator>().SetTrigger("Play");
+        AudioManager.Instance.PlayAudio("Programmer_Of_Course");
+    }
+
+    public void OnPointerEnterDes()
+    {
+        GameObject.Find("Anim_Des").GetComponent<Animator>().SetTrigger("Play");
+    }
+
+    public void OnPointerEnterArt()
+    {
+        GameObject.Find("Anim_Art").GetComponent<Animator>().SetTrigger("Play");
+        AudioManager.Instance.PlayAudio("Artist_Copy_That");
+    }
+    #endregion
 
     public void EndFightBackToMap()
     {
