@@ -30,9 +30,11 @@ public class EM_ESPlayerMature : BasicEnemy
         switch (currentIntention)
         {
             case EnemyIntention.Attack:
+                StartCoroutine(TypeText(enemyInfo.sentences[0]));
                 transform.Find("Intention").Find("Value").GetComponent<Text>().text = defaultDmg.ToString();
                 break;
             case EnemyIntention.Defence:
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
                 transform.Find("Intention").Find("Value").GetComponent<Text>().text = defaultShieldP.ToString();
                 break;
             //case EnemyIntention.Taunt:

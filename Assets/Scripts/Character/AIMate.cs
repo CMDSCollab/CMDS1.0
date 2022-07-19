@@ -108,6 +108,15 @@ public class AIMate : BasicCharacter
     #endregion
     public virtual void TakeAction()
     {
+        if (this is ArtistAI)
+        {
+            transform.Find("ChaImageMask").Find("ArtImage").GetComponent<Animator>().SetTrigger("Play");
+        }
+        else if(this is ProgrammerAI)
+        {
+            transform.Find("ChaImageMask").Find("ProImage").GetComponent<Animator>().SetTrigger("Play");
+        }
+
         switch (currentIntention)
         {
             case Intentions.Attack:

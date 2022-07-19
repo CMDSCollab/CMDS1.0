@@ -43,13 +43,16 @@ public class EM_Hatchling : BasicEnemy
         {
             case EnemyIntention.Attack:
                 gM.actionSM.EnterActionState(gM.actionSM.attackState, defaultDmg);
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
                 break;
             case EnemyIntention.Defence:
                 gM.actionSM.EnterActionState(gM.actionSM.defenceState, sheildOnLowHP);
+                StartCoroutine(TypeText(enemyInfo.sentences[3]));
                 hasDefenced = true;
                 break;
             case EnemyIntention.Taunt:
                 gM.actionSM.EnterActionState(gM.actionSM.tauntState, 1);
+                StartCoroutine(TypeText(enemyInfo.sentences[0]));
                 hasTaunted = true;
                 break;
         }

@@ -9,8 +9,16 @@ public class EM_TechNerd : BasicEnemy
     private int defaultDmg = 7;
     private int defaultMultAttackTimes = 10;
 
+    public override void InitializeEnemyUI()
+    {
+        base.InitializeEnemyUI();
+        portrait.gameObject.SetActive(false);
+        transform.Find("PortraitMask").Find("TD").gameObject.SetActive(true);
+    }
+
     public override void TakeAction()
     {
+        transform.Find("PortraitMask").Find("TD").GetComponent<Animator>().SetTrigger("Play");
         switch (currentIntention)
         {
             case EnemyIntention.Attack:

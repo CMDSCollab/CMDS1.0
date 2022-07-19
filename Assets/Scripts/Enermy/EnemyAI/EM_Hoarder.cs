@@ -25,12 +25,14 @@ public class EM_Hoarder : BasicEnemy
             {
                 if (gM.buffM.FindBuff(EnemyBuff.Defence).currentValue <= 0)
                 {
+                    StartCoroutine(TypeText(enemyInfo.sentences[0]));
                     this.SetAwaken();
                 }
             }
             else
             {
                 this.SetAwaken();
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
             }
 
         }
@@ -85,6 +87,7 @@ public class EM_Hoarder : BasicEnemy
                 gM.actionSM.EnterActionState(gM.actionSM.attackState, defaultDmg);
                 break;
             case EnemyIntention.Taunt:
+                StartCoroutine(TypeText(enemyInfo.sentences[2]));
                 gM.actionSM.EnterActionState(gM.actionSM.tauntState, 1);
                 break;
         }

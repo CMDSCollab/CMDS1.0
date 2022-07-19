@@ -36,6 +36,7 @@ public class CS_End : CombatBaseState
             case CharacterType.Artist:
                 break;
         }
+        GameObject.Find("Pre_MainCha(Clone)").transform.Find("ChaImageMask").Find("DesImage").GetComponent<Animator>().SetTrigger("Play");
         gM.combatSM.currentState = gM.combatSM.startState;
     }
 }

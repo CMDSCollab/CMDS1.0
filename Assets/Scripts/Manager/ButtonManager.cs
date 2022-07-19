@@ -105,18 +105,19 @@ public class ButtonManager : MonoBehaviour
 
     public void OnPointerEnterPro()
     {
-        GameObject.Find("Anim_Pro").GetComponent<Animator>().SetTrigger("Play");
+        //GameObject.Find("Anim_Pro").GetComponent<Animator>().SetTrigger("Play");
         AudioManager.Instance.PlayAudio("Programmer_Of_Course");
     }
 
     public void OnPointerEnterDes()
     {
-        GameObject.Find("Anim_Des").GetComponent<Animator>().SetTrigger("Play");
+        //GameObject.Find("Anim_Des").GetComponent<Animator>().SetTrigger("Play");
+        AudioManager.Instance.PlayAudio("Designer_Are_You_Ready");
     }
 
     public void OnPointerEnterArt()
     {
-        GameObject.Find("Anim_Art").GetComponent<Animator>().SetTrigger("Play");
+        //GameObject.Find("Anim_Art").GetComponent<Animator>().SetTrigger("Play");
         AudioManager.Instance.PlayAudio("Artist_Copy_That");
     }
     #endregion

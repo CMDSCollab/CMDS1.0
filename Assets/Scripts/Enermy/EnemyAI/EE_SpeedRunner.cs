@@ -40,9 +40,11 @@ public class EE_SpeedRunner : BasicEnemy
         switch (currentIntention)
         {
             case EnemyIntention.Attack:
+                StartCoroutine(TypeText(enemyInfo.sentences[0]));
                 gM.actionSM.EnterActionState(gM.actionSM.skipAttackState, defaultDmg);
                 break;
             case EnemyIntention.Skip:
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
                 gM.actionSM.EnterActionState(gM.actionSM.skipCIState, defaultDmg);
                 isSkip = true;
                 break;

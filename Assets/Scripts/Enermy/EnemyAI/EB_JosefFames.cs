@@ -46,6 +46,7 @@ public class EB_JosefFames : BasicEnemy
                 {
                     currentIntention = EnemyIntention.HoneyShoot;
                     transform.Find("Intention").Find("Value").GetComponent<Text>().text = damage2P.ToString();
+                    StartCoroutine(TypeText(enemyInfo.sentences[2]));
                 }             
                 break;
             case EnemyIntention.Defence:
@@ -90,10 +91,12 @@ public class EB_JosefFames : BasicEnemy
             if (enemySequence == 1)
             {
                 enemySequence = 2;
+                StartCoroutine(TypeText(enemyInfo.sentences[0]));
             }
             else
             {
                 enemySequence = 1;
+                StartCoroutine(TypeText(enemyInfo.sentences[1]));
             }
             gM.actionSM.EnterActionState(gM.actionSM.reviveState, 1);
         }

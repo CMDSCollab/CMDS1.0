@@ -120,7 +120,9 @@ public class CardS_Discard : CardBaseState
             int random = Random.Range(0, 4);
             if (random == 0)
             {
+                BasicEnemy enemyAI = gM.enM.enemyTarget.GetComponent<BasicEnemy>();
                 gM.cardSM.EnterCardState(gM.cardSM.defaultState);
+                enemyAI.StartCoroutine(enemyAI.TypeText(enemyAI.enemyInfo.sentences[2]));
                 gM.combatSM.CombatStateProcess();
             }
             else
